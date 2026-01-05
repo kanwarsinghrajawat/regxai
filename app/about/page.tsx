@@ -36,7 +36,7 @@ export default function About() {
                 >
                   By enabling clear, enforceable decisions across the AI
                   lifecycle, we help teams move from ideation to production with
-                  confidence — without slowing innovation.
+                  confidence - without slowing innovation.
                 </p>
                 <p
                   className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-300"

@@ -36,12 +36,10 @@ export default function Regulatory() {
                         lineHeight: "1.7",
                       }}
                     >
-                      <strong
-                        className="font-semibold text-slate-900 dark:text-slate-100"
-                      >
+                      <strong className="font-semibold text-slate-900 dark:text-slate-100">
                         EU AI Act
                       </strong>{" "}
-                      — comprehensive, risk-based regulation for AI systems
+                      - comprehensive, risk-based regulation for AI systems
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -53,12 +51,10 @@ export default function Regulatory() {
                         lineHeight: "1.7",
                       }}
                     >
-                      <strong
-                        className="font-semibold text-slate-900 dark:text-slate-100"
-                      >
+                      <strong className="font-semibold text-slate-900 dark:text-slate-100">
                         GDPR
                       </strong>{" "}
-                      — foundational privacy and data-protection requirements
+                      - foundational privacy and data-protection requirements
                       affecting AI automation
                     </span>
                   </li>
@@ -71,12 +67,10 @@ export default function Regulatory() {
                         lineHeight: "1.7",
                       }}
                     >
-                      <strong
-                        className="font-semibold text-slate-900 dark:text-slate-100"
-                      >
+                      <strong className="font-semibold text-slate-900 dark:text-slate-100">
                         U.S. Federal & State Guidelines
                       </strong>{" "}
-                      — sector-specific and guidance-driven enforcement
+                      - sector-specific and guidance-driven enforcement
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -88,12 +82,10 @@ export default function Regulatory() {
                         lineHeight: "1.7",
                       }}
                     >
-                      <strong
-                        className="font-semibold text-slate-900 dark:text-slate-100"
-                      >
+                      <strong className="font-semibold text-slate-900 dark:text-slate-100">
                         UAE AI & Data Regulations
                       </strong>{" "}
-                      — national AI governance, data-protection laws (e.g.,
+                      - national AI governance, data-protection laws (e.g.,
                       PDPL), and sectoral oversight shaping compliant AI
                       deployment in the Middle East.
                     </span>
@@ -107,12 +99,10 @@ export default function Regulatory() {
                         lineHeight: "1.7",
                       }}
                     >
-                      <strong
-                        className="font-semibold text-slate-900 dark:text-slate-100"
-                      >
+                      <strong className="font-semibold text-slate-900 dark:text-slate-100">
                         India DPDP Act
                       </strong>{" "}
-                      — data-protection law impacting AI data usage
+                      - data-protection law impacting AI data usage
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -124,12 +114,10 @@ export default function Regulatory() {
                         lineHeight: "1.7",
                       }}
                     >
-                      <strong
-                        className="font-semibold text-slate-900 dark:text-slate-100"
-                      >
+                      <strong className="font-semibold text-slate-900 dark:text-slate-100">
                         Framework Convention on AI
                       </strong>{" "}
-                      — international treaty aligning AI with human-rights
+                      - international treaty aligning AI with human-rights
                       principles
                     </span>
                   </li>
@@ -162,4 +150,3 @@ export default function Regulatory() {
     </main>
   );
 }
-

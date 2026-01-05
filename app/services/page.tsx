@@ -96,7 +96,7 @@ export default function Services() {
                   style={{ lineHeight: "1.7" }}
                 >
                   Our services are designed to complement internal engineering
-                  and compliance teams — not replace them.
+                  and compliance teams - not replace them.
                 </p>
               </div>
             </div>
@@ -144,4 +144,3 @@ export default function Services() {
     </main>
   );
 }
-

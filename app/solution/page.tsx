@@ -30,7 +30,7 @@ export default function Solution() {
                   style={{ lineHeight: "1.7" }}
                 >
                   As AI enablement accelerates, development speeds up but
-                  deployment does not — not because models fail, but because
+                  deployment does not - not because models fail, but because
                   organizations lack a reliable and consistent way to decide
                   whether AI is allowed to act in production.
                 </p>
@@ -62,8 +62,8 @@ export default function Solution() {
                 >
                   We provide a system that makes AI deployment responsible and
                   decidable. Instead of relying on post-hoc reviews or manual
-                  checklists, our approach enables organizations to determine —
-                  at the moment of execution — whether an AI action is permitted
+                  checklists, our approach enables organizations to determine -
+                  at the moment of execution - whether an AI action is permitted
                   to proceed.
                 </p>
                 <p
@@ -117,7 +117,7 @@ export default function Solution() {
                   style={{ lineHeight: "1.7" }}
                 >
                   All decisions are deterministic by design, require no access
-                  to customer data, and are enforced in real time — enabling
+                  to customer data, and are enforced in real time - enabling
                   governance without slowing development or production outcomes.
                 </p>
                 <p
@@ -423,4 +423,3 @@ export default function Solution() {
     </main>
   );
 }
-
