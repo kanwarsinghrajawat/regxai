@@ -41,8 +41,8 @@ export default function Navbar() {
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         isScrolled 
-          ? 'bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-sm border-b border-slate-200/50 dark:border-slate-800/50' 
-          : 'bg-white/60 dark:bg-black/60 backdrop-blur-md border-b border-transparent'
+          ? 'bg-white/80 dark:bg-black/90 dark:backdrop-blur-xl shadow-sm border-b border-slate-200/50 dark:border-slate-800/50 dark:shadow-lg dark:shadow-black/50' 
+          : 'bg-white/60 dark:bg-black/70 dark:backdrop-blur-md border-b border-transparent dark:border-slate-900/30'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

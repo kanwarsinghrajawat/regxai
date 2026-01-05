@@ -4,45 +4,49 @@ import SectionImage from "@/components/SectionImage";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-8 md:pt-40 md:pb-12">
+    <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300 relative">
+      {/* Subtle background pattern for dark mode */}
+      <div className="hidden dark:block fixed inset-0 opacity-[0.02] pointer-events-none" style={{
+        backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+        backgroundSize: '40px 40px'
+      }}></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-8 md:pt-40 md:pb-12 relative z-10">
         {/* Hero Section */}
-        <section className="mb-32 md:mb-40">
-          <div className="w-full max-w-full mx-auto text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-10 md:mb-12 tracking-tight text-slate-900 dark:text-white leading-[1.05]">
-              Infrastructure for enforcing AI trust and deterministic
-              decisioning throughout the AI lifecycle
-            </h1>
-            <p
-              className="text-xl md:text-2xl lg:text-3xl leading-relaxed mb-10 md:mb-12 font-normal text-accent dark:text-accent-green max-w-4xl"
-              style={{ lineHeight: "1.5" }}
-            >
-              Determines whether AI actions are responsible and compliant —
-              before agents and models deploy, act, respond, or predict.
-            </p>
-            <div className="relative mb-12 md:mb-16">
-              <p
-                className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-semibold italic text-slate-800 dark:text-slate-100 relative z-10 inline-block"
-                style={{ lineHeight: "1.6" }}
-              >
-                <span className="relative">
-                  <span className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-accent via-accent-light to-accent dark:from-accent-green dark:via-accent-green-light dark:to-accent-green rounded-full opacity-60"></span>
-                  <span className="relative pl-4">
-                    Acceptability before capability in{' '}
-                    <span className="text-accent dark:text-accent-green font-bold not-italic">AI</span> world
-                  </span>
-                </span>
-              </p>
-              <div className="absolute -bottom-2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent dark:via-accent-green/30"></div>
+        <section className="mb-32 md:mb-48 relative">
+          <div className="w-full max-w-6xl mx-auto text-left">
+            {/* Main Headline */}
+            <div className="mb-12 md:mb-16">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-extrabold tracking-[-0.02em] text-slate-900 dark:text-white dark:drop-shadow-sm leading-[1.05] mb-6">
+                Infrastructure for enforcing AI trust and deterministic decisioning throughout the AI lifecycle
+              </h1>
             </div>
-            <div className="flex flex-col sm:flex-row gap-5 mt-16">
+
+            {/* Sub-headline */}
+            <div className="mb-14 md:mb-16 max-w-5xl">
+              <p className="text-xl md:text-2xl lg:text-2xl font-light leading-relaxed text-accent dark:text-accent-green dark:drop-shadow-sm tracking-wide">
+                Determines whether AI actions are responsible and compliant — before agents and models deploy, act, respond, or predict.
+              </p>
+            </div>
+
+            {/* Accent Quote */}
+            <div className="mb-16 md:mb-20 relative pl-6 md:pl-8">
+              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent-light to-accent dark:from-accent-green dark:via-accent-green-light dark:to-accent-green rounded-full shadow-lg dark:shadow-accent-green/50"></div>
+              <p className="text-lg md:text-xl lg:text-2xl font-medium italic text-slate-700 dark:text-slate-100 leading-relaxed">
+                Acceptability before capability in{' '}
+                <span className="text-accent dark:text-accent-green font-bold not-italic">AI</span> world
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/solution"
-                className="group inline-flex items-center justify-center px-10 py-4 md:px-12 md:py-5 bg-accent dark:bg-accent-green text-white font-semibold text-base md:text-lg rounded-xl hover:bg-accent-dark dark:hover:bg-accent-green-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="group inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 bg-accent dark:bg-accent-green dark:shadow-lg dark:shadow-accent-green/30 text-white font-medium text-sm md:text-base rounded-lg hover:bg-accent-dark dark:hover:bg-accent-green-dark dark:hover:shadow-accent-green/40 transition-all duration-200 shadow-sm hover:shadow-md"
               >
                 Learn More
                 <svg
-                  className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                  className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -57,11 +61,11 @@ export default function Home() {
               </Link>
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center px-10 py-4 md:px-12 md:py-5 border-2 border-accent dark:border-accent-green text-accent dark:text-accent-green font-semibold text-base md:text-lg rounded-xl hover:bg-accent dark:hover:bg-accent-green hover:text-white transition-all duration-300 hover:scale-105"
+                className="group inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 border border-accent dark:border-accent-green dark:shadow-sm dark:shadow-accent-green/10 text-accent dark:text-accent-green font-medium text-sm md:text-base rounded-lg hover:bg-accent/5 dark:hover:bg-accent-green/10 dark:hover:shadow-accent-green/20 transition-all duration-200"
               >
                 Get in Touch
                 <svg
-                  className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                  className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -81,7 +85,7 @@ export default function Home() {
         {/* Key Highlights */}
         <section className="mb-32 md:mb-40">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accent dark:hover:border-accent-green transition-colors duration-300">
+            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-800/50 dark:shadow-lg dark:shadow-black/20 hover:border-accent dark:hover:border-accent-green/50 transition-all duration-300">
               <div className="w-12 h-12 rounded-lg bg-accent dark:bg-accent-green flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-white"
@@ -106,7 +110,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accent dark:hover:border-accent-green transition-colors duration-300">
+            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-800/50 dark:shadow-lg dark:shadow-black/20 hover:border-accent dark:hover:border-accent-green/50 transition-all duration-300">
               <div className="w-12 h-12 rounded-lg bg-accent dark:bg-accent-green flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-white"
@@ -131,7 +135,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accent dark:hover:border-accent-green transition-colors duration-300">
+            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-800/50 dark:shadow-lg dark:shadow-black/20 hover:border-accent dark:hover:border-accent-green/50 transition-all duration-300">
               <div className="w-12 h-12 rounded-lg bg-accent dark:bg-accent-green flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-white"
@@ -321,7 +325,7 @@ export default function Home() {
 
         {/* Quick Stats / Use Cases */}
         <section className="mb-32 md:mb-40">
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 md:p-12 border border-slate-200 dark:border-slate-800">
+          <div className="bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-slate-200 dark:border-slate-800/50 dark:shadow-xl dark:shadow-black/30">
             <h2
               className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-slate-900 dark:text-white"
               style={{ lineHeight: "1.2" }}
