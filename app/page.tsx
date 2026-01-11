@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Shield,
   FileCheck,
@@ -96,6 +97,11 @@ export default function Home() {
           className={`py-20 lg:py-28 ${isDark ? "bg-gray-950" : "bg-white"}`}
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 className={`text-4xl lg:text-5xl font-bold mb-12 text-center ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}>
+              Key Features
+            </h2>
             <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
               <div className="group">
                 <div
@@ -299,10 +305,14 @@ export default function Home() {
                 </ul>
               </div>
               <div className="relative">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=90&auto=format&fit=crop"
                   alt="Enterprise AI risk management"
+                  width={1200}
+                  height={800}
                   className="rounded-2xl shadow-2xl"
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
                 />
                 <div
                   className={`absolute -bottom-6 -left-6 p-6 rounded-xl shadow-xl border ${

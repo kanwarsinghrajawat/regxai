@@ -32,8 +32,8 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
     <nav className="fixed top-0 w-full bg-black/95 backdrop-blur-md border-b border-gray-800 z-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0 cursor-pointer">
-            <Shield className="w-8 h-8 text-emerald-500" />
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0 cursor-pointer" aria-label="regX AI Home">
+            <Shield className="w-8 h-8 text-emerald-500" aria-hidden="true" />
             <span className="text-2xl font-bold text-white">regX AI</span>
           </Link>
 
@@ -106,11 +106,11 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
                 className={`font-medium text-lg py-3 px-4 rounded-lg transition-all duration-200 ${
                   isActive(item.path)
                     ? isDark
-                      ? 'bg-emerald-500/20 text-emerald-400'
-                      : 'bg-emerald-500/20 text-emerald-600'
+                      ? 'bg-emerald-500/20 text-emerald-300'
+                      : 'bg-emerald-500/20 text-emerald-700'
                     : isDark
-                    ? 'text-gray-200 hover:bg-emerald-500/10 hover:text-emerald-400'
-                    : 'text-gray-700 hover:bg-emerald-500/10 hover:text-emerald-600'
+                    ? 'text-gray-100 hover:bg-emerald-500/10 hover:text-emerald-300'
+                    : 'text-gray-900 hover:bg-emerald-500/10 hover:text-emerald-700'
                 }`}
               >
                 {item.label}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
@@ -196,11 +197,15 @@ export default function Solution() {
                       : "bg-white border border-gray-200 hover:border-emerald-400 shadow-xl"
                   }`}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=90&auto=format&fit=crop"
-                    alt="Solution architecture"
-                    className="rounded-xl w-full"
-                  />
+                <Image
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=90&auto=format&fit=crop"
+                  alt="Solution architecture"
+                  width={800}
+                  height={600}
+                  className="rounded-xl w-full"
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
                 </div>
               </div>
             </div>
@@ -266,10 +271,14 @@ export default function Solution() {
                       : "bg-emerald-200/50 blur-2xl"
                   }`}
                 ></div>
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=90&auto=format&fit=crop"
                   alt="Enterprise AI risk management"
+                  width={1200}
+                  height={800}
                   className="relative rounded-2xl shadow-2xl"
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
                 />
               </div>
             </div>
@@ -289,10 +298,14 @@ export default function Solution() {
                       : "bg-emerald-200/50 blur-2xl"
                   }`}
                 ></div>
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=90&auto=format&fit=crop"
                   alt="Where this fits"
+                  width={1200}
+                  height={800}
                   className="relative rounded-2xl shadow-2xl"
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
                 />
               </div>
               <div className="order-1 lg:order-2">
@@ -402,10 +415,14 @@ export default function Solution() {
                       : "bg-emerald-200/50 blur-2xl"
                   }`}
                 ></div>
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=90&auto=format&fit=crop"
                   alt="Who this is for"
+                  width={1200}
+                  height={800}
                   className="relative rounded-2xl shadow-2xl"
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
                 />
               </div>
             </div>

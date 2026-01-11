@@ -11,6 +11,7 @@ import {
   Rocket,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
@@ -199,10 +200,14 @@ export default function Services() {
                       : "bg-white border border-gray-200 shadow-xl"
                   }`}
                 >
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=90&auto=format&fit=crop"
                     alt="Getting started"
+                    width={800}
+                    height={600}
                     className="rounded-xl w-full"
+                    priority={false}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>
