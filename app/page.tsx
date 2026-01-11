@@ -1,425 +1,449 @@
-import Footer from "@/components/Footer";
+"use client";
+
 import Link from "next/link";
-import SectionImage from "@/components/SectionImage";
+import {
+  Shield,
+  FileCheck,
+  Target,
+  Bot,
+  MessageSquare,
+  GitBranch,
+  FileText,
+  ArrowRight,
+  Check,
+} from "lucide-react";
+import { Navigation } from "./components/Navigation";
+import { Footer } from "./components/Footer";
+import { useTheme } from "./components/ThemeProvider";
 
 export default function Home() {
+  const { isDark, setIsDark } = useTheme();
+
   return (
-    <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300 relative">
-      {/* Subtle background pattern for dark mode */}
-      <div className="hidden dark:block fixed inset-0 opacity-[0.02] pointer-events-none" style={{
-        backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-        backgroundSize: '40px 40px'
-      }}></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-8 md:pt-40 md:pb-12 relative z-10">
-        {/* Hero Section */}
-        <section className="mb-32 md:mb-48 relative">
-          <div className="w-full max-w-6xl mx-auto text-left">
-            {/* Main Headline */}
-            <div className="mb-12 md:mb-16">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-extrabold tracking-[-0.02em] text-slate-900 dark:text-white dark:drop-shadow-sm leading-[1.05] mb-6">
-                Infrastructure for enforcing AI trust and deterministic decisioning throughout the AI lifecycle
+    <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
+      <Navigation isDark={isDark} setIsDark={setIsDark} />
+      <main className="pt-20">
+        <section
+          className={`relative overflow-hidden py-20 lg:py-28 ${
+            isDark
+              ? "bg-gradient-to-br from-gray-900 via-gray-950 to-emerald-950/30"
+              : "bg-gradient-to-br from-gray-50 via-white to-emerald-50/30"
+          }`}
+        >
+          <div
+            className={`absolute inset-0 ${
+              isDark
+                ? "bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]"
+                : "bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)]"
+            }`}
+            style={{ backgroundSize: "24px 24px" }}
+          ></div>
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <div
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-8 ${
+                  isDark
+                    ? "bg-emerald-500/20 text-emerald-300"
+                    : "bg-emerald-100 text-emerald-700"
+                }`}
+              >
+                <Target className="w-4 h-4" />
+                Acceptability before capability in AI world
+              </div>
+              <h1
+                className={`text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                Infrastructure for enforcing{" "}
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                  AI trust
+                </span>{" "}
+                and deterministic decisioning
               </h1>
-            </div>
-
-            {/* Sub-headline */}
-            <div className="mb-14 md:mb-16 max-w-5xl">
-              <p className="text-xl md:text-2xl lg:text-2xl font-light leading-relaxed text-accent dark:text-accent-green dark:drop-shadow-sm tracking-wide">
-                Determines whether AI actions are responsible and compliant — before agents and models deploy, act, respond, or predict.
-              </p>
-            </div>
-
-            {/* Accent Quote */}
-            <div className="mb-16 md:mb-20 relative pl-6 md:pl-8">
-              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent-light to-accent dark:from-accent-green dark:via-accent-green-light dark:to-accent-green rounded-full shadow-lg dark:shadow-accent-green/50"></div>
-              <p className="text-lg md:text-xl lg:text-2xl font-medium italic text-slate-700 dark:text-slate-100 leading-relaxed">
-                Acceptability before capability in{' '}
-                <span className="text-accent dark:text-accent-green font-bold not-italic">AI</span> world
-              </p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/solution"
-                className="group inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 bg-accent dark:bg-accent-green dark:shadow-lg dark:shadow-accent-green/30 text-white font-medium text-sm md:text-base rounded-lg hover:bg-accent-dark dark:hover:bg-accent-green-dark dark:hover:shadow-accent-green/40 transition-all duration-200 shadow-sm hover:shadow-md"
+              <p
+                className={`text-xl lg:text-2xl mb-10 leading-relaxed max-w-3xl mx-auto font-light ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}
               >
-                Learn More
-                <svg
-                  className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 border border-accent dark:border-accent-green dark:shadow-sm dark:shadow-accent-green/10 text-accent dark:text-accent-green font-medium text-sm md:text-base rounded-lg hover:bg-accent/5 dark:hover:bg-accent-green/10 dark:hover:shadow-accent-green/20 transition-all duration-200"
-              >
-                Get in Touch
-                <svg
-                  className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Key Highlights */}
-        <section className="mb-32 md:mb-40">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-800/50 dark:shadow-lg dark:shadow-black/20 hover:border-accent dark:hover:border-accent-green/50 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-accent dark:bg-accent-green flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white">
-                Real-time Enforcement
-              </h3>
-              <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Evaluate AI actions before execution to prevent violations and
-                ensure compliance at every step.
+                Determines whether AI actions are responsible and compliant —
+                before agents and models deploy, act, respond, or predict.
               </p>
-            </div>
-
-            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-800/50 dark:shadow-lg dark:shadow-black/20 hover:border-accent dark:hover:border-accent-green/50 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-accent dark:bg-accent-green flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 shadow-lg hover:shadow-xl group"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white">
-                Immutable Records
-              </h3>
-              <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Every decision is recorded as tamper-evident evidence for
-                audits, reviews, and regulatory inquiries.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm border border-slate-200 dark:border-slate-800/50 dark:shadow-lg dark:shadow-black/20 hover:border-accent dark:hover:border-accent-green/50 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-accent dark:bg-accent-green flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white">
-                Deterministic Decisions
-              </h3>
-              <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Make risk decidable before it becomes costly, enabling confident
-                production deployment.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* The Problem & Solution Preview */}
-        <section className="mb-32 md:mb-40">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-            <div className="flex-1 lg:max-w-2xl">
-              <h2
-                className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-slate-900 dark:text-white"
-                style={{ lineHeight: "1.2" }}
-              >
-                The Challenge
-              </h2>
-              <div className="space-y-5">
-                <p
-                  className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-300"
-                  style={{ lineHeight: "1.7" }}
-                >
-                  Organizations build far more AI systems than they ever deploy.
-                  A majority of AI projects never reach production, leaving
-                  significant economic value locked in proof-of-concepts that
-                  fail to pass risk, compliance, or accountability audits.
-                </p>
-                <p
-                  className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-300"
-                  style={{ lineHeight: "1.7" }}
-                >
-                  As AI enablement accelerates, development speeds up but
-                  deployment does not - not because models fail, but because
-                  organizations lack a reliable and consistent way to decide
-                  whether AI is allowed to act in production.
-                </p>
-              </div>
-              <div className="mt-8">
+                  Get in Touch
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
                 <Link
                   href="/solution"
-                  className="inline-flex items-center text-accent dark:text-accent-green font-semibold hover:text-accent-dark dark:hover:text-accent-green-light transition-colors"
+                  className={`px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-md border flex items-center gap-2 ${
+                    isDark
+                      ? "bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700"
+                      : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
+                  }`}
                 >
-                  Learn how we solve this
-                  <svg
-                    className="w-5 h-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                  Learn More
                 </Link>
               </div>
             </div>
-            <div className="order-1 lg:order-2 w-full lg:w-auto">
-              <SectionImage
-                src="/image1.png"
-                alt="AI deployment challenges"
-              />
+          </div>
+        </section>
+
+        <section
+          className={`py-20 lg:py-28 ${isDark ? "bg-gray-950" : "bg-white"}`}
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+              <div className="group">
+                <div
+                  className={`rounded-2xl p-8 h-full border transition-all duration-300 hover:shadow-xl ${
+                    isDark
+                      ? "bg-gradient-to-br from-emerald-950 to-teal-950 border-emerald-800 hover:border-emerald-600"
+                      : "bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-100 hover:border-emerald-300"
+                  }`}
+                >
+                  <div className="w-14 h-14 bg-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Shield className="w-7 h-7 text-white" />
+                  </div>
+                  <h3
+                    className={`text-2xl font-bold mb-4 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Real-time Enforcement
+                  </h3>
+                  <p
+                    className={`leading-relaxed text-lg ${
+                      isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    Evaluate AI actions before execution to prevent violations
+                    and ensure compliance at every step.
+                  </p>
+                </div>
+              </div>
+
+              <div className="group">
+                <div
+                  className={`rounded-2xl p-8 h-full border transition-all duration-300 hover:shadow-xl ${
+                    isDark
+                      ? "bg-gradient-to-br from-blue-950 to-cyan-950 border-blue-800 hover:border-blue-600"
+                      : "bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-100 hover:border-blue-300"
+                  }`}
+                >
+                  <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <FileCheck className="w-7 h-7 text-white" />
+                  </div>
+                  <h3
+                    className={`text-2xl font-bold mb-4 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Immutable Records
+                  </h3>
+                  <p
+                    className={`leading-relaxed text-lg ${
+                      isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    Every decision is recorded as tamper-evident evidence for
+                    audits, reviews, and regulatory inquiries.
+                  </p>
+                </div>
+              </div>
+
+              <div className="group">
+                <div
+                  className={`rounded-2xl p-8 h-full border transition-all duration-300 hover:shadow-xl ${
+                    isDark
+                      ? "bg-gradient-to-br from-orange-950 to-amber-950 border-orange-800 hover:border-orange-600"
+                      : "bg-gradient-to-br from-orange-50 to-amber-50 border-orange-100 hover:border-orange-300"
+                  }`}
+                >
+                  <div className="w-14 h-14 bg-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Target className="w-7 h-7 text-white" />
+                  </div>
+                  <h3
+                    className={`text-2xl font-bold mb-4 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Deterministic Decisions
+                  </h3>
+                  <p
+                    className={`leading-relaxed text-lg ${
+                      isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    Make risk decidable before it becomes costly, enabling
+                    confident production deployment.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* How We Help */}
-        <section className="mb-32 md:mb-40">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-            <div className="order-1 lg:order-2 flex-1 lg:max-w-2xl">
-              <h2
-                className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-slate-900 dark:text-white"
-                style={{ lineHeight: "1.2" }}
-              >
-                How We Help Enterprises
+        <section
+          className={`py-20 lg:py-28 relative overflow-hidden ${
+            isDark
+              ? "bg-gray-900"
+              : "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+          } text-white`}
+        >
+          <div
+            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]"
+            style={{ backgroundSize: "32px 32px" }}
+          ></div>
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                The Challenge
               </h2>
-              <div className="space-y-6">
+            </div>
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div>
+                <div className="text-4xl font-bold text-emerald-400 mb-2">
+                  90% - 95%
+                </div>
+                <div className="text-gray-400">
+                  AI projects never reach production
+                </div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-emerald-400 mb-2">
+                  80%{" "}
+                </div>
+                <div className="text-gray-400">
+                  Teams struggle with Accountability During Development
+                </div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-emerald-400 mb-2">
+                  56%
+                </div>
+                <div className="text-gray-400">
+                  of organizations admit they do not have a formal governance
+                  framework in place to manage Generative AI risks (bias,
+                  hallucinations, IP leakage).
+                </div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-emerald-400 mb-2">
+                  65%
+                </div>
+                <div className="text-gray-400">
+                  of consumers say they have already lost trust in an
+                  organization due to its misuse of AI or poor automated
+                  customer service experiences.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={`py-20 lg:py-28 ${isDark ? "bg-gray-950" : "bg-white"}`}
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2
+                  className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
+                    isDark ? "text-white" : "text-gray-900"
+                  }`}
+                >
+                  How We Help Enterprises
+                </h2>
                 <p
-                  className="text-base md:text-lg leading-relaxed mb-4 text-slate-600 dark:text-slate-300"
-                  style={{ lineHeight: "1.7" }}
+                  className={`text-xl leading-relaxed mb-8 ${
+                    isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
                 >
                   We help organizations move AI into production by making risk
                   decidable before it becomes costly.
                 </p>
-                <ul className="space-y-3 list-none pl-0">
-                  <li className="flex items-start">
-                    <span className="text-accent dark:text-accent-green mr-3 mt-1 text-lg">
-                      ●
-                    </span>
-                    <span
-                      className="text-base text-slate-600 dark:text-slate-300"
-                      style={{ lineHeight: "1.7" }}
+                <ul className="space-y-4">
+                  {[
+                    "Reduce regulatory exposure by evaluating AI actions before they execute",
+                    "Prevent fines and enforcement events through real-time blocking and escalation",
+                    "Unlock ROI from stalled AI initiatives by enabling compliant production deployment",
+                    "Lower governance overhead by replacing manual reviews with deterministic controls",
+                  ].map((item, index) => (
+                    <li
+                      key={index}
+                      className={`flex items-center gap-3 text-lg ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
                     >
-                      Reduce regulatory exposure by evaluating AI actions before
-                      they execute
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-accent dark:text-accent-green mr-3 mt-1 text-lg">
-                      ●
-                    </span>
-                    <span
-                      className="text-base text-slate-600 dark:text-slate-300"
-                      style={{ lineHeight: "1.7" }}
-                    >
-                      Prevent fines and enforcement events through real-time
-                      blocking and escalation
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-accent dark:text-accent-green mr-3 mt-1 text-lg">
-                      ●
-                    </span>
-                    <span
-                      className="text-base text-slate-600 dark:text-slate-300"
-                      style={{ lineHeight: "1.7" }}
-                    >
-                      Unlock ROI from stalled AI initiatives by enabling
-                      compliant production deployment
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-accent dark:text-accent-green mr-3 mt-1 text-lg">
-                      ●
-                    </span>
-                    <span
-                      className="text-base text-slate-600 dark:text-slate-300"
-                      style={{ lineHeight: "1.7" }}
-                    >
-                      Lower governance overhead by replacing manual reviews with
-                      deterministic controls
-                    </span>
-                  </li>
+                      <div
+                        className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          isDark ? "bg-emerald-500/20" : "bg-emerald-100"
+                        }`}
+                      >
+                        <Check
+                          className={`w-4 h-4 ${
+                            isDark ? "text-emerald-400" : "text-emerald-600"
+                          }`}
+                        />
+                      </div>
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
-              <div className="mt-8">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center text-accent dark:text-accent-green font-semibold hover:text-accent-dark dark:hover:text-accent-green-light transition-colors"
+              <div className="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=90&auto=format&fit=crop"
+                  alt="Enterprise AI risk management"
+                  className="rounded-2xl shadow-2xl"
+                />
+                <div
+                  className={`absolute -bottom-6 -left-6 p-6 rounded-xl shadow-xl border ${
+                    isDark
+                      ? "bg-gray-800 border-gray-700"
+                      : "bg-white border-gray-200"
+                  }`}
                 >
-                  Explore our services
-                  <svg
-                    className="w-5 h-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                  <div
+                    className={`text-3xl font-bold mb-1 ${
+                      isDark ? "text-emerald-400" : "text-emerald-600"
+                    }`}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-            <div className="order-2 lg:order-1 w-full lg:w-auto">
-              <SectionImage
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=90&auto=format&fit=crop"
-                alt="Enterprise AI risk management"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Stats / Use Cases */}
-        <section className="mb-32 md:mb-40">
-          <div className="bg-slate-50 dark:bg-slate-900/50 dark:backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-slate-200 dark:border-slate-800/50 dark:shadow-xl dark:shadow-black/30">
-            <h2
-              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-slate-900 dark:text-white"
-              style={{ lineHeight: "1.2" }}
-            >
-              Where This Fits
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent dark:bg-accent-green flex items-center justify-center mt-1">
-                  <span className="text-white text-sm font-semibold">1</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1 text-slate-900 dark:text-white">
-                    Autonomous AI Systems
-                  </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    Agentic AI executing multi-step actions
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent dark:bg-accent-green flex items-center justify-center mt-1">
-                  <span className="text-white text-sm font-semibold">2</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1 text-slate-900 dark:text-white">
-                    Enterprise Chatbots
-                  </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    AI assistants handling customer interactions
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent dark:bg-accent-green flex items-center justify-center mt-1">
-                  <span className="text-white text-sm font-semibold">3</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1 text-slate-900 dark:text-white">
-                    CI/CD Pipelines
-                  </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    Model deployment and continuous integration
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent dark:bg-accent-green flex items-center justify-center mt-1">
-                  <span className="text-white text-sm font-semibold">4</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1 text-slate-900 dark:text-white">
-                    Regulated Environments
-                  </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    AI systems operating under compliance requirements
-                  </p>
+                    85%
+                  </div>
+                  <div
+                    className={`text-sm ${
+                      isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    Faster deployment
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="mb-16 md:mb-20">
-          <div className="bg-gradient-to-r from-accent to-accent-dark dark:from-accent-green dark:to-accent-green-dark rounded-2xl p-8 md:p-12 text-center">
-            <h2
-              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-white"
-              style={{ lineHeight: "1.2" }}
-            >
+        <section
+          className={`py-20 lg:py-28 ${isDark ? "bg-gray-900" : "bg-gray-50"}`}
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2
+                className={`text-4xl lg:text-5xl font-bold mb-4 ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                Where This Fits
+              </h2>
+              <p
+                className={`text-xl max-w-2xl mx-auto ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                Deploy compliant AI across your entire technology stack
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: Bot,
+                  title: "Autonomous AI Systems",
+                  description: "Agentic AI executing multi-step actions",
+                  color: "emerald",
+                },
+                {
+                  icon: MessageSquare,
+                  title: "Enterprise Chatbots",
+                  description: "AI assistants handling customer interactions",
+                  color: "blue",
+                },
+                {
+                  icon: GitBranch,
+                  title: "CI/CD Pipelines",
+                  description: "Model deployment and continuous integration",
+                  color: "orange",
+                },
+                {
+                  icon: FileText,
+                  title: "Regulated Environments",
+                  description:
+                    "AI systems operating under compliance requirements",
+                  color: "teal",
+                },
+              ].map((item, index) => {
+                const Icon = item.icon;
+                const colorClasses = {
+                  emerald: "from-emerald-500 to-teal-500",
+                  blue: "from-blue-500 to-cyan-500",
+                  orange: "from-orange-500 to-amber-500",
+                  teal: "from-teal-500 to-emerald-500",
+                };
+                return (
+                  <div
+                    key={index}
+                    className={`rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border group ${
+                      isDark
+                        ? "bg-gray-800 border-gray-700 hover:border-gray-600"
+                        : "bg-white border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <div
+                      className={`w-12 h-12 bg-gradient-to-br ${
+                        colorClasses[item.color as keyof typeof colorClasses]
+                      } rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3
+                      className={`text-xl font-bold mb-2 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className={`leading-relaxed ${
+                        isDark ? "text-gray-400" : "text-gray-600"
+                      }`}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-28 bg-gradient-to-br from-emerald-600 to-teal-600 text-white relative overflow-hidden">
+          <div
+            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)]"
+            style={{ backgroundSize: "32px 32px" }}
+          ></div>
+          <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
               Ready to deploy AI with confidence?
             </h2>
-            <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Let's discuss how we can help your organization move from AI
+            <p className="text-xl text-emerald-50 mb-10 leading-relaxed">
+              Lets discuss how we can help your organization move from AI
               experimentation to compliant production.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 bg-white text-accent font-semibold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
-              >
-                Get in Touch
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all"
-              >
-                Learn More
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-600 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
+            >
+              Get in Touch
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </section>
-      </div>
-      <Footer />
-    </main>
+      </main>
+      <Footer isDark={isDark} />
+    </div>
   );
 }
