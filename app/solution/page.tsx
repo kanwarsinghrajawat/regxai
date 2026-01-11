@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, CheckCircle, Zap, Lock, BarChart3 } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
