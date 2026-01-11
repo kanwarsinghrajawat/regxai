@@ -188,54 +188,57 @@ export default function Home() {
         </section>
 
         <section
-          className={`py-20 lg:py-28 relative overflow-hidden ${
+          className={`py-24 lg:py-32 relative overflow-hidden ${
             isDark
-              ? "bg-gray-900"
-              : "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+              ? "bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900"
+              : "bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"
           } text-white`}
         >
           <div
-            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]"
-            style={{ backgroundSize: "32px 32px" }}
+            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)]"
+            style={{ backgroundSize: "40px 40px" }}
           ></div>
           <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <div className="mb-16">
+              <h2 className="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight tracking-tight">
                 The Challenge
               </h2>
             </div>
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div>
-                <div className="text-4xl font-bold text-emerald-400 mb-2">
-                  90% - 95%
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+              <div className="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105">
+                <div className="text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4 leading-none">
+                  95%
                 </div>
-                <div className="text-gray-400">
-                  AI projects never reach production
-                </div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-emerald-400 mb-2">
-                  80%{" "}
-                </div>
-                <div className="text-gray-400">
-                  Teams struggle with Accountability During Development
+                <div className="text-gray-300 text-base leading-relaxed font-medium">
+                  AI initiatives never deliver economic value
                 </div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-emerald-400 mb-2">
+
+              <div className="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105">
+                <div className="text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4 leading-none">
+                  82%
+                </div>
+                <div className="text-gray-300 text-base leading-relaxed font-medium">
+                  ERP Team lacks Accountability for E2E AI Product Lifecycle
+                </div>
+              </div>
+
+              <div className="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105">
+                <div className="text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4 leading-none">
                   56%
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-300 text-base leading-relaxed font-medium">
                   of organizations admit they do not have a formal governance
                   framework in place to manage Generative AI risks (bias,
                   hallucinations, IP leakage).
                 </div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-emerald-400 mb-2">
+
+              <div className="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105">
+                <div className="text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4 leading-none">
                   65%
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-300 text-base leading-relaxed font-medium">
                   of consumers say they have already lost trust in an
                   organization due to its misuse of AI or poor automated
                   customer service experiences.

@@ -41,13 +41,13 @@ export default function Solution() {
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  value: "90-95%",
-                  label: "AI projects never reach production",
+                  value: "95%",
+                  label: "AI initiatives never deliver economic value",
                 },
                 {
-                  value: "80%",
+                  value: "82%",
                   label:
-                    "Teams struggle with Accountability During Development",
+                    "ERP Team lacks Accountability for E2E AI Product Lifecycle",
                 },
                 {
                   value: "56%",
