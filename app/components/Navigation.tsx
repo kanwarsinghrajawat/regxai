@@ -32,9 +32,10 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
     <nav className="fixed top-0 w-full bg-black/95 backdrop-blur-md border-b border-gray-800 z-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0 cursor-pointer" aria-label="regX AI Home">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0 cursor-pointer">
             <Shield className="w-8 h-8 text-emerald-500" aria-hidden="true" />
             <span className="text-2xl font-bold text-white">regX AI</span>
+            <span className="sr-only">Go to homepage</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-12">
