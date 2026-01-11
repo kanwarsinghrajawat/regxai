@@ -210,7 +210,7 @@ export default function Home() {
                   95%
                 </div>
                 <div className="text-gray-300 text-base leading-relaxed font-medium">
-                  AI initiatives never deliver economic value
+                  AI initiatives didn't deliver economic value
                 </div>
               </div>
 

@@ -42,7 +42,7 @@ export default function Solution() {
               {[
                 {
                   value: "95%",
-                  label: "AI initiatives never deliver economic value",
+                  label: "AI initiatives didn't deliver economic value",
                 },
                 {
                   value: "82%",
