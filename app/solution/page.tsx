@@ -191,21 +191,21 @@ export default function Solution() {
                   }`}
                 ></div>
                 <div
-                  className={`relative rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl ${
+                  className={`relative rounded-2xl transition-all duration-300 hover:shadow-2xl ${
                     isDark
                       ? "bg-gray-800 border border-gray-700 hover:border-emerald-500/50"
                       : "bg-white border border-gray-200 hover:border-emerald-400 shadow-xl"
                   }`}
                 >
-                <Image
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=90&auto=format&fit=crop"
-                  alt="Solution architecture"
-                  width={800}
-                  height={600}
-                  className="rounded-xl w-full"
-                  priority={false}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                  <Image
+                    src="/howItWorks.png"
+                    alt="Solution architecture"
+                    width={800}
+                    height={600}
+                    className="rounded-xl w-full"
+                    priority={false}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
             </div>
@@ -272,7 +272,7 @@ export default function Solution() {
                   }`}
                 ></div>
                 <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=90&auto=format&fit=crop"
+                  src="/howWeHelpEnterprises.png"
                   alt="Enterprise AI risk management"
                   width={1200}
                   height={800}
@@ -299,7 +299,7 @@ export default function Solution() {
                   }`}
                 ></div>
                 <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=90&auto=format&fit=crop"
+                  src="/whereThisFits.png"
                   alt="Where this fits"
                   width={1200}
                   height={800}
@@ -416,7 +416,7 @@ export default function Solution() {
                   }`}
                 ></div>
                 <Image
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=90&auto=format&fit=crop"
+                  src="/whoThisIsFor.png"
                   alt="Who this is for"
                   width={1200}
                   height={800}
