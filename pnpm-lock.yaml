@@ -11,9 +11,6 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.57.4
         version: 2.90.1
-      '@types/nodemailer':
-        specifier: ^7.0.5
-        version: 7.0.5
       lucide-react:
         specifier: ^0.344.0
         version: 0.344.0(react@18.3.1)
@@ -33,6 +30,9 @@ importers:
       '@types/node':
         specifier: ^20.14.12
         version: 20.19.27
+      '@types/nodemailer':
+        specifier: ^7.0.5
+        version: 7.0.5
       '@types/react':
         specifier: ^18.3.5
         version: 18.3.27
