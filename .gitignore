@@ -1,64 +1,50 @@
-# Dependencies
-node_modules/
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Testing
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
 /coverage
 
-# Next.js
+# next.js
 /.next/
 /out/
+
+# production
 /build
-dist/
-dist-ssr/
 
-# Production
-*.local
-*.production
+# misc
+.DS_Store
+*.pem
 
-# Debug
-logs/
-*.log
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+.pnpm-debug.log*
 
-# Environment variables
-.env
-.env*.local
-.env.development
-.env.production
-.env.test
+# env files (can opt-in for committing if needed)
+.env*
 
-# Vercel
+# vercel
 .vercel
 
-# TypeScript
+# typescript
 *.tsbuildinfo
 next-env.d.ts
 
-# IDE
-.vscode/*
-!.vscode/extensions.json
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
 
-# OS
-.DS_Store
-Thumbs.db
 
-# Misc
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-.cache/
-.turbo/
+node_modules
+.env
+.env.local
+build/large-assets
+build/cache
+.vercelignore
