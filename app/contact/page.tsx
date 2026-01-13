@@ -1,24 +1,53 @@
 "use client";
 
 import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
-import { useState } from "react";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
+import { useFormReducer } from "../components/hooks/useFormReducer";
+import { validate, validateForm } from "../components/hooks/useFormValidation";
+import { sendEmail } from "../components/hooks/useSendEmail";
 
 export default function Contact() {
   const { isDark, setIsDark } = useTheme();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
+  const [state, dispatch] = useFormReducer();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (field: keyof typeof state.formData, value: string) => {
+    dispatch({ type: "SET_FORM_DATA", payload: { [field]: value } });
+    // Clear error for this field when user starts typing
+    if (state.errors[field]) {
+      const error = validate(field, value);
+      if (!error) {
+        const newErrors = { ...state.errors };
+        delete newErrors[field];
+        dispatch({ type: "SET_ERRORS", payload: newErrors });
+      }
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", company: "", message: "" });
+    
+    // Validate form
+    const errors = validateForm(state.formData);
+    if (Object.keys(errors).length > 0) {
+      dispatch({ type: "SET_ERRORS", payload: errors });
+      return;
+    }
+
+    dispatch({ type: "SET_IS_SUBMITTING", payload: true });
+    dispatch({ type: "SET_API_MESSAGE", payload: null });
+
+    const result = await sendEmail(state.formData);
+
+    if (result.success) {
+      dispatch({ type: "SET_API_MESSAGE", payload: { type: "success", text: result.message } });
+      dispatch({ type: "RESET_FORM" });
+    } else {
+      dispatch({ type: "SET_API_MESSAGE", payload: { type: "error", text: result.message } });
+    }
+
+    dispatch({ type: "SET_IS_SUBMITTING", payload: false });
   };
 
   return (
@@ -59,6 +88,17 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16">
               <div>
+                {state.apiMessage && (
+                  <div
+                    className={`mb-6 p-4 rounded-lg ${
+                      state.apiMessage.type === "success"
+                        ? "bg-emerald-50 border border-emerald-200 text-emerald-800"
+                        : "bg-red-50 border border-red-200 text-red-800"
+                    } ${isDark ? (state.apiMessage.type === "success" ? "bg-emerald-900/20 border-emerald-700 text-emerald-300" : "bg-red-900/20 border-red-700 text-red-300") : ""}`}
+                  >
+                    <p className="text-sm font-medium">{state.apiMessage.text}</p>
+                  </div>
+                )}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
@@ -71,17 +111,18 @@ export default function Contact() {
                     <input
                       type="text"
                       required
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
+                      value={state.formData.name}
+                      onChange={(e) => handleChange("name", e.target.value)}
                       className={`w-full px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
                         isDark
-                          ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500"
-                          : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-emerald-500"
+                          ? `bg-gray-800/50 ${state.errors.name ? "border-red-500" : "border-gray-700"} text-white placeholder-gray-500 focus:border-emerald-500`
+                          : `bg-white ${state.errors.name ? "border-red-500" : "border-gray-200"} text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
                       placeholder="Your name"
                     />
+                    {state.errors.name && (
+                      <p className="mt-1 text-sm text-red-500">{state.errors.name}</p>
+                    )}
                   </div>
 
                   <div>
@@ -95,17 +136,18 @@ export default function Contact() {
                     <input
                       type="email"
                       required
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
+                      value={state.formData.email}
+                      onChange={(e) => handleChange("email", e.target.value)}
                       className={`w-full px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
                         isDark
-                          ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500"
-                          : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-emerald-500"
+                          ? `bg-gray-800/50 ${state.errors.email ? "border-red-500" : "border-gray-700"} text-white placeholder-gray-500 focus:border-emerald-500`
+                          : `bg-white ${state.errors.email ? "border-red-500" : "border-gray-200"} text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
                       placeholder="your@email.com"
                     />
+                    {state.errors.email && (
+                      <p className="mt-1 text-sm text-red-500">{state.errors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -118,10 +160,8 @@ export default function Contact() {
                     </label>
                     <input
                       type="text"
-                      value={formData.company}
-                      onChange={(e) =>
-                        setFormData({ ...formData, company: e.target.value })
-                      }
+                      value={state.formData.company}
+                      onChange={(e) => handleChange("company", e.target.value)}
                       className={`w-full px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
                         isDark
                           ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500"
@@ -142,24 +182,30 @@ export default function Contact() {
                     <textarea
                       required
                       rows={5}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
+                      value={state.formData.message}
+                      onChange={(e) => handleChange("message", e.target.value)}
                       className={`w-full px-4 py-3 rounded-lg border transition-all resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
                         isDark
-                          ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500"
-                          : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-emerald-500"
+                          ? `bg-gray-800/50 ${state.errors.message ? "border-red-500" : "border-gray-700"} text-white placeholder-gray-500 focus:border-emerald-500`
+                          : `bg-white ${state.errors.message ? "border-red-500" : "border-gray-200"} text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
                       placeholder="How can we help you?"
                     />
+                    {state.errors.message && (
+                      <p className="mt-1 text-sm text-red-500">{state.errors.message}</p>
+                    )}
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full px-6 py-3.5 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                    disabled={state.isSubmitting}
+                    className={`w-full px-6 py-3.5 bg-emerald-600 text-white rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg ${
+                      state.isSubmitting
+                        ? "opacity-50 cursor-not-allowed"
+                        : "hover:bg-emerald-700"
+                    }`}
                   >
-                    Send Message
+                    {state.isSubmitting ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               </div>
@@ -239,12 +285,14 @@ export default function Contact() {
                       Follow Us
                     </h3>
                     <div className="flex gap-3">
-                      {[{ icon: Twitter, url: "#" }].map((social, index) => {
+                      {[{ icon: Twitter, url: "https://x.com/regX_AI" }].map((social, index) => {
                         const Icon = social.icon;
                         return (
                           <a
                             key={index}
                             href={social.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 duration-200 ${
                               isDark
                                 ? "bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white"
