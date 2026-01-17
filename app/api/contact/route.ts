@@ -31,8 +31,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Process the app password (remove spaces)
-    const appPassword = process.env.GMAIL_APP_PASSWORD.replace(/\s+/g, "");
+    // Process the app password (remove spaces and trim)
+    const appPassword = process.env.GMAIL_APP_PASSWORD.replace(/\s+/g, "").trim();
     
     // Debug logging (only in development)
     if (process.env.NODE_ENV === "development") {
@@ -43,24 +43,59 @@ export async function POST(request: NextRequest) {
       console.log("Has GMAIL_APP_PASSWORD:", !!process.env.GMAIL_APP_PASSWORD);
     }
     
-    // Create transporter with Gmail SMTP
-    const transporter = nodemailer.createTransport({
+    // Validate app password format (should be 16 characters)
+    if (appPassword.length !== 16) {
+      console.error(`Invalid app password length: ${appPassword.length} (expected 16)`);
+      throw new Error("Invalid app password format");
+    }
+    
+    // Create transporter with Gmail SMTP - try both ports
+    let transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
       port: 587,
-      secure: false, // true for 465, false for other ports
+      secure: false,
       auth: {
-        user: process.env.GMAIL_USER,
+        user: process.env.GMAIL_USER.trim(),
         pass: appPassword,
+      },
+      tls: {
+        rejectUnauthorized: false, // Allow self-signed certificates
       },
     });
 
     // Verify connection before sending
     try {
       await transporter.verify();
+      console.log("SMTP connection verified successfully");
     } catch (verifyError: any) {
-      console.error("SMTP Verification failed:", verifyError);
-      throw verifyError;
+      console.error("SMTP Verification failed:", verifyError.message);
+      console.error("Error code:", verifyError.code);
+      
+      // Try port 465 with SSL as fallback
+      if (verifyError.code === "EAUTH" || verifyError.code === "ECONNECTION") {
+        console.log("Trying alternative SMTP configuration (port 465)...");
+        transporter = nodemailer.createTransport({
+          service: "gmail",
+          host: "smtp.gmail.com",
+          port: 465,
+          secure: true,
+          auth: {
+            user: process.env.GMAIL_USER.trim(),
+            pass: appPassword,
+          },
+        });
+        
+        try {
+          await transporter.verify();
+          console.log("SMTP connection verified with port 465");
+        } catch (fallbackError: any) {
+          console.error("Fallback SMTP verification also failed:", fallbackError.message);
+          throw verifyError; // Throw original error
+        }
+      } else {
+        throw verifyError;
+      }
     }
 
     // Email content
@@ -101,21 +136,17 @@ ${message}
       { status: 200 }
     );
   } catch (error: any) {
+    // Log detailed error for debugging (server-side only)
     console.error("Error sending email:", error);
-    
-    // Provide more specific error messages for debugging
-    let errorMessage = "Failed to send email. Please try again later.";
-    
     if (error.code === "EAUTH") {
-      errorMessage = "Authentication failed. Please check your Gmail credentials.";
+      console.error("Authentication failed - check Gmail credentials in .env.local");
     } else if (error.code === "ECONNECTION") {
-      errorMessage = "Could not connect to Gmail SMTP server.";
-    } else if (error.response) {
-      errorMessage = `SMTP Error: ${error.response}`;
+      console.error("Connection failed - check network or SMTP settings");
     }
     
+    // Always return a user-friendly generic error message
     return NextResponse.json(
-      { error: errorMessage, details: process.env.NODE_ENV === "development" ? error.message : undefined },
+      { error: "We're sorry, but we couldn't send your message right now. Please try again later or contact us directly at business@regxai.com." },
       { status: 500 }
     );
   }

@@ -9,13 +9,18 @@ export const sendEmail = async (formData: FormData) => {
     });
 
     const data = await response.json();
-    if (!response.ok) throw new Error(data.error || "Something went wrong.");
+    if (!response.ok) {
+      // Use the error message from the API (which is now user-friendly)
+      throw new Error(data.error || "We're sorry, but we couldn't send your message right now. Please try again later.");
+    }
 
     return { success: true, message: "Thank you! Your message has been sent successfully." };
   } catch (error: unknown) {
-    // Ensure we return a proper error message.
+    // Return user-friendly error message
     const errorMessage =
-      error instanceof Error ? error.message : "Failed to send email. Please try again later.";
+      error instanceof Error 
+        ? error.message 
+        : "We're sorry, but we couldn't send your message right now. Please try again later or contact us directly at business@regxai.com.";
     return { success: false, message: errorMessage };
   }
 };
