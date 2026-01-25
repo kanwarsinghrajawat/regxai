@@ -1603,7 +1603,7 @@ export default function Home() {
               Ready to deploy AI with confidence?
             </h2>
             <p className="text-xl text-emerald-50 mb-10 leading-relaxed">
-              Let's discuss how we can help your organization move from AI
+              Let&apos;s discuss how we can help your organization move from AI
               experimentation to compliant production.
             </p>
             <Link
