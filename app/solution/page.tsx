@@ -259,16 +259,12 @@ export default function Solution() {
                         >
                           <div
                             className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                              isDark
-                                ? "bg-emerald-500/20"
-                                : "bg-emerald-100"
+                              isDark ? "bg-emerald-500/20" : "bg-emerald-100"
                             }`}
                           >
                             <Icon
                               className={`w-5 h-5 ${
-                                isDark
-                                  ? "text-emerald-400"
-                                  : "text-emerald-600"
+                                isDark ? "text-emerald-400" : "text-emerald-600"
                               }`}
                             />
                           </div>
@@ -319,7 +315,8 @@ export default function Solution() {
                           isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
                       >
-                        &lt; <AnimatedNumber value={50} />ms
+                        &lt; <AnimatedNumber value={50} />
+                        ms
                       </span>
                     </div>
                   </div>
@@ -406,31 +403,23 @@ export default function Solution() {
                     {[
                       {
                         label: "Risk Reduction",
-                        value: 92,
-                        suffix: "%",
+                        description: "Reduce exposure with execution-time controls.",
                         icon: Shield,
-                        color: "emerald",
                       },
                       {
                         label: "Faster Deployment",
-                        value: 85,
-                        suffix: "%",
+                        description: "Ship to production with confidence.",
                         icon: Clock,
-                        color: "blue",
                       },
                       {
                         label: "Cost Savings",
-                        value: 45,
-                        suffix: "%",
+                        description: "Replace manual review with deterministic enforcement.",
                         icon: TrendingUp,
-                        color: "teal",
                       },
                       {
                         label: "Compliance Rate",
-                        value: 98,
-                        suffix: "%",
+                        description: "Stay audit-ready by default.",
                         icon: CheckCircle,
-                        color: "emerald",
                       },
                     ].map((metric, index) => {
                       const Icon = metric.icon;
@@ -443,30 +432,26 @@ export default function Solution() {
                               : "bg-gray-50 border border-gray-200"
                           }`}
                         >
-                          <div className="flex items-center gap-2 mb-2">
+                          <div className="flex items-center gap-2">
                             <Icon
                               className={`w-5 h-5 ${
-                                isDark
-                                  ? "text-emerald-400"
-                                  : "text-emerald-600"
+                                isDark ? "text-emerald-400" : "text-emerald-600"
                               }`}
                             />
                             <span
-                              className={`text-xs font-medium ${
-                                isDark ? "text-gray-400" : "text-gray-600"
+                              className={`text-sm font-bold tracking-tight ${
+                                isDark ? "text-gray-100" : "text-gray-900"
                               }`}
                             >
                               {metric.label}
                             </span>
                           </div>
                           <div
-                            className={`text-3xl font-bold ${
-                              isDark
-                                ? "text-emerald-400"
-                                : "text-emerald-600"
+                            className={`mt-2 text-sm leading-relaxed ${
+                              isDark ? "text-gray-400" : "text-gray-600"
                             }`}
                           >
-                            <AnimatedNumber value={metric.value} suffix={metric.suffix} />
+                            {metric.description}
                           </div>
                         </div>
                       );
@@ -479,28 +464,20 @@ export default function Solution() {
                         : "bg-emerald-50 border border-emerald-200"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-2">
-                      <span
-                        className={`text-sm font-medium ${
-                          isDark ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        ROI Improvement
-                      </span>
-                      <span
-                        className={`text-2xl font-bold ${
-                          isDark ? "text-emerald-400" : "text-emerald-600"
-                        }`}
-                      >
-                        <AnimatedNumber value={3.2} decimals={1} suffix="×" />
-                      </span>
+                    <div
+                      className={`text-sm font-semibold ${
+                        isDark ? "text-emerald-200" : "text-emerald-800"
+                      }`}
+                    >
+                      ROI
                     </div>
-                    <AnimatedProgressBar
-                      value={85}
-                      heightClassName="h-2"
-                      trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
-                      fillClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
-                    />
+                    <div
+                      className={`mt-1 text-sm leading-relaxed ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      Reduce governance overhead while unlocking safe production deployment.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -535,62 +512,48 @@ export default function Solution() {
                   >
                     Use Case Distribution
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {[
-                      {
-                        label: "Autonomous AI Systems",
-                        percentage: 35,
-                        color: "emerald",
-                      },
-                      {
-                        label: "Enterprise Chatbots",
-                        percentage: 28,
-                        color: "blue",
-                      },
-                      {
-                        label: "CI/CD Pipelines",
-                        percentage: 22,
-                        color: "teal",
-                      },
-                      {
-                        label: "Regulated Environments",
-                        percentage: 15,
-                        color: "orange",
-                      },
+                      { label: "Autonomous AI Systems", color: "emerald" },
+                      { label: "Enterprise Chatbots", color: "blue" },
+                      { label: "CI/CD Pipelines", color: "teal" },
+                      { label: "Regulated Environments", color: "orange" },
                     ].map((item, index) => (
-                      <div key={index} className="space-y-2">
-                        <div className="flex items-center justify-between">
+                      <div
+                        key={index}
+                        className={`flex items-center justify-between gap-4 rounded-xl border px-5 py-4 ${
+                          isDark
+                            ? "bg-gray-700/30 border-gray-600"
+                            : "bg-gray-50 border-gray-200"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
                           <span
-                            className={`text-sm font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-700"
+                            className={`h-2.5 w-2.5 rounded-full ${
+                              item.color === "emerald"
+                                ? "bg-emerald-500"
+                                : item.color === "blue"
+                                ? "bg-blue-500"
+                                : item.color === "teal"
+                                ? "bg-teal-500"
+                                : "bg-orange-500"
+                            }`}
+                          />
+                          <span
+                            className={`text-sm font-semibold tracking-tight truncate ${
+                              isDark ? "text-gray-100" : "text-gray-800"
                             }`}
                           >
                             {item.label}
                           </span>
-                          <span
-                            className={`text-sm font-bold ${
-                              isDark
-                                ? "text-emerald-400"
-                                : "text-emerald-600"
-                            }`}
-                          >
-                            <AnimatedNumber value={item.percentage} suffix="%" />
-                          </span>
                         </div>
-                        <AnimatedProgressBar
-                          value={item.percentage}
-                          heightClassName="h-3"
-                          trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
-                          fillClassName={`bg-gradient-to-r ${
-                            item.color === "emerald"
-                              ? "from-emerald-500 to-teal-500"
-                              : item.color === "blue"
-                              ? "from-blue-500 to-cyan-500"
-                              : item.color === "teal"
-                              ? "from-teal-500 to-emerald-500"
-                              : "from-orange-500 to-amber-500"
+                        <span
+                          className={`text-xs font-semibold ${
+                            isDark ? "text-gray-400" : "text-gray-500"
                           }`}
-                        />
+                        >
+                          Covered
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -601,21 +564,20 @@ export default function Solution() {
                         : "bg-blue-50 border border-blue-200"
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span
-                        className={`text-sm font-medium ${
-                          isDark ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        Total Use Cases Supported
-                      </span>
-                      <span
-                        className={`text-2xl font-bold ${
-                          isDark ? "text-blue-400" : "text-blue-600"
-                        }`}
-                      >
-                        <AnimatedNumber value={500} suffix="+" />
-                      </span>
+                    <div
+                      className={`text-sm font-semibold ${
+                        isDark ? "text-blue-200" : "text-blue-800"
+                      }`}
+                    >
+                      Broad coverage across enterprise AI workflows.
+                    </div>
+                    <div
+                      className={`mt-1 text-sm ${
+                        isDark ? "text-blue-200/80" : "text-blue-700"
+                      }`}
+                    >
+                      Designed to apply across model deployment, inference, and
+                      production execution.
                     </div>
                   </div>
                 </div>
@@ -746,101 +708,52 @@ export default function Solution() {
                       {
                         icon: Code,
                         label: "Engineering Teams",
-                        percentage: 42,
-                        count: 2500,
-                        color: "emerald",
                       },
                       {
                         icon: Users,
                         label: "AI & Data Leaders",
-                        percentage: 28,
-                        count: 1200,
-                        color: "blue",
                       },
                       {
                         icon: Target,
                         label: "Product Teams",
-                        percentage: 20,
-                        count: 850,
-                        color: "teal",
                       },
                       {
                         icon: Building2,
                         label: "Regulated Organizations",
-                        percentage: 10,
-                        count: 400,
-                        color: "orange",
                       },
                     ].map((item, index) => {
                       const Icon = item.icon;
                       return (
                         <div
                           key={index}
-                          className={`p-4 rounded-xl border ${
+                          className={`p-5 rounded-xl border ${
                             isDark
                               ? "bg-gray-700/50 border-gray-600"
                               : "bg-gray-50 border-gray-200"
                           }`}
                         >
-                          <div className="flex items-center justify-between mb-3">
-                            <div className="flex items-center gap-3">
-                              <div
-                                className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                                  isDark
-                                    ? "bg-emerald-500/20"
-                                    : "bg-emerald-100"
-                                }`}
-                              >
-                                <Icon
-                                  className={`w-5 h-5 ${
-                                    isDark
-                                      ? "text-emerald-400"
-                                      : "text-emerald-600"
-                                  }`}
-                                />
-                              </div>
-                              <div>
-                                <div
-                                  className={`text-sm font-bold ${
-                                    isDark ? "text-white" : "text-gray-900"
-                                  }`}
-                                >
-                                  {item.label}
-                                </div>
-                                <div
-                                  className={`text-xs ${
-                                    isDark ? "text-gray-400" : "text-gray-600"
-                                  }`}
-                                >
-                                  <AnimatedNumber value={item.count} suffix="+" />{" "}
-                                  organizations
-                                </div>
-                              </div>
-                            </div>
+                          <div className="flex items-center gap-4">
                             <div
-                              className={`text-2xl font-bold ${
-                                isDark
-                                  ? "text-emerald-400"
-                                  : "text-emerald-600"
+                              className={`w-11 h-11 rounded-xl flex items-center justify-center ${
+                                isDark ? "bg-emerald-500/15" : "bg-emerald-100"
                               }`}
                             >
-                              <AnimatedNumber value={item.percentage} suffix="%" />
+                              <Icon
+                                className={`w-5 h-5 ${
+                                  isDark
+                                    ? "text-emerald-300"
+                                    : "text-emerald-700"
+                                }`}
+                              />
+                            </div>
+                            <div
+                              className={`text-base font-bold tracking-tight ${
+                                isDark ? "text-white" : "text-gray-900"
+                              }`}
+                            >
+                              {item.label}
                             </div>
                           </div>
-                          <AnimatedProgressBar
-                            value={item.percentage}
-                            heightClassName="h-2"
-                            trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
-                            fillClassName={`bg-gradient-to-r ${
-                              item.color === "emerald"
-                                ? "from-emerald-500 to-teal-500"
-                                : item.color === "blue"
-                                ? "from-blue-500 to-cyan-500"
-                                : item.color === "teal"
-                                ? "from-teal-500 to-emerald-500"
-                                : "from-orange-500 to-amber-500"
-                            }`}
-                          />
                         </div>
                       );
                     })}

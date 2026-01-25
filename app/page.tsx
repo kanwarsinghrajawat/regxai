@@ -1320,7 +1320,7 @@ export default function Home() {
                     </div>
                   <div className="space-y-6">
                     <div>
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center justify-between">
                         <span
                           className={`text-sm font-medium ${
                             isDark ? "text-gray-300" : "text-gray-700"
@@ -1328,25 +1328,17 @@ export default function Home() {
                         >
                           Faster Deployment
                         </span>
-                        <span
-                          className={`text-2xl font-bold ${
-                            isDark ? "text-emerald-400" : "text-emerald-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={85} suffix="%" delayMs={80} />
-                        </span>
                       </div>
-                      <AnimatedProgressBar
-                        value={85}
-                        delayMs={100}
-                        durationMs={1200}
-                        heightClassName="h-3"
-                        trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
-                        fillClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
-                      />
+                      <p
+                        className={`mt-2 text-sm leading-relaxed ${
+                          isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        Move from pilot to production without slowing delivery.
+                      </p>
                     </div>
                     <div>
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center justify-between">
                         <span
                           className={`text-sm font-medium ${
                             isDark ? "text-gray-300" : "text-gray-700"
@@ -1354,25 +1346,17 @@ export default function Home() {
                         >
                           Risk Reduction
                         </span>
-                        <span
-                          className={`text-2xl font-bold ${
-                            isDark ? "text-emerald-400" : "text-emerald-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={92} suffix="%" delayMs={200} />
-                        </span>
                       </div>
-                      <AnimatedProgressBar
-                        value={92}
-                        delayMs={220}
-                        durationMs={1200}
-                        heightClassName="h-3"
-                        trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
-                        fillClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
-                      />
+                      <p
+                        className={`mt-2 text-sm leading-relaxed ${
+                          isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        Block unsafe actions before they execute.
+                      </p>
                     </div>
                     <div>
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center justify-between">
                         <span
                           className={`text-sm font-medium ${
                             isDark ? "text-gray-300" : "text-gray-700"
@@ -1380,82 +1364,14 @@ export default function Home() {
                         >
                           Compliance Rate
                         </span>
-                        <span
-                          className={`text-2xl font-bold ${
-                            isDark ? "text-emerald-400" : "text-emerald-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={98} suffix="%" delayMs={320} />
-                        </span>
                       </div>
-                      <AnimatedProgressBar
-                        value={98}
-                        delayMs={340}
-                        durationMs={1200}
-                        heightClassName="h-3"
-                        trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
-                        fillClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4">
-                      <div
-                        className={`p-4 rounded-xl transition-all duration-300 hover:-translate-y-0.5 ${
-                          isDark
-                            ? "bg-white/5 border border-white/10 hover:border-emerald-500/30"
-                            : "bg-white border border-emerald-200 hover:border-emerald-300 shadow-sm"
+                      <p
+                        className={`mt-2 text-sm leading-relaxed ${
+                          isDark ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        <div className="flex items-center gap-2 mb-2">
-                          <Clock
-                            className={`w-5 h-5 ${
-                              isDark ? "text-emerald-400" : "text-emerald-600"
-                            }`}
-                          />
-                          <span
-                            className={`text-xs font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-700"
-                            }`}
-                          >
-                            Time Saved
-                          </span>
-                        </div>
-                        <div
-                          className={`text-2xl font-bold ${
-                            isDark ? "text-emerald-400" : "text-emerald-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={60} suffix="%" />
-                        </div>
-                      </div>
-                      <div
-                        className={`p-4 rounded-xl transition-all duration-300 hover:-translate-y-0.5 ${
-                          isDark
-                            ? "bg-white/5 border border-white/10 hover:border-teal-500/30"
-                            : "bg-white border border-teal-200 hover:border-teal-300 shadow-sm"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2 mb-2">
-                          <DollarSign
-                            className={`w-5 h-5 ${
-                              isDark ? "text-teal-400" : "text-teal-600"
-                            }`}
-                          />
-                          <span
-                            className={`text-xs font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-700"
-                            }`}
-                          >
-                            Cost Reduction
-                          </span>
-                        </div>
-                        <div
-                          className={`text-2xl font-bold ${
-                            isDark ? "text-teal-400" : "text-teal-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={45} suffix="%" />
-                        </div>
-                      </div>
+                        Stay audit-ready with deterministic enforcement.
+                      </p>
                     </div>
                   </div>
                   </div>

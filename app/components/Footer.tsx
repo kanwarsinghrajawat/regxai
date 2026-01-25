@@ -5,6 +5,19 @@ interface FooterProps {
   isDark: boolean;
 }
 
+function XLogo({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M18.9 2H21l-6.8 7.78L22 22h-6.6l-5.15-6.64L4.4 22H2.3l7.3-8.35L2 2h6.75l4.65 6.06L18.9 2Zm-2.3 18h1.83L7.74 3.9H5.77L16.6 20Z" />
+    </svg>
+  );
+}
+
 export function Footer({ isDark }: FooterProps) {
   return (
     <footer
@@ -86,13 +99,13 @@ export function Footer({ isDark }: FooterProps) {
                 href="https://x.com/regX_AI"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors ${
+                className={`inline-flex items-center gap-2 transition-colors ${
                   isDark
                     ? "text-gray-400 hover:text-white"
                     : "text-gray-600 hover:text-gray-900"
                 }`}
               >
-                X (Twitter)
+                <XLogo className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -100,7 +113,9 @@ export function Footer({ isDark }: FooterProps) {
 
         <div
           className={`mt-12 pt-8 border-t text-sm flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between ${
-            isDark ? "border-white/10 text-gray-500" : "border-gray-200/70 text-gray-500"
+            isDark
+              ? "border-white/10 text-gray-500"
+              : "border-gray-200/70 text-gray-500"
           }`}
         >
           <div>© 2026 regX AI. All rights reserved.</div>
@@ -112,4 +127,3 @@ export function Footer({ isDark }: FooterProps) {
     </footer>
   );
 }
-
