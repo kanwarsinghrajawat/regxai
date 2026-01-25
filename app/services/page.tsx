@@ -16,6 +16,8 @@ import Link from "next/link";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
+import { AnimatedNumber } from "../components/AnimatedNumber";
+import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
 
 export default function Services() {
   const { isDark, setIsDark } = useTheme();
@@ -275,19 +277,15 @@ export default function Services() {
                               isDark ? "text-emerald-400" : "text-emerald-600"
                             }`}
                           >
-                            {phase.progress}%
+                            <AnimatedNumber value={phase.progress} suffix="%" />
                           </span>
                         </div>
-                        <div
-                          className={`h-2 rounded-full overflow-hidden ${
-                            isDark ? "bg-gray-700" : "bg-gray-200"
-                          }`}
-                        >
-                          <div
-                            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500"
-                            style={{ width: `${phase.progress}%` }}
-                          ></div>
-                        </div>
+                        <AnimatedProgressBar
+                          value={phase.progress}
+                          heightClassName="h-2"
+                          trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
+                          fillClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
+                        />
                         <p
                           className={`text-xs ${
                             isDark ? "text-gray-400" : "text-gray-600"
@@ -318,7 +316,7 @@ export default function Services() {
                           isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
                       >
-                        8 weeks
+                        <AnimatedNumber value={8} suffix=" weeks" />
                       </span>
                     </div>
                   </div>

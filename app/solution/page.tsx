@@ -16,6 +16,8 @@ import {
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
+import { AnimatedNumber } from "../components/AnimatedNumber";
+import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
 
 export default function Solution() {
   const { isDark, setIsDark } = useTheme();
@@ -52,21 +54,25 @@ export default function Solution() {
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  value: "95%",
+                  value: 95,
+                  suffix: "%",
                   label: "AI initiatives didn&apos;t deliver economic value",
                 },
                 {
-                  value: "82%",
+                  value: 82,
+                  suffix: "%",
                   label:
                     "ERP Team lacks Accountability for E2E AI Product Lifecycle",
                 },
                 {
-                  value: "56%",
+                  value: 56,
+                  suffix: "%",
                   label:
                     "of organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
                 },
                 {
-                  value: "65%",
+                  value: 65,
+                  suffix: "%",
                   label:
                     "of consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences.",
                 },
@@ -84,7 +90,7 @@ export default function Solution() {
                       isDark ? "text-emerald-400" : "text-emerald-600"
                     }`}
                   >
-                    {stat.value}
+                    <AnimatedNumber value={stat.value} suffix={stat.suffix} />
                   </div>
                   <div
                     className={`text-[15px] leading-relaxed ${
@@ -313,7 +319,7 @@ export default function Solution() {
                           isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
                       >
-                        &lt; 50ms
+                        &lt; <AnimatedNumber value={50} />ms
                       </span>
                     </div>
                   </div>
@@ -400,25 +406,29 @@ export default function Solution() {
                     {[
                       {
                         label: "Risk Reduction",
-                        value: "92%",
+                        value: 92,
+                        suffix: "%",
                         icon: Shield,
                         color: "emerald",
                       },
                       {
                         label: "Faster Deployment",
-                        value: "85%",
+                        value: 85,
+                        suffix: "%",
                         icon: Clock,
                         color: "blue",
                       },
                       {
                         label: "Cost Savings",
-                        value: "45%",
+                        value: 45,
+                        suffix: "%",
                         icon: TrendingUp,
                         color: "teal",
                       },
                       {
                         label: "Compliance Rate",
-                        value: "98%",
+                        value: 98,
+                        suffix: "%",
                         icon: CheckCircle,
                         color: "emerald",
                       },
@@ -456,7 +466,7 @@ export default function Solution() {
                                 : "text-emerald-600"
                             }`}
                           >
-                            {metric.value}
+                            <AnimatedNumber value={metric.value} suffix={metric.suffix} />
                           </div>
                         </div>
                       );
@@ -482,19 +492,15 @@ export default function Solution() {
                           isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
                       >
-                        3.2×
+                        <AnimatedNumber value={3.2} decimals={1} suffix="×" />
                       </span>
                     </div>
-                    <div
-                      className={`h-2 rounded-full overflow-hidden ${
-                        isDark ? "bg-gray-700" : "bg-gray-200"
-                      }`}
-                    >
-                      <div
-                        className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
-                        style={{ width: "85%" }}
-                      ></div>
-                    </div>
+                    <AnimatedProgressBar
+                      value={85}
+                      heightClassName="h-2"
+                      trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
+                      fillClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
+                    />
                   </div>
                 </div>
               </div>
@@ -568,27 +574,23 @@ export default function Solution() {
                                 : "text-emerald-600"
                             }`}
                           >
-                            {item.percentage}%
+                            <AnimatedNumber value={item.percentage} suffix="%" />
                           </span>
                         </div>
-                        <div
-                          className={`h-3 rounded-full overflow-hidden ${
-                            isDark ? "bg-gray-700" : "bg-gray-200"
+                        <AnimatedProgressBar
+                          value={item.percentage}
+                          heightClassName="h-3"
+                          trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
+                          fillClassName={`bg-gradient-to-r ${
+                            item.color === "emerald"
+                              ? "from-emerald-500 to-teal-500"
+                              : item.color === "blue"
+                              ? "from-blue-500 to-cyan-500"
+                              : item.color === "teal"
+                              ? "from-teal-500 to-emerald-500"
+                              : "from-orange-500 to-amber-500"
                           }`}
-                        >
-                          <div
-                            className={`h-full bg-gradient-to-r ${
-                              item.color === "emerald"
-                                ? "from-emerald-500 to-teal-500"
-                                : item.color === "blue"
-                                ? "from-blue-500 to-cyan-500"
-                                : item.color === "teal"
-                                ? "from-teal-500 to-emerald-500"
-                                : "from-orange-500 to-amber-500"
-                            } rounded-full transition-all duration-500`}
-                            style={{ width: `${item.percentage}%` }}
-                          ></div>
-                        </div>
+                        />
                       </div>
                     ))}
                   </div>
@@ -612,7 +614,7 @@ export default function Solution() {
                           isDark ? "text-blue-400" : "text-blue-600"
                         }`}
                       >
-                        500+
+                        <AnimatedNumber value={500} suffix="+" />
                       </span>
                     </div>
                   </div>
@@ -745,28 +747,28 @@ export default function Solution() {
                         icon: Code,
                         label: "Engineering Teams",
                         percentage: 42,
-                        count: "2,500+",
+                        count: 2500,
                         color: "emerald",
                       },
                       {
                         icon: Users,
                         label: "AI & Data Leaders",
                         percentage: 28,
-                        count: "1,200+",
+                        count: 1200,
                         color: "blue",
                       },
                       {
                         icon: Target,
                         label: "Product Teams",
                         percentage: 20,
-                        count: "850+",
+                        count: 850,
                         color: "teal",
                       },
                       {
                         icon: Building2,
                         label: "Regulated Organizations",
                         percentage: 10,
-                        count: "400+",
+                        count: 400,
                         color: "orange",
                       },
                     ].map((item, index) => {
@@ -810,7 +812,8 @@ export default function Solution() {
                                     isDark ? "text-gray-400" : "text-gray-600"
                                   }`}
                                 >
-                                  {item.count} organizations
+                                  <AnimatedNumber value={item.count} suffix="+" />{" "}
+                                  organizations
                                 </div>
                               </div>
                             </div>
@@ -821,27 +824,23 @@ export default function Solution() {
                                   : "text-emerald-600"
                               }`}
                             >
-                              {item.percentage}%
+                              <AnimatedNumber value={item.percentage} suffix="%" />
                             </div>
                           </div>
-                          <div
-                            className={`h-2 rounded-full overflow-hidden ${
-                              isDark ? "bg-gray-700" : "bg-gray-200"
+                          <AnimatedProgressBar
+                            value={item.percentage}
+                            heightClassName="h-2"
+                            trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
+                            fillClassName={`bg-gradient-to-r ${
+                              item.color === "emerald"
+                                ? "from-emerald-500 to-teal-500"
+                                : item.color === "blue"
+                                ? "from-blue-500 to-cyan-500"
+                                : item.color === "teal"
+                                ? "from-teal-500 to-emerald-500"
+                                : "from-orange-500 to-amber-500"
                             }`}
-                          >
-                            <div
-                              className={`h-full bg-gradient-to-r ${
-                                item.color === "emerald"
-                                  ? "from-emerald-500 to-teal-500"
-                                  : item.color === "blue"
-                                  ? "from-blue-500 to-cyan-500"
-                                  : item.color === "teal"
-                                  ? "from-teal-500 to-emerald-500"
-                                  : "from-orange-500 to-amber-500"
-                              } rounded-full`}
-                              style={{ width: `${item.percentage}%` }}
-                            ></div>
-                          </div>
+                          />
                         </div>
                       );
                     })}

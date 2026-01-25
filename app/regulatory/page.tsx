@@ -1,6 +1,12 @@
 "use client";
 
-import { CheckCircle, AlertCircle, Lock, FileText, Shield, Globe } from "lucide-react";
+import {
+  CheckCircle,
+  AlertCircle,
+  Lock,
+  Shield,
+  Globe,
+} from "lucide-react";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
@@ -160,6 +166,46 @@ export default function Regulatory() {
               </div>
             </div>
 
+            <div className="mt-14">
+              <div
+                className={`rounded-2xl border p-10 transition-all duration-300 hover:shadow-xl ${
+                  isDark
+                    ? "bg-blue-950/25 border-blue-500/20 hover:border-blue-400/30"
+                    : "bg-blue-50 border-blue-200 hover:border-blue-300"
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center border ${
+                      isDark ? "bg-blue-500/10 border-blue-500/20" : "bg-white border-blue-200"
+                    }`}
+                  >
+                    <AlertCircle
+                      className={`w-6 h-6 ${
+                        isDark ? "text-blue-300" : "text-blue-700"
+                      }`}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h3
+                      className={`text-2xl font-bold mb-3 ${
+                        isDark ? "text-blue-100" : "text-blue-900"
+                      }`}
+                    >
+                      Regular Compliance Updates
+                    </h3>
+                    <p
+                      className={`text-lg leading-relaxed ${
+                        isDark ? "text-blue-200/90" : "text-blue-800"
+                      }`}
+                    >
+                      We continuously monitor regulatory developments and automatically enhance our services and offerings.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* <div>
               <h2
                 className={`text-4xl lg:text-5xl font-bold mb-16 leading-tight ${
@@ -235,44 +281,6 @@ export default function Regulatory() {
           </div>
         </section>
 
-        <section
-          className={`py-24 lg:py-32 ${
-            isDark ? "bg-gray-900" : "bg-gradient-to-br from-gray-50 to-white"
-          }`}
-        >
-          <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <div
-              className={`rounded-2xl p-14 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer ${
-                isDark
-                  ? "bg-blue-950/30 border-blue-800 hover:border-blue-600"
-                  : "bg-blue-50 border-blue-200 hover:border-blue-400"
-              }`}
-            >
-              <div className="flex gap-4 mb-6">
-                <AlertCircle
-                  className={`w-8 h-8 flex-shrink-0 ${
-                    isDark ? "text-blue-400" : "text-blue-600"
-                  }`}
-                />
-                <h3
-                  className={`text-2xl font-bold ${
-                    isDark ? "text-blue-300" : "text-blue-900"
-                  }`}
-                >
-                  Regular Compliance Updates
-                </h3>
-              </div>
-              <p
-                className={`text-lg leading-relaxed ${
-                  isDark ? "text-blue-200" : "text-blue-800"
-                }`}
-              >
-                We continuously monitor regulatory developments and
-                automatically enhance our services and offerings.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer isDark={isDark} />
     </div>
