@@ -27,7 +27,7 @@ export default function Services() {
       <Navigation isDark={isDark} setIsDark={setIsDark} />
       <main className="pt-20">
         <section
-          className={`py-12 lg:py-16 ${
+          className={`py-16 lg:py-20 ${
             isDark
               ? "bg-gradient-to-br from-gray-900 via-gray-950 to-emerald-950/30"
               : "bg-gradient-to-br from-gray-50 via-white to-emerald-50/30"
@@ -90,10 +90,10 @@ export default function Services() {
                 return (
                   <div
                     key={index}
-                    className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer group ${
+                    className={`rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1 shadow-soft-sm hover:shadow-soft group ${
                       isDark
-                        ? "bg-gray-800 border-gray-700 hover:border-emerald-500/50"
-                        : "bg-gray-50 border-gray-200 hover:border-emerald-400"
+                        ? "bg-gray-900/50 border-white/10 hover:border-emerald-500/30"
+                        : "bg-white border-gray-200/70 hover:border-emerald-400/60"
                     }`}
                   >
                     <div className="transition-all duration-300 group-hover:scale-110 mb-4">

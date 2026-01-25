@@ -375,7 +375,7 @@ export default function Home() {
                         isDark ? "bg-gray-950 border-gray-800" : "bg-gray-50 border-gray-200"
                       }`}
                     >
-                      <div className="grid grid-cols-[1fr_auto] items-start gap-3">
+                      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                         <div className="min-w-0">
                           <div
                             className={`text-xs font-semibold ${
@@ -416,7 +416,7 @@ export default function Home() {
                         isDark ? "bg-gray-950 border-gray-800" : "bg-gray-50 border-gray-200"
                       }`}
                     >
-                      <div className="grid grid-cols-[1fr_auto] items-start gap-3">
+                      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                         <div className="min-w-0">
                           <div
                             className={`text-xs font-semibold ${
@@ -1603,7 +1603,7 @@ export default function Home() {
               Ready to deploy AI with confidence?
             </h2>
             <p className="text-xl text-emerald-50 mb-10 leading-relaxed">
-              Lets discuss how we can help your organization move from AI
+              Let's discuss how we can help your organization move from AI
               experimentation to compliant production.
             </p>
             <Link

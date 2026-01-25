@@ -1,12 +1,26 @@
 "use client";
 
-import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { Calendar, Mail } from "lucide-react";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
 import { useFormReducer } from "../components/hooks/useFormReducer";
 import { validate, validateForm } from "../components/hooks/useFormValidation";
 import { sendEmail } from "../components/hooks/useSendEmail";
+
+function XLogo({ className }: { className?: string }) {
+  // X (Twitter) brand mark as inline SVG (not the "close" X icon).
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M18.9 2H21l-6.8 7.78L22 22h-6.6l-5.15-6.64L4.4 22H2.3l7.3-8.35L2 2h6.75l4.65 6.06L18.9 2Zm-2.3 18h1.83L7.74 3.9H5.77L16.6 20Z" />
+    </svg>
+  );
+}
 
 export default function Contact() {
   const { isDark, setIsDark } = useTheme();
@@ -61,7 +75,7 @@ export default function Contact() {
       <Navigation isDark={isDark} setIsDark={setIsDark} />
       <main className="pt-20">
         <section
-          className={`pt-12 lg:pt-16 ${
+          className={`py-16 lg:py-20 ${
             isDark
               ? "bg-gradient-to-br from-gray-900 via-gray-950 to-emerald-950/30"
               : "bg-gradient-to-br from-gray-50 via-white to-emerald-50/30"
@@ -127,17 +141,17 @@ export default function Contact() {
                       required
                       value={state.formData.name}
                       onChange={(e) => handleChange("name", e.target.value)}
-                      className={`w-full px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
+                      className={`w-full px-4 py-3.5 rounded-xl border transition-all focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
                         isDark
                           ? `bg-gray-800/50 ${
                               state.errors.name
-                                ? "border-red-500"
-                                : "border-gray-700"
-                            } text-white placeholder-gray-500 focus:border-emerald-500`
+                                ? "border-red-500/70"
+                                : "border-white/10"
+                            } text-white placeholder-gray-500 focus:border-emerald-400`
                           : `bg-white ${
                               state.errors.name
-                                ? "border-red-500"
-                                : "border-gray-200"
+                                ? "border-red-500/70"
+                                : "border-gray-200/70"
                             } text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
                       placeholder="Your name"
@@ -162,17 +176,17 @@ export default function Contact() {
                       required
                       value={state.formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
-                      className={`w-full px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
+                      className={`w-full px-4 py-3.5 rounded-xl border transition-all focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
                         isDark
                           ? `bg-gray-800/50 ${
                               state.errors.email
-                                ? "border-red-500"
-                                : "border-gray-700"
-                            } text-white placeholder-gray-500 focus:border-emerald-500`
+                                ? "border-red-500/70"
+                                : "border-white/10"
+                            } text-white placeholder-gray-500 focus:border-emerald-400`
                           : `bg-white ${
                               state.errors.email
-                                ? "border-red-500"
-                                : "border-gray-200"
+                                ? "border-red-500/70"
+                                : "border-gray-200/70"
                             } text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
                       placeholder="your@email.com"
@@ -196,10 +210,10 @@ export default function Contact() {
                       type="text"
                       value={state.formData.company}
                       onChange={(e) => handleChange("company", e.target.value)}
-                      className={`w-full px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
+                      className={`w-full px-4 py-3.5 rounded-xl border transition-all focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
                         isDark
-                          ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500"
-                          : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-emerald-500"
+                          ? "bg-gray-800/50 border-white/10 text-white placeholder-gray-500 focus:border-emerald-400"
+                          : "bg-white border-gray-200/70 text-gray-900 placeholder-gray-400 focus:border-emerald-500"
                       }`}
                       placeholder="Your company"
                     />
@@ -218,17 +232,17 @@ export default function Contact() {
                       rows={5}
                       value={state.formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
-                      className={`w-full px-4 py-3 rounded-lg border transition-all resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500/20 ${
+                      className={`w-full px-4 py-3.5 rounded-xl border transition-all resize-none focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
                         isDark
                           ? `bg-gray-800/50 ${
                               state.errors.message
-                                ? "border-red-500"
-                                : "border-gray-700"
-                            } text-white placeholder-gray-500 focus:border-emerald-500`
+                                ? "border-red-500/70"
+                                : "border-white/10"
+                            } text-white placeholder-gray-500 focus:border-emerald-400`
                           : `bg-white ${
                               state.errors.message
-                                ? "border-red-500"
-                                : "border-gray-200"
+                                ? "border-red-500/70"
+                                : "border-gray-200/70"
                             } text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
                       placeholder="How can we help you?"
@@ -243,7 +257,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={state.isSubmitting}
-                    className={`w-full px-6 py-3.5 bg-emerald-600 text-white rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg ${
+                    className={`w-full px-6 py-3.5 bg-emerald-600 text-white rounded-xl font-semibold transition-all duration-200 shadow-soft-sm hover:shadow-soft ${
                       state.isSubmitting
                         ? "opacity-50 cursor-not-allowed"
                         : "hover:bg-emerald-700"
@@ -256,10 +270,10 @@ export default function Contact() {
 
               <div className="lg:pl-8">
                 <div
-                  className={`rounded-2xl p-8 ${
+                  className={`rounded-2xl p-8 border shadow-soft-sm ${
                     isDark
-                      ? "bg-gray-800/50 border border-gray-700"
-                      : "bg-gray-50 border border-gray-200"
+                      ? "bg-gray-900/50 border-white/10"
+                      : "bg-white border-gray-200/70"
                   }`}
                 >
                   <h2
@@ -269,58 +283,129 @@ export default function Contact() {
                   >
                     Contact Information
                   </h2>
-                  <div className="space-y-8">
-                    {[
-                      {
-                        icon: Mail,
-                        title: "Email",
-                        content: "business@regxai.com",
-                        subtext: "We typically respond within 24 hours",
-                      },
-                    ].map((contact, index) => {
-                      const Icon = contact.icon;
-                      return (
-                        <div key={index} className="flex gap-4">
+                  <div className="space-y-4">
+                    {/* Email */}
+                    <div
+                      className={`rounded-2xl border p-5 transition-all ${
+                        isDark
+                          ? "bg-gray-950/40 border-white/10 hover:border-emerald-500/20"
+                          : "bg-gray-50 border-gray-200/70 hover:border-emerald-400/50"
+                      }`}
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                        <div className="flex items-start gap-4 flex-1 min-w-0">
                           <div
-                            className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                              isDark ? "bg-emerald-500/20" : "bg-emerald-100"
+                            className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                              isDark ? "bg-emerald-500/15" : "bg-emerald-100"
                             }`}
                           >
-                            <Icon
+                            <Mail
                               className={`w-5 h-5 ${
-                                isDark ? "text-emerald-400" : "text-emerald-600"
+                                isDark ? "text-emerald-300" : "text-emerald-700"
                               }`}
                             />
                           </div>
-                          <div>
-                            <h3
-                              className={`text-base font-semibold mb-1 ${
-                                isDark ? "text-gray-400" : "text-gray-500"
+                          <div className="min-w-0">
+                            <div
+                              className={`text-sm font-semibold ${
+                                isDark ? "text-gray-300" : "text-gray-700"
                               }`}
                             >
-                              {contact.title}
-                            </h3>
-                            <p
-                              className={`font-semibold text-lg mb-1 ${
-                                isDark ? "text-white" : "text-gray-900"
+                              Email
+                            </div>
+                            <a
+                              href="mailto:business@regxai.com"
+                              className={`mt-1 block text-lg font-extrabold tracking-tight break-all transition-colors ${
+                                isDark
+                                  ? "text-white hover:text-emerald-200"
+                                  : "text-gray-900 hover:text-emerald-700"
                               }`}
                             >
-                              {contact.content}
-                            </p>
-                            <p
-                              className={`text-sm ${
-                                isDark ? "text-gray-500" : "text-gray-600"
+                              business@regxai.com
+                            </a>
+                            <div
+                              className={`mt-1 text-sm ${
+                                isDark ? "text-gray-400" : "text-gray-600"
                               }`}
                             >
-                              {contact.subtext}
-                            </p>
+                              We typically respond within 24 hours.
+                            </div>
                           </div>
                         </div>
-                      );
-                    })}
+
+                        <a
+                          href="mailto:business@regxai.com"
+                          className={`inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-all shadow-soft-sm hover:shadow-soft w-full sm:w-auto ${
+                            isDark
+                              ? "bg-white/5 hover:bg-white/10 text-gray-100 border border-white/10"
+                              : "bg-white hover:bg-gray-50 text-gray-900 border border-gray-200/70"
+                          }`}
+                        >
+                          Email us
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Calendly */}
+                    <div
+                      className={`rounded-2xl border p-5 transition-all ${
+                        isDark
+                          ? "bg-gray-950/40 border-white/10 hover:border-emerald-500/20"
+                          : "bg-gray-50 border-gray-200/70 hover:border-emerald-400/50"
+                      }`}
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                        <div className="flex items-start gap-4 flex-1 min-w-0">
+                          <div
+                            className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                              isDark ? "bg-emerald-500/15" : "bg-emerald-100"
+                            }`}
+                          >
+                            <Calendar
+                              className={`w-5 h-5 ${
+                                isDark ? "text-emerald-300" : "text-emerald-700"
+                              }`}
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <div
+                              className={`text-sm font-semibold ${
+                                isDark ? "text-gray-300" : "text-gray-700"
+                              }`}
+                            >
+                              Schedule a call
+                            </div>
+                            <div
+                              className={`mt-1 text-sm leading-relaxed ${
+                                isDark ? "text-gray-400" : "text-gray-600"
+                              }`}
+                            >
+                              Schedule a 30‑minute call.
+                            </div>
+                          </div>
+                        </div>
+
+                        <a
+                          href="https://calendly.com/business-regxai/30min"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-all shadow-soft-sm hover:shadow-soft w-full sm:w-auto ${
+                            isDark
+                              ? "bg-emerald-500/15 hover:bg-emerald-500/20 text-emerald-100 border border-emerald-500/20"
+                              : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                          }`}
+                        >
+                          Schedule your call
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="mt-10 pt-8 border-t border-gray-700/50">
+                  <div
+                    className={`mt-10 pt-8 border-t ${
+                      isDark ? "border-white/10" : "border-gray-200/70"
+                    }`}
+                  >
                     <h3
                       className={`text-base font-semibold mb-4 ${
                         isDark ? "text-gray-400" : "text-gray-500"
@@ -329,9 +414,8 @@ export default function Contact() {
                       Follow Us
                     </h3>
                     <div className="flex gap-3">
-                      {[{ icon: Twitter, url: "https://x.com/regX_AI" }].map(
+                      {[{ url: "https://x.com/regX_AI" }].map(
                         (social, index) => {
-                          const Icon = social.icon;
                           return (
                             <a
                               key={index}
@@ -344,10 +428,10 @@ export default function Contact() {
                                   : "bg-white border border-gray-200 hover:border-emerald-400 text-gray-600 hover:text-emerald-600"
                               }`}
                             >
-                              <Icon className="w-5 h-5" />
+                              <XLogo className="w-5 h-5" />
                             </a>
                           );
-                        }
+                        },
                       )}
                     </div>
                   </div>

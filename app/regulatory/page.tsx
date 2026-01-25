@@ -96,10 +96,10 @@ export default function Regulatory() {
                   return (
                     <div
                       key={index}
-                      className={`rounded-2xl p-10 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer group ${
+                      className={`rounded-2xl p-10 border transition-all duration-300 hover:-translate-y-1 shadow-soft-sm hover:shadow-soft group ${
                         isDark
-                          ? "bg-gray-800 border-gray-700 hover:border-emerald-500/50"
-                          : "bg-gray-50 border-gray-200 hover:border-emerald-400"
+                          ? "bg-gray-900/50 border-white/10 hover:border-emerald-500/30"
+                          : "bg-white border-gray-200/70 hover:border-emerald-400/60"
                       }`}
                     >
                       <div className="transition-all duration-300 group-hover:scale-110 mb-6">
@@ -129,10 +129,10 @@ export default function Regulatory() {
               </div>
             </div>
             
-            <div className={`mt-16 rounded-2xl p-10 border transition-all duration-300 hover:shadow-xl ${
+            <div className={`mt-16 rounded-2xl p-10 border transition-all duration-300 hover:shadow-soft shadow-soft-sm ${
               isDark
-                ? "bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-gray-700 hover:border-emerald-500/50"
-                : "bg-gradient-to-br from-gray-50 to-white border-gray-200 hover:border-emerald-400"
+                ? "bg-gradient-to-br from-gray-900/60 to-gray-950/60 border-white/10 hover:border-emerald-500/30"
+                : "bg-gradient-to-br from-white to-gray-50 border-gray-200/70 hover:border-emerald-400/60"
             }`}>
               <div className="flex items-start gap-4 mb-6">
                 <div className={`p-3 rounded-xl ${

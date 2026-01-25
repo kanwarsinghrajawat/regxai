@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import { ThemeProvider } from './components/ThemeProvider';
 import { StructuredData } from './components/StructuredData';
 import './globals.css';
@@ -7,7 +7,14 @@ import './globals.css';
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-sans',
+  preload: true,
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
   preload: true,
 });
 
@@ -85,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
@@ -98,7 +105,9 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <StructuredData />
       </head>
-      <body className={`${inter.className} ${inter.variable}`}>
+      <body
+        className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased`}
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

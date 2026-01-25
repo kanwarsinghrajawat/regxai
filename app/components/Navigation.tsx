@@ -29,7 +29,13 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-black/95 backdrop-blur-md border-b border-gray-800 z-50">
+    <nav
+      className={`fixed top-0 w-full z-50 border-b backdrop-blur-xl ${
+        isDark
+          ? "bg-gray-950/80 border-white/10"
+          : "bg-white/80 border-gray-200/70 shadow-soft-sm"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link
@@ -37,7 +43,13 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
             className="flex items-center gap-2 flex-shrink-0 cursor-pointer"
           >
             <Shield className="w-8 h-8 text-emerald-500" aria-hidden="true" />
-            <span className="text-2xl font-bold text-white">regX AI</span>
+            <span
+              className={`text-2xl font-extrabold tracking-tight font-display ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+            >
+              regX AI
+            </span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-12">
@@ -45,11 +57,20 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
               <Link
                 key={item.id}
                 href={item.path}
-                className="relative text-white font-medium text-sm group"
+                aria-current={isActive(item.path) ? "page" : undefined}
+                className={`relative text-sm font-semibold tracking-tight transition-colors group ${
+                  isDark
+                    ? isActive(item.path)
+                      ? "text-white"
+                      : "text-gray-200 hover:text-white"
+                    : isActive(item.path)
+                    ? "text-gray-900"
+                    : "text-gray-700 hover:text-gray-900"
+                }`}
               >
                 {item.label}
                 <span
-                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-emerald-500 transition-all duration-300 ${
+                  className={`absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 transition-transform duration-300 origin-left ${
                     isActive(item.path)
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -62,7 +83,11 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 transition-all duration-200 text-emerald-500"
+              className={`p-2.5 rounded-full transition-all duration-200 ${
+                isDark
+                  ? "bg-white/5 hover:bg-white/10 text-emerald-300"
+                  : "bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-700"
+              }`}
               aria-label="Toggle theme"
             >
               {isDark ? (
@@ -75,7 +100,11 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
             {/* Hamburger Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 transition-all duration-200 text-emerald-500"
+              className={`lg:hidden p-2.5 rounded-full transition-all duration-200 ${
+                isDark
+                  ? "bg-white/5 hover:bg-white/10 text-emerald-300"
+                  : "bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-700"
+              }`}
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -100,8 +129,8 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
       <div
         className={`lg:hidden fixed inset-y-0 right-0 w-80 max-w-[85vw] backdrop-blur-xl ${
           isDark
-            ? "bg-gray-900 border-l-2 border-gray-700"
-            : "bg-gray-50 border-l-2 border-gray-300"
+            ? "bg-gray-950/95 border-l border-white/10"
+            : "bg-white/95 border-l border-gray-200/70"
         } shadow-2xl z-[70] transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -109,7 +138,7 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
       >
         <div
           className={`flex flex-col h-[calc(100vh-80px)] overflow-y-auto ${
-            isDark ? "bg-gray-900" : "bg-gray-50"
+            isDark ? "bg-transparent" : "bg-transparent"
           }`}
         >
           <div className="flex flex-col px-6 py-8 space-y-4">
@@ -121,11 +150,11 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
                 className={`font-medium text-lg py-3 px-4 rounded-lg transition-all duration-200 ${
                   isActive(item.path)
                     ? isDark
-                      ? "bg-emerald-500/20 text-emerald-300"
-                      : "bg-emerald-500/20 text-emerald-700"
+                      ? "bg-emerald-500/15 text-emerald-200 border border-emerald-500/20"
+                      : "bg-emerald-500/10 text-emerald-800 border border-emerald-500/20"
                     : isDark
-                    ? "text-gray-100 hover:bg-emerald-500/10 hover:text-emerald-300"
-                    : "text-gray-900 hover:bg-emerald-500/10 hover:text-emerald-700"
+                    ? "text-gray-100 hover:bg-white/5 hover:text-white"
+                    : "text-gray-900 hover:bg-gray-50"
                 }`}
               >
                 {item.label}
