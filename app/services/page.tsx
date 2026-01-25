@@ -9,9 +9,10 @@ import {
   Headphones,
   ArrowRight,
   Rocket,
+  CheckCircle,
+  ArrowDown,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
@@ -200,15 +201,127 @@ export default function Services() {
                       : "bg-white border border-gray-200 shadow-xl"
                   }`}
                 >
-                  <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=90&auto=format&fit=crop"
-                    alt="Getting started"
-                    width={800}
-                    height={600}
-                    className="rounded-xl w-full"
-                    priority={false}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  <h3
+                    className={`text-xl font-bold mb-6 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Implementation Timeline
+                  </h3>
+                  <div className="space-y-6">
+                    {[
+                      {
+                        step: "Week 1-2",
+                        title: "Assessment & Mapping",
+                        progress: 100,
+                        stats: "AI lifecycle analysis complete",
+                      },
+                      {
+                        step: "Week 3-4",
+                        title: "Control Design",
+                        progress: 85,
+                        stats: "Regulatory alignment achieved",
+                      },
+                      {
+                        step: "Week 5-6",
+                        title: "Integration",
+                        progress: 70,
+                        stats: "System integration in progress",
+                      },
+                      {
+                        step: "Week 7-8",
+                        title: "Testing & Validation",
+                        progress: 40,
+                        stats: "Pilot testing phase",
+                      },
+                    ].map((phase, index) => (
+                      <div key={index} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div
+                              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                                isDark
+                                  ? "bg-emerald-500/20"
+                                  : "bg-emerald-100"
+                              }`}
+                            >
+                              <CheckCircle
+                                className={`w-4 h-4 ${
+                                  isDark
+                                    ? "text-emerald-400"
+                                    : "text-emerald-600"
+                                }`}
+                              />
+                            </div>
+                            <div>
+                              <div
+                                className={`text-sm font-semibold ${
+                                  isDark ? "text-gray-300" : "text-gray-700"
+                                }`}
+                              >
+                                {phase.step}
+                              </div>
+                              <div
+                                className={`text-base font-bold ${
+                                  isDark ? "text-white" : "text-gray-900"
+                                }`}
+                              >
+                                {phase.title}
+                              </div>
+                            </div>
+                          </div>
+                          <span
+                            className={`text-sm font-bold ${
+                              isDark ? "text-emerald-400" : "text-emerald-600"
+                            }`}
+                          >
+                            {phase.progress}%
+                          </span>
+                        </div>
+                        <div
+                          className={`h-2 rounded-full overflow-hidden ${
+                            isDark ? "bg-gray-700" : "bg-gray-200"
+                          }`}
+                        >
+                          <div
+                            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500"
+                            style={{ width: `${phase.progress}%` }}
+                          ></div>
+                        </div>
+                        <p
+                          className={`text-xs ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          {phase.stats}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div
+                    className={`mt-6 p-4 rounded-xl ${
+                      isDark
+                        ? "bg-emerald-500/10 border border-emerald-500/20"
+                        : "bg-emerald-50 border border-emerald-200"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`text-sm font-medium ${
+                          isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        Average Time to Production
+                      </span>
+                      <span
+                        className={`text-2xl font-bold ${
+                          isDark ? "text-emerald-400" : "text-emerald-600"
+                        }`}
+                      >
+                        8 weeks
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

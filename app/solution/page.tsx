@@ -1,8 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  Zap,
+  Shield,
+  Clock,
+  TrendingUp,
+  Users,
+  Building2,
+  Code,
+  Target,
+} from "lucide-react";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
@@ -191,21 +201,122 @@ export default function Solution() {
                   }`}
                 ></div>
                 <div
-                  className={`relative rounded-2xl transition-all duration-300 hover:shadow-2xl ${
+                  className={`relative rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl ${
                     isDark
                       ? "bg-gray-800 border border-gray-700 hover:border-emerald-500/50"
                       : "bg-white border border-gray-200 hover:border-emerald-400 shadow-xl"
                   }`}
                 >
-                  <Image
-                    src="/howItWorks.png"
-                    alt="Solution architecture"
-                    width={800}
-                    height={600}
-                    className="rounded-xl w-full"
-                    priority={false}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  <h3
+                    className={`text-xl font-bold mb-6 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    System Architecture Flow
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        step: "1",
+                        title: "AI Action Request",
+                        icon: Zap,
+                        color: "emerald",
+                      },
+                      {
+                        step: "2",
+                        title: "Real-time Evaluation",
+                        icon: Shield,
+                        color: "blue",
+                      },
+                      {
+                        step: "3",
+                        title: "Deterministic Decision",
+                        icon: Target,
+                        color: "teal",
+                      },
+                      {
+                        step: "4",
+                        title: "Immutable Record",
+                        icon: CheckCircle,
+                        color: "emerald",
+                      },
+                    ].map((item, index) => {
+                      const Icon = item.icon;
+                      return (
+                        <div
+                          key={index}
+                          className={`flex items-center gap-4 p-4 rounded-xl ${
+                            isDark
+                              ? "bg-gray-700/50 border border-gray-600"
+                              : "bg-gray-50 border border-gray-200"
+                          }`}
+                        >
+                          <div
+                            className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                              isDark
+                                ? "bg-emerald-500/20"
+                                : "bg-emerald-100"
+                            }`}
+                          >
+                            <Icon
+                              className={`w-5 h-5 ${
+                                isDark
+                                  ? "text-emerald-400"
+                                  : "text-emerald-600"
+                              }`}
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <div
+                              className={`text-sm font-semibold ${
+                                isDark ? "text-gray-300" : "text-gray-700"
+                              }`}
+                            >
+                              Step {item.step}
+                            </div>
+                            <div
+                              className={`text-base font-bold ${
+                                isDark ? "text-white" : "text-gray-900"
+                              }`}
+                            >
+                              {item.title}
+                            </div>
+                          </div>
+                          {index < 3 && (
+                            <ArrowRight
+                              className={`w-5 h-5 ${
+                                isDark ? "text-gray-500" : "text-gray-400"
+                              }`}
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div
+                    className={`mt-6 p-4 rounded-xl ${
+                      isDark
+                        ? "bg-emerald-500/10 border border-emerald-500/20"
+                        : "bg-emerald-50 border border-emerald-200"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`text-sm font-medium ${
+                          isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        Average Response Time
+                      </span>
+                      <span
+                        className={`text-xl font-bold ${
+                          isDark ? "text-emerald-400" : "text-emerald-600"
+                        }`}
+                      >
+                        &lt; 50ms
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -271,15 +382,121 @@ export default function Solution() {
                       : "bg-emerald-200/50 blur-2xl"
                   }`}
                 ></div>
-                <Image
-                  src="/howWeHelpEnterprises.png"
-                  alt="Enterprise AI risk management"
-                  width={1200}
-                  height={800}
-                  className="relative rounded-2xl shadow-2xl"
-                  priority={false}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
-                />
+                <div
+                  className={`relative rounded-2xl p-8 shadow-2xl ${
+                    isDark
+                      ? "bg-gray-800 border border-gray-700"
+                      : "bg-white border border-gray-200"
+                  }`}
+                >
+                  <h3
+                    className={`text-xl font-bold mb-6 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Enterprise Impact Metrics
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    {[
+                      {
+                        label: "Risk Reduction",
+                        value: "92%",
+                        icon: Shield,
+                        color: "emerald",
+                      },
+                      {
+                        label: "Faster Deployment",
+                        value: "85%",
+                        icon: Clock,
+                        color: "blue",
+                      },
+                      {
+                        label: "Cost Savings",
+                        value: "45%",
+                        icon: TrendingUp,
+                        color: "teal",
+                      },
+                      {
+                        label: "Compliance Rate",
+                        value: "98%",
+                        icon: CheckCircle,
+                        color: "emerald",
+                      },
+                    ].map((metric, index) => {
+                      const Icon = metric.icon;
+                      return (
+                        <div
+                          key={index}
+                          className={`p-4 rounded-xl ${
+                            isDark
+                              ? "bg-gray-700/50 border border-gray-600"
+                              : "bg-gray-50 border border-gray-200"
+                          }`}
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <Icon
+                              className={`w-5 h-5 ${
+                                isDark
+                                  ? "text-emerald-400"
+                                  : "text-emerald-600"
+                              }`}
+                            />
+                            <span
+                              className={`text-xs font-medium ${
+                                isDark ? "text-gray-400" : "text-gray-600"
+                              }`}
+                            >
+                              {metric.label}
+                            </span>
+                          </div>
+                          <div
+                            className={`text-3xl font-bold ${
+                              isDark
+                                ? "text-emerald-400"
+                                : "text-emerald-600"
+                            }`}
+                          >
+                            {metric.value}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div
+                    className={`p-4 rounded-xl ${
+                      isDark
+                        ? "bg-emerald-500/10 border border-emerald-500/20"
+                        : "bg-emerald-50 border border-emerald-200"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span
+                        className={`text-sm font-medium ${
+                          isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        ROI Improvement
+                      </span>
+                      <span
+                        className={`text-2xl font-bold ${
+                          isDark ? "text-emerald-400" : "text-emerald-600"
+                        }`}
+                      >
+                        3.2×
+                      </span>
+                    </div>
+                    <div
+                      className={`h-2 rounded-full overflow-hidden ${
+                        isDark ? "bg-gray-700" : "bg-gray-200"
+                      }`}
+                    >
+                      <div
+                        className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                        style={{ width: "85%" }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -298,15 +515,108 @@ export default function Solution() {
                       : "bg-emerald-200/50 blur-2xl"
                   }`}
                 ></div>
-                <Image
-                  src="/whereThisFits.png"
-                  alt="Where this fits"
-                  width={1200}
-                  height={800}
-                  className="relative rounded-2xl shadow-2xl"
-                  priority={false}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
-                />
+                <div
+                  className={`relative rounded-2xl p-8 shadow-2xl ${
+                    isDark
+                      ? "bg-gray-800 border border-gray-700"
+                      : "bg-white border border-gray-200"
+                  }`}
+                >
+                  <h3
+                    className={`text-xl font-bold mb-6 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Use Case Distribution
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        label: "Autonomous AI Systems",
+                        percentage: 35,
+                        color: "emerald",
+                      },
+                      {
+                        label: "Enterprise Chatbots",
+                        percentage: 28,
+                        color: "blue",
+                      },
+                      {
+                        label: "CI/CD Pipelines",
+                        percentage: 22,
+                        color: "teal",
+                      },
+                      {
+                        label: "Regulated Environments",
+                        percentage: 15,
+                        color: "orange",
+                      },
+                    ].map((item, index) => (
+                      <div key={index} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span
+                            className={`text-sm font-medium ${
+                              isDark ? "text-gray-300" : "text-gray-700"
+                            }`}
+                          >
+                            {item.label}
+                          </span>
+                          <span
+                            className={`text-sm font-bold ${
+                              isDark
+                                ? "text-emerald-400"
+                                : "text-emerald-600"
+                            }`}
+                          >
+                            {item.percentage}%
+                          </span>
+                        </div>
+                        <div
+                          className={`h-3 rounded-full overflow-hidden ${
+                            isDark ? "bg-gray-700" : "bg-gray-200"
+                          }`}
+                        >
+                          <div
+                            className={`h-full bg-gradient-to-r ${
+                              item.color === "emerald"
+                                ? "from-emerald-500 to-teal-500"
+                                : item.color === "blue"
+                                ? "from-blue-500 to-cyan-500"
+                                : item.color === "teal"
+                                ? "from-teal-500 to-emerald-500"
+                                : "from-orange-500 to-amber-500"
+                            } rounded-full transition-all duration-500`}
+                            style={{ width: `${item.percentage}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div
+                    className={`mt-6 p-4 rounded-xl ${
+                      isDark
+                        ? "bg-blue-500/10 border border-blue-500/20"
+                        : "bg-blue-50 border border-blue-200"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`text-sm font-medium ${
+                          isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        Total Use Cases Supported
+                      </span>
+                      <span
+                        className={`text-2xl font-bold ${
+                          isDark ? "text-blue-400" : "text-blue-600"
+                        }`}
+                      >
+                        500+
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="order-1 lg:order-2">
                 <h2
@@ -415,15 +725,128 @@ export default function Solution() {
                       : "bg-emerald-200/50 blur-2xl"
                   }`}
                 ></div>
-                <Image
-                  src="/whoThisIsFor.png"
-                  alt="Who this is for"
-                  width={1200}
-                  height={800}
-                  className="relative rounded-2xl shadow-2xl"
-                  priority={false}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
-                />
+                <div
+                  className={`relative rounded-2xl p-8 shadow-2xl ${
+                    isDark
+                      ? "bg-gray-800 border border-gray-700"
+                      : "bg-white border border-gray-200"
+                  }`}
+                >
+                  <h3
+                    className={`text-xl font-bold mb-6 ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Target Audience Breakdown
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        icon: Code,
+                        label: "Engineering Teams",
+                        percentage: 42,
+                        count: "2,500+",
+                        color: "emerald",
+                      },
+                      {
+                        icon: Users,
+                        label: "AI & Data Leaders",
+                        percentage: 28,
+                        count: "1,200+",
+                        color: "blue",
+                      },
+                      {
+                        icon: Target,
+                        label: "Product Teams",
+                        percentage: 20,
+                        count: "850+",
+                        color: "teal",
+                      },
+                      {
+                        icon: Building2,
+                        label: "Regulated Organizations",
+                        percentage: 10,
+                        count: "400+",
+                        color: "orange",
+                      },
+                    ].map((item, index) => {
+                      const Icon = item.icon;
+                      return (
+                        <div
+                          key={index}
+                          className={`p-4 rounded-xl border ${
+                            isDark
+                              ? "bg-gray-700/50 border-gray-600"
+                              : "bg-gray-50 border-gray-200"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <div
+                                className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                                  isDark
+                                    ? "bg-emerald-500/20"
+                                    : "bg-emerald-100"
+                                }`}
+                              >
+                                <Icon
+                                  className={`w-5 h-5 ${
+                                    isDark
+                                      ? "text-emerald-400"
+                                      : "text-emerald-600"
+                                  }`}
+                                />
+                              </div>
+                              <div>
+                                <div
+                                  className={`text-sm font-bold ${
+                                    isDark ? "text-white" : "text-gray-900"
+                                  }`}
+                                >
+                                  {item.label}
+                                </div>
+                                <div
+                                  className={`text-xs ${
+                                    isDark ? "text-gray-400" : "text-gray-600"
+                                  }`}
+                                >
+                                  {item.count} organizations
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className={`text-2xl font-bold ${
+                                isDark
+                                  ? "text-emerald-400"
+                                  : "text-emerald-600"
+                              }`}
+                            >
+                              {item.percentage}%
+                            </div>
+                          </div>
+                          <div
+                            className={`h-2 rounded-full overflow-hidden ${
+                              isDark ? "bg-gray-700" : "bg-gray-200"
+                            }`}
+                          >
+                            <div
+                              className={`h-full bg-gradient-to-r ${
+                                item.color === "emerald"
+                                  ? "from-emerald-500 to-teal-500"
+                                  : item.color === "blue"
+                                  ? "from-blue-500 to-cyan-500"
+                                  : item.color === "teal"
+                                  ? "from-teal-500 to-emerald-500"
+                                  : "from-orange-500 to-amber-500"
+                              } rounded-full`}
+                              style={{ width: `${item.percentage}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

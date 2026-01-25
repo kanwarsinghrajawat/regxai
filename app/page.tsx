@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import {
   Shield,
   FileCheck,
@@ -12,6 +11,9 @@ import {
   FileText,
   ArrowRight,
   Check,
+  TrendingUp,
+  Clock,
+  DollarSign,
 } from "lucide-react";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
@@ -255,6 +257,385 @@ export default function Home() {
         </section>
 
         <section
+          className={`py-24 lg:py-32 ${isDark ? "bg-gray-950" : "bg-white"}`}
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="mb-16 text-center">
+              <h2
+                className={`text-4xl lg:text-5xl font-bold mb-4 leading-tight ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                Why AI & Agentic Systems Increase Risk Without Execution Control
+              </h2>
+              <p
+                className={`text-xl max-w-3xl mx-auto mt-6 ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                AI adoption is surging, but responsible-AI maturity lags sharply. With policy violations doubling and regulators imposing fines up to €35M or 7% of turnover, organizations that cannot control AI responses at execution time face rising legal penalties, data exposure, and operational loss.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              <div
+                className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
+                  isDark
+                    ? "bg-gradient-to-br from-red-950/50 to-orange-950/50 border-red-800/50 hover:border-red-600/50"
+                    : "bg-gradient-to-br from-red-50 to-orange-50 border-red-200 hover:border-red-300"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      isDark ? "bg-red-500/20" : "bg-red-100"
+                    }`}
+                  >
+                    <Target
+                      className={`w-6 h-6 ${
+                        isDark ? "text-red-400" : "text-red-600"
+                      }`}
+                    />
+                  </div>
+                  <h3
+                    className={`text-xl font-bold ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    AI Adoption vs. Controls
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <div
+                      className={`text-4xl font-bold mb-2 ${
+                        isDark ? "text-red-400" : "text-red-600"
+                      }`}
+                    >
+                      71%
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      of organizations are using AI agents, yet only{" "}
+                      <span className="font-semibold">11%</span> of use cases
+                      reached production last year, mainly due to risk,
+                      transparency, and regulatory concerns.
+                    </p>
+                  </div>
+                  <div>
+                    <div
+                      className={`text-4xl font-bold mb-2 ${
+                        isDark ? "text-red-400" : "text-red-600"
+                      }`}
+                    >
+                      95%
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      of executives report AI mishaps, yet only{" "}
+                      <span className="font-semibold">2%</span> of firms meet
+                      responsible-AI standards. This shows AI adoption is
+                      accelerating faster than governance maturity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
+                  isDark
+                    ? "bg-gradient-to-br from-orange-950/50 to-amber-950/50 border-orange-800/50 hover:border-orange-600/50"
+                    : "bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200 hover:border-orange-300"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      isDark ? "bg-orange-500/20" : "bg-orange-100"
+                    }`}
+                  >
+                    <FileCheck
+                      className={`w-6 h-6 ${
+                        isDark ? "text-orange-400" : "text-orange-600"
+                      }`}
+                    />
+                  </div>
+                  <h3
+                    className={`text-xl font-bold ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Non-Compliance Is Growing
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <p
+                      className={`text-sm leading-relaxed mb-3 ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      <span className="font-semibold text-lg">
+                        Generative AI policy violations more than doubled
+                      </span>{" "}
+                      year-over-year.
+                    </p>
+                  </div>
+                  <div>
+                    <div
+                      className={`text-4xl font-bold mb-2 ${
+                        isDark ? "text-orange-400" : "text-orange-600"
+                      }`}
+                    >
+                      223
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      Enterprises average sensitive-data violations per month,
+                      rising to{" "}
+                      <span className="font-semibold">2,100</span> in the top
+                      quartile. Uncontrolled AI already leaks or misuses
+                      sensitive data at scale.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
+                  isDark
+                    ? "bg-gradient-to-br from-yellow-950/50 to-amber-950/50 border-yellow-800/50 hover:border-yellow-600/50"
+                    : "bg-gradient-to-br from-yellow-50 to-amber-50 border-yellow-200 hover:border-yellow-300"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      isDark ? "bg-yellow-500/20" : "bg-yellow-100"
+                    }`}
+                  >
+                    <Shield
+                      className={`w-6 h-6 ${
+                        isDark ? "text-yellow-400" : "text-yellow-600"
+                      }`}
+                    />
+                  </div>
+                  <h3
+                    className={`text-xl font-bold ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Regulatory Penalties Are Real
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  <p
+                    className={`text-sm leading-relaxed mb-3 ${
+                      isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Under the EU AI Act:
+                  </p>
+                  <div>
+                    <div
+                      className={`text-3xl font-bold mb-2 ${
+                        isDark ? "text-yellow-400" : "text-yellow-600"
+                      }`}
+                    >
+                      €35M
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed mb-3 ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      or <span className="font-semibold">7%</span> of global
+                      turnover for prohibited AI practices.
+                    </p>
+                  </div>
+                  <div>
+                    <div
+                      className={`text-2xl font-bold mb-2 ${
+                        isDark ? "text-yellow-400" : "text-yellow-600"
+                      }`}
+                    >
+                      €15M (3%) or €7.5M (1%)
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      for other violations depending on severity. These are
+                      active enforcement tools, not future hypotheticals.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
+                  isDark
+                    ? "bg-gradient-to-br from-blue-950/50 to-cyan-950/50 border-blue-800/50 hover:border-blue-600/50"
+                    : "bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200 hover:border-blue-300"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      isDark ? "bg-blue-500/20" : "bg-blue-100"
+                    }`}
+                  >
+                    <FileText
+                      className={`w-6 h-6 ${
+                        isDark ? "text-blue-400" : "text-blue-600"
+                      }`}
+                    />
+                  </div>
+                  <h3
+                    className={`text-xl font-bold ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    AI Risk Is Board-Level
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <div
+                      className={`text-4xl font-bold mb-2 ${
+                        isDark ? "text-blue-400" : "text-blue-600"
+                      }`}
+                    >
+                      418+
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      public companies (&gt; $1B valuation) disclosed AI risk in
+                      2025 annual filings. This represents a{" "}
+                      <span className="font-semibold">46% increase</span> from
+                      2024 and nearly <span className="font-semibold">9×</span>{" "}
+                      growth since 2023. AI risk is now legally material.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
+                  isDark
+                    ? "bg-gradient-to-br from-purple-950/50 to-pink-950/50 border-purple-800/50 hover:border-purple-600/50"
+                    : "bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 hover:border-purple-300"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      isDark ? "bg-purple-500/20" : "bg-purple-100"
+                    }`}
+                  >
+                    <Bot
+                      className={`w-6 h-6 ${
+                        isDark ? "text-purple-400" : "text-purple-600"
+                      }`}
+                    />
+                  </div>
+                  <h3
+                    className={`text-xl font-bold ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Shadow AI Will Accelerate Failures
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <div
+                      className={`text-4xl font-bold mb-2 ${
+                        isDark ? "text-purple-400" : "text-purple-600"
+                      }`}
+                    >
+                      40%
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      of enterprises will face a shadow-AI breach by 2030,
+                      according to Gartner. These arise from unmanaged or
+                      unauthorized AI use. Without blocking mechanisms, risk
+                      surface expands exponentially.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
+                  isDark
+                    ? "bg-gradient-to-br from-emerald-950/50 to-teal-950/50 border-emerald-800/50 hover:border-emerald-600/50"
+                    : "bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200 hover:border-emerald-300"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      isDark ? "bg-emerald-500/20" : "bg-emerald-100"
+                    }`}
+                  >
+                    <ArrowRight
+                      className={`w-6 h-6 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    />
+                  </div>
+                  <h3
+                    className={`text-xl font-bold ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    High-Level Trend
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  <p
+                    className={`text-base leading-relaxed font-semibold mb-3 ${
+                      isDark ? "text-emerald-300" : "text-emerald-700"
+                    }`}
+                  >
+                    AI adoption ↑ + weak controls + stricter regulation =
+                    compounding risk curve.
+                  </p>
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    The convergence of rapid AI adoption, insufficient governance
+                    controls, and increasingly strict regulatory enforcement
+                    creates an exponential risk trajectory that organizations
+                    must address proactively.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
           className={`py-20 lg:py-28 ${isDark ? "bg-gray-950" : "bg-white"}`}
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -305,35 +686,165 @@ export default function Home() {
                 </ul>
               </div>
               <div className="relative">
-                <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=90&auto=format&fit=crop"
-                  alt="Enterprise AI risk management"
-                  width={1200}
-                  height={800}
-                  className="rounded-2xl shadow-2xl"
-                  priority={false}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 637px"
-                />
                 <div
-                  className={`absolute -bottom-6 -left-6 p-6 rounded-xl shadow-xl border ${
+                  className={`rounded-2xl p-8 border shadow-2xl ${
                     isDark
-                      ? "bg-gray-800 border-gray-700"
-                      : "bg-white border-gray-200"
+                      ? "bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700"
+                      : "bg-gradient-to-br from-white to-gray-50 border-gray-200"
                   }`}
                 >
-                  <div
-                    className={`text-3xl font-bold mb-1 ${
-                      isDark ? "text-emerald-400" : "text-emerald-600"
+                  <h3
+                    className={`text-2xl font-bold mb-6 ${
+                      isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    85%
-                  </div>
-                  <div
-                    className={`text-sm ${
-                      isDark ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    Faster deployment
+                    Impact Metrics
+                  </h3>
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span
+                          className={`text-sm font-medium ${
+                            isDark ? "text-gray-300" : "text-gray-700"
+                          }`}
+                        >
+                          Faster Deployment
+                        </span>
+                        <span
+                          className={`text-2xl font-bold ${
+                            isDark ? "text-emerald-400" : "text-emerald-600"
+                          }`}
+                        >
+                          85%
+                        </span>
+                      </div>
+                      <div
+                        className={`h-3 rounded-full overflow-hidden ${
+                          isDark ? "bg-gray-700" : "bg-gray-200"
+                        }`}
+                      >
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                          style={{ width: "85%" }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span
+                          className={`text-sm font-medium ${
+                            isDark ? "text-gray-300" : "text-gray-700"
+                          }`}
+                        >
+                          Risk Reduction
+                        </span>
+                        <span
+                          className={`text-2xl font-bold ${
+                            isDark ? "text-emerald-400" : "text-emerald-600"
+                          }`}
+                        >
+                          92%
+                        </span>
+                      </div>
+                      <div
+                        className={`h-3 rounded-full overflow-hidden ${
+                          isDark ? "bg-gray-700" : "bg-gray-200"
+                        }`}
+                      >
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                          style={{ width: "92%" }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span
+                          className={`text-sm font-medium ${
+                            isDark ? "text-gray-300" : "text-gray-700"
+                          }`}
+                        >
+                          Compliance Rate
+                        </span>
+                        <span
+                          className={`text-2xl font-bold ${
+                            isDark ? "text-emerald-400" : "text-emerald-600"
+                          }`}
+                        >
+                          98%
+                        </span>
+                      </div>
+                      <div
+                        className={`h-3 rounded-full overflow-hidden ${
+                          isDark ? "bg-gray-700" : "bg-gray-200"
+                        }`}
+                      >
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                          style={{ width: "98%" }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 pt-4">
+                      <div
+                        className={`p-4 rounded-xl ${
+                          isDark
+                            ? "bg-emerald-500/10 border border-emerald-500/20"
+                            : "bg-emerald-50 border border-emerald-200"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 mb-2">
+                          <Clock
+                            className={`w-5 h-5 ${
+                              isDark ? "text-emerald-400" : "text-emerald-600"
+                            }`}
+                          />
+                          <span
+                            className={`text-xs font-medium ${
+                              isDark ? "text-gray-300" : "text-gray-700"
+                            }`}
+                          >
+                            Time Saved
+                          </span>
+                        </div>
+                        <div
+                          className={`text-2xl font-bold ${
+                            isDark ? "text-emerald-400" : "text-emerald-600"
+                          }`}
+                        >
+                          60%
+                        </div>
+                      </div>
+                      <div
+                        className={`p-4 rounded-xl ${
+                          isDark
+                            ? "bg-teal-500/10 border border-teal-500/20"
+                            : "bg-teal-50 border border-teal-200"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 mb-2">
+                          <DollarSign
+                            className={`w-5 h-5 ${
+                              isDark ? "text-teal-400" : "text-teal-600"
+                            }`}
+                          />
+                          <span
+                            className={`text-xs font-medium ${
+                              isDark ? "text-gray-300" : "text-gray-700"
+                            }`}
+                          >
+                            Cost Reduction
+                          </span>
+                        </div>
+                        <div
+                          className={`text-2xl font-bold ${
+                            isDark ? "text-teal-400" : "text-teal-600"
+                          }`}
+                        >
+                          45%
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
