@@ -2,22 +2,16 @@
 
 import {
   Users,
-  Zap,
   BookOpen,
   BarChart3,
-  Shield,
   Headphones,
-  ArrowRight,
   Rocket,
-  CheckCircle,
-  ArrowDown,
+  ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/Navigation";
 import { Footer } from "../components/Footer";
 import { useTheme } from "../components/ThemeProvider";
-import { AnimatedNumber } from "../components/AnimatedNumber";
-import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
 
 export default function Services() {
   const { isDark, setIsDark } = useTheme();
@@ -140,191 +134,56 @@ export default function Services() {
             style={{ backgroundSize: "32px 32px" }}
           ></div>
           <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <div
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-6 ${
-                    isDark
-                      ? "bg-emerald-500/20 text-emerald-300"
-                      : "bg-emerald-100 text-emerald-700"
-                  }`}
-                >
-                  <Rocket className="w-4 h-4" />
-                  Getting Started
-                </div>
-                <h2
-                  className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  How to Get Started
-                </h2>
-                <p
-                  className={`text-xl leading-relaxed mb-8 ${
-                    isDark ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  Getting started is intentionally simple. We work with teams to
-                  understand where AI decisions occur in their lifecycle and
-                  integrate enforcement at the right points.
-                </p>
-                <p
-                  className={`text-lg leading-relaxed mb-8 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  For teams building the next wave of responsible AI in
-                  production.
-                </p>
-                <Link
-                  href="/contact"
-                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl group ${
-                    isDark
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                      : "bg-emerald-600 text-white hover:bg-emerald-700"
-                  }`}
-                >
-                  Get in Touch
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
+            <div className="max-w-3xl">
+              <div
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-6 ${
+                  isDark
+                    ? "bg-emerald-500/20 text-emerald-300"
+                    : "bg-emerald-100 text-emerald-700"
+                }`}
+              >
+                <Rocket className="w-4 h-4" />
+                Getting Started
               </div>
-              <div className="relative">
-                <div
-                  className={`absolute -inset-4 rounded-2xl ${
-                    isDark
-                      ? "bg-emerald-500/20 blur-2xl"
-                      : "bg-emerald-200/50 blur-2xl"
-                  }`}
-                ></div>
-                <div
-                  className={`relative rounded-2xl p-8 ${
-                    isDark
-                      ? "bg-gray-800 border border-gray-700"
-                      : "bg-white border border-gray-200 shadow-xl"
-                  }`}
-                >
-                  <h3
-                    className={`text-xl font-bold mb-6 ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    Implementation Timeline
-                  </h3>
-                  <div className="space-y-6">
-                    {[
-                      {
-                        step: "Week 1-2",
-                        title: "Assessment & Mapping",
-                        progress: 100,
-                        stats: "AI lifecycle analysis complete",
-                      },
-                      {
-                        step: "Week 3-4",
-                        title: "Control Design",
-                        progress: 85,
-                        stats: "Regulatory alignment achieved",
-                      },
-                      {
-                        step: "Week 5-6",
-                        title: "Integration",
-                        progress: 70,
-                        stats: "System integration in progress",
-                      },
-                      {
-                        step: "Week 7-8",
-                        title: "Testing & Validation",
-                        progress: 40,
-                        stats: "Pilot testing phase",
-                      },
-                    ].map((phase, index) => (
-                      <div key={index} className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div
-                              className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                                isDark
-                                  ? "bg-emerald-500/20"
-                                  : "bg-emerald-100"
-                              }`}
-                            >
-                              <CheckCircle
-                                className={`w-4 h-4 ${
-                                  isDark
-                                    ? "text-emerald-400"
-                                    : "text-emerald-600"
-                                }`}
-                              />
-                            </div>
-                            <div>
-                              <div
-                                className={`text-sm font-semibold ${
-                                  isDark ? "text-gray-300" : "text-gray-700"
-                                }`}
-                              >
-                                {phase.step}
-                              </div>
-                              <div
-                                className={`text-base font-bold ${
-                                  isDark ? "text-white" : "text-gray-900"
-                                }`}
-                              >
-                                {phase.title}
-                              </div>
-                            </div>
-                          </div>
-                          <span
-                            className={`text-sm font-bold ${
-                              isDark ? "text-emerald-400" : "text-emerald-600"
-                            }`}
-                          >
-                            <AnimatedNumber value={phase.progress} suffix="%" />
-                          </span>
-                        </div>
-                        <AnimatedProgressBar
-                          value={phase.progress}
-                          heightClassName="h-2"
-                          trackClassName={isDark ? "bg-gray-700" : "bg-gray-200"}
-                          fillClassName="bg-gradient-to-r from-emerald-500 to-teal-500"
-                        />
-                        <p
-                          className={`text-xs ${
-                            isDark ? "text-gray-400" : "text-gray-600"
-                          }`}
-                        >
-                          {phase.stats}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                  <div
-                    className={`mt-6 p-4 rounded-xl ${
-                      isDark
-                        ? "bg-emerald-500/10 border border-emerald-500/20"
-                        : "bg-emerald-50 border border-emerald-200"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span
-                        className={`text-sm font-medium ${
-                          isDark ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        Average Time to Production
-                      </span>
-                      <span
-                        className={`text-2xl font-bold ${
-                          isDark ? "text-emerald-400" : "text-emerald-600"
-                        }`}
-                      >
-                        <AnimatedNumber value={8} suffix=" weeks" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+              <h2
+                className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
+                How to Get Started
+              </h2>
+
+              <p
+                className={`text-xl leading-relaxed mb-8 ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                Getting started is intentionally simple. We work with teams to
+                understand where AI decisions occur in their lifecycle and
+                integrate enforcement at the right points.
+              </p>
+
+              <p
+                className={`text-lg leading-relaxed mb-8 ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                For teams building the next wave of responsible AI in
+                production.
+              </p>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl group bg-emerald-600 text-white hover:bg-emerald-700"
+              >
+                Get in Touch
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </section>
+
       </main>
       <Footer isDark={isDark} />
     </div>
