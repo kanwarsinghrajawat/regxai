@@ -13,18 +13,16 @@ import {
   Code,
   Target,
 } from "lucide-react";
-import { Navigation } from "../components/Navigation";
-import { Footer } from "../components/Footer";
+import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
 import { AnimatedNumber } from "../components/AnimatedNumber";
 import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
 
 export default function Solution() {
-  const { isDark, setIsDark } = useTheme();
+  const { isDark } = useTheme();
 
   return (
-    <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
-      <Navigation isDark={isDark} setIsDark={setIsDark} />
+    <AppShell>
       <main className="pt-20">
         <section
           className={`py-24 lg:py-32 relative overflow-hidden ${
@@ -403,7 +401,8 @@ export default function Solution() {
                     {[
                       {
                         label: "Risk Reduction",
-                        description: "Reduce exposure with execution-time controls.",
+                        description:
+                          "Reduce exposure with execution-time controls.",
                         icon: Shield,
                       },
                       {
@@ -413,7 +412,8 @@ export default function Solution() {
                       },
                       {
                         label: "Cost Savings",
-                        description: "Replace manual review with deterministic enforcement.",
+                        description:
+                          "Replace manual review with deterministic enforcement.",
                         icon: TrendingUp,
                       },
                       {
@@ -476,7 +476,8 @@ export default function Solution() {
                         isDark ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
-                      Reduce governance overhead while unlocking safe production deployment.
+                      Reduce exposure to illegal or harmful AI actions,
+                      prosecution, fines and reputational damages{" "}
                     </div>
                   </div>
                 </div>
@@ -783,7 +784,6 @@ export default function Solution() {
           </div>
         </section>
       </main>
-      <Footer isDark={isDark} />
-    </div>
+    </AppShell>
   );
 }

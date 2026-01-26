@@ -7,16 +7,14 @@ import {
   Shield,
   Globe,
 } from "lucide-react";
-import { Navigation } from "../components/Navigation";
-import { Footer } from "../components/Footer";
+import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
 
 export default function Regulatory() {
-  const { isDark, setIsDark } = useTheme();
+  const { isDark } = useTheme();
 
   return (
-    <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
-      <Navigation isDark={isDark} setIsDark={setIsDark} />
+    <AppShell>
       <main className="pt-20">
         <section
           className={`pt-24 lg:pt-32 ${
@@ -78,6 +76,12 @@ export default function Regulatory() {
                     name: "UAE AI & Data Regulations",
                     description:
                       "National AI governance, data-protection laws (e.g., PDPL), and sectoral oversight shaping compliant AI deployment in the Middle East.",
+                    icon: CheckCircle,
+                  },
+                  {
+                    name: "South Korean AI Act (SKAIA)",
+                    description:
+                      "South Korea’s AI governance framework shaping responsible deployment and sector expectations.",
                     icon: CheckCircle,
                   },
                   {
@@ -282,7 +286,6 @@ export default function Regulatory() {
         </section>
 
       </main>
-      <Footer isDark={isDark} />
-    </div>
+    </AppShell>
   );
 }

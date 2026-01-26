@@ -1,8 +1,7 @@
 "use client";
 
 import { Calendar, Mail } from "lucide-react";
-import { Navigation } from "../components/Navigation";
-import { Footer } from "../components/Footer";
+import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
 import { useFormReducer } from "../components/hooks/useFormReducer";
 import { validate, validateForm } from "../components/hooks/useFormValidation";
@@ -23,7 +22,7 @@ function XLogo({ className }: { className?: string }) {
 }
 
 export default function Contact() {
-  const { isDark, setIsDark } = useTheme();
+  const { isDark } = useTheme();
   const [state, dispatch] = useFormReducer();
 
   const handleChange = (field: keyof typeof state.formData, value: string) => {
@@ -71,8 +70,7 @@ export default function Contact() {
   };
 
   return (
-    <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
-      <Navigation isDark={isDark} setIsDark={setIsDark} />
+    <AppShell>
       <main className="pt-20">
         <section
           className={`py-16 lg:py-20 ${
@@ -373,15 +371,14 @@ export default function Contact() {
                                 isDark ? "text-gray-300" : "text-gray-700"
                               }`}
                             >
-                              Schedule a call
+                              Want to enforce deterministic decisioning?
+                              Schedule a call with us
                             </div>
                             <div
                               className={`mt-1 text-sm leading-relaxed ${
                                 isDark ? "text-gray-400" : "text-gray-600"
                               }`}
-                            >
-                              Schedule a 30‑minute call.
-                            </div>
+                            ></div>
                           </div>
                         </div>
 
@@ -431,7 +428,7 @@ export default function Contact() {
                               <XLogo className="w-5 h-5" />
                             </a>
                           );
-                        },
+                        }
                       )}
                     </div>
                   </div>
@@ -489,7 +486,6 @@ export default function Contact() {
           </div>
         </section> */}
       </main>
-      <Footer isDark={isDark} />
-    </div>
+    </AppShell>
   );
 }

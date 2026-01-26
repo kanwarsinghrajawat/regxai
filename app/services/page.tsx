@@ -9,16 +9,14 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
-import { Navigation } from "../components/Navigation";
-import { Footer } from "../components/Footer";
+import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
 
 export default function Services() {
-  const { isDark, setIsDark } = useTheme();
+  const { isDark } = useTheme();
 
   return (
-    <div className={`min-h-screen ${isDark ? "bg-gray-950" : "bg-white"}`}>
-      <Navigation isDark={isDark} setIsDark={setIsDark} />
+    <AppShell>
       <main className="pt-20">
         <section
           className={`py-16 lg:py-20 ${
@@ -185,7 +183,6 @@ export default function Services() {
         </section>
 
       </main>
-      <Footer isDark={isDark} />
-    </div>
+    </AppShell>
   );
 }

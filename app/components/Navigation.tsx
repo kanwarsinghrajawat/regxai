@@ -127,20 +127,16 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-y-0 right-0 w-80 max-w-[85vw] backdrop-blur-xl ${
+        className={`lg:hidden fixed inset-y-0 right-0 w-80 max-w-[85vw] ${
           isDark
-            ? "bg-gray-950/95 border-l border-white/10"
-            : "bg-white/95 border-l border-gray-200/70"
+            ? "bg-gray-950 border-l border-white/10"
+            : "bg-white border-l border-gray-200/70"
         } shadow-2xl z-[70] transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ top: "80px" }}
       >
-        <div
-          className={`flex flex-col h-[calc(100vh-80px)] overflow-y-auto ${
-            isDark ? "bg-transparent" : "bg-transparent"
-          }`}
-        >
+        <div className="flex flex-col h-[calc(100vh-80px)] overflow-y-auto">
           <div className="flex flex-col px-6 py-8 space-y-4">
             {navItems.map((item) => (
               <Link
