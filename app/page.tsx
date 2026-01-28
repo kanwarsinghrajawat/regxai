@@ -218,7 +218,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
+        {/* <section
           className={`py-24 lg:py-32 relative overflow-hidden ${
             isDark
               ? "bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900"
@@ -291,7 +291,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section
           className={`py-24 lg:py-32 ${isDark ? "bg-gray-950" : "bg-gray-50"}`}
@@ -321,9 +321,8 @@ export default function Home() {
             </div>
 
             <div className="no-scrollbar flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0">
-              {/* 1) Adoption vs Controls */}
               <div
-                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-red-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
+                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-blue-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
                   isDark
                     ? "bg-gray-900 border-gray-800"
                     : "bg-white border-gray-200"
@@ -338,9 +337,9 @@ export default function Home() {
                           : "bg-gray-50 border-gray-200"
                       }`}
                     >
-                      <Target
+                      <FileText
                         className={`w-5 h-5 ${
-                          isDark ? "text-red-300" : "text-red-600"
+                          isDark ? "text-blue-300" : "text-blue-600"
                         }`}
                       />
                     </div>
@@ -350,14 +349,14 @@ export default function Home() {
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        AI Adoption vs. Controls
+                        AI Risk Is Board-Level
                       </h3>
                       <p
                         className={`text-sm ${
                           isDark ? "text-gray-400" : "text-gray-500"
                         }`}
                       >
-                        Adoption accelerates faster than governance maturity
+                        Disclosures make AI risk legally material
                       </p>
                     </div>
                   </div>
@@ -368,11 +367,55 @@ export default function Home() {
                         : "bg-gray-100 text-gray-600 border border-gray-200"
                     }`}
                   >
-                    01
+                    04
                   </span>
                 </div>
 
                 <div className="space-y-6">
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <div
+                        className={`text-5xl font-extrabold tracking-tight ${
+                          isDark ? "text-blue-300" : "text-blue-600"
+                        }`}
+                      >
+                        <AnimatedNumber value={418} suffix="+" />
+                      </div>
+                      <div
+                        className={`text-xs mt-1 ${
+                          isDark ? "text-gray-400" : "text-gray-500"
+                        }`}
+                      >
+                        public companies disclosed AI risk (2025)
+                      </div>
+                    </div>
+                    <span
+                      className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
+                        isDark
+                          ? "bg-blue-500/15 text-blue-200 border border-blue-500/20"
+                          : "bg-blue-50 text-blue-700 border border-blue-200"
+                      }`}
+                    >
+                      2025 disclosures
+                    </span>
+                  </div>
+
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Disclosures increased{" "}
+                    <span className="font-semibold">
+                      <AnimatedNumber value={46} suffix="%" />
+                    </span>{" "}
+                    from 2024 and grew nearly{" "}
+                    <span className="font-semibold">
+                      <AnimatedNumber value={9} suffix="×" />
+                    </span>{" "}
+                    since 2023 — making AI risk legally material.
+                  </p>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div
                       className={`rounded-xl border p-4 ${
@@ -381,42 +424,29 @@ export default function Home() {
                           : "bg-gray-50 border-gray-200"
                       }`}
                     >
-                      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-                        <div className="min-w-0">
-                          <div
-                            className={`text-xs font-semibold ${
-                              isDark ? "text-gray-200" : "text-gray-800"
-                            }`}
-                          >
-                            Using AI agents
-                          </div>
-                          <div
-                            className={`text-xs mt-1 ${
-                              isDark ? "text-gray-400" : "text-gray-500"
-                            }`}
-                          >
-                            Adoption rate
-                          </div>
-                        </div>
-                        <div
-                          className={`text-3xl font-extrabold tracking-tight whitespace-nowrap ${
-                            isDark ? "text-red-300" : "text-red-600"
+                      <div className="flex items-center justify-between mb-2">
+                        <span
+                          className={`text-xs font-semibold ${
+                            isDark ? "text-gray-300" : "text-gray-700"
                           }`}
                         >
-                          <AnimatedNumber value={71} suffix="%" />
-                        </div>
+                          YoY growth (2024 → 2025)
+                        </span>
+                        <span
+                          className={`text-sm font-bold ${
+                            isDark ? "text-blue-300" : "text-blue-600"
+                          }`}
+                        >
+                          <AnimatedNumber value={46} prefix="+" suffix="%" />
+                        </span>
                       </div>
-                      <div className="mt-3">
-                        <AnimatedProgressBar
-                          value={71}
-                          heightClassName="h-2.5"
-                          durationMs={1100}
-                          trackClassName={
-                            isDark ? "bg-gray-800" : "bg-gray-200"
-                          }
-                          fillClassName={isDark ? "bg-red-400" : "bg-red-600"}
-                        />
-                      </div>
+                      <AnimatedProgressBar
+                        value={46}
+                        heightClassName="h-2.5"
+                        durationMs={1100}
+                        trackClassName={isDark ? "bg-gray-800" : "bg-gray-200"}
+                        fillClassName={isDark ? "bg-blue-400" : "bg-blue-600"}
+                      />
                     </div>
 
                     <div
@@ -426,103 +456,35 @@ export default function Home() {
                           : "bg-gray-50 border-gray-200"
                       }`}
                     >
-                      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-                        <div className="min-w-0">
-                          <div
-                            className={`text-xs font-semibold ${
-                              isDark ? "text-gray-200" : "text-gray-800"
-                            }`}
-                          >
-                            Reached production
-                          </div>
-                          <div
-                            className={`text-xs mt-1 ${
-                              isDark ? "text-gray-400" : "text-gray-500"
-                            }`}
-                          >
-                            Deployed use cases
-                          </div>
-                        </div>
-                        <div
-                          className={`text-3xl font-extrabold tracking-tight whitespace-nowrap ${
-                            isDark ? "text-orange-300" : "text-orange-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={11} suffix="%" />
-                        </div>
+                      <div
+                        className={`text-xs font-semibold ${
+                          isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        Growth since 2023
                       </div>
-                      <div className="mt-3">
-                        <AnimatedProgressBar
-                          value={11}
-                          heightClassName="h-2.5"
-                          durationMs={1100}
-                          trackClassName={
-                            isDark ? "bg-gray-800" : "bg-gray-200"
-                          }
-                          fillClassName={
-                            isDark ? "bg-orange-300" : "bg-orange-600"
-                          }
-                        />
+                      <div
+                        className={`mt-2 text-3xl font-extrabold ${
+                          isDark ? "text-blue-200" : "text-blue-700"
+                        }`}
+                      >
+                        <AnimatedNumber value={9} suffix="×" />
                       </div>
+                      <p
+                        className={`mt-2 text-xs leading-relaxed ${
+                          isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        AI risk is now a board-level and legally material issue.
+                      </p>
                     </div>
-                  </div>
-
-                  <div
-                    className={`rounded-xl border p-4 ${
-                      isDark
-                        ? "bg-gray-950 border-gray-800"
-                        : "bg-gray-50 border-gray-200"
-                    }`}
-                  >
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <div
-                          className={`text-xs font-semibold ${
-                            isDark ? "text-gray-200" : "text-gray-800"
-                          }`}
-                        >
-                          AI mishaps reported
-                        </div>
-                        <div
-                          className={`mt-2 text-2xl font-extrabold ${
-                            isDark ? "text-red-200" : "text-red-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={95} suffix="%" />
-                        </div>
-                      </div>
-                      <div>
-                        <div
-                          className={`text-xs font-semibold ${
-                            isDark ? "text-gray-200" : "text-gray-800"
-                          }`}
-                        >
-                          Meet responsible-AI standards
-                        </div>
-                        <div
-                          className={`mt-2 text-2xl font-extrabold ${
-                            isDark ? "text-orange-200" : "text-orange-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={2} suffix="%" />
-                        </div>
-                      </div>
-                    </div>
-                    <p
-                      className={`mt-4 text-xs leading-relaxed ${
-                        isDark ? "text-gray-400" : "text-gray-600"
-                      }`}
-                    >
-                      Adoption is moving fast, but governance maturity and
-                      production readiness lag behind.
-                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* 2) Non-compliance */}
+              {/* 5) Shadow AI */}
               <div
-                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-orange-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
+                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-purple-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
                   isDark
                     ? "bg-gray-900 border-gray-800"
                     : "bg-white border-gray-200"
@@ -537,9 +499,9 @@ export default function Home() {
                           : "bg-gray-50 border-gray-200"
                       }`}
                     >
-                      <FileCheck
+                      <Bot
                         className={`w-5 h-5 ${
-                          isDark ? "text-orange-300" : "text-orange-600"
+                          isDark ? "text-purple-300" : "text-purple-600"
                         }`}
                       />
                     </div>
@@ -549,14 +511,14 @@ export default function Home() {
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        Non-Compliance Is Growing
+                        Shadow AI Accelerates Failures
                       </h3>
                       <p
                         className={`text-sm ${
                           isDark ? "text-gray-400" : "text-gray-500"
                         }`}
                       >
-                        Uncontrolled AI already leaks sensitive data at scale
+                        Unmanaged AI expands risk surface exponentially
                       </p>
                     </div>
                   </div>
@@ -567,148 +529,76 @@ export default function Home() {
                         : "bg-gray-100 text-gray-600 border border-gray-200"
                     }`}
                   >
-                    02
+                    05
                   </span>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-5">
+                  <div className="flex items-end justify-between">
+                    <div
+                      className={`text-5xl font-extrabold tracking-tight ${
+                        isDark ? "text-purple-300" : "text-purple-600"
+                      }`}
+                    >
+                      <AnimatedNumber value={40} suffix="%" />
+                    </div>
+                    <span
+                      className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
+                        isDark
+                          ? "bg-purple-500/15 text-purple-200 border border-purple-500/20"
+                          : "bg-purple-50 text-purple-700 border border-purple-200"
+                      }`}
+                    >
+                      by 2030 (Gartner)
+                    </span>
+                  </div>
+
                   <div
-                    className={`rounded-xl border p-4 ${
+                    className={`p-4 rounded-xl border ${
                       isDark
                         ? "bg-gray-950 border-gray-800"
                         : "bg-gray-50 border-gray-200"
                     }`}
                   >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <div
-                          className={`text-xs font-semibold ${
-                            isDark ? "text-gray-200" : "text-gray-800"
-                          }`}
-                        >
-                          Policy violations (YoY)
-                        </div>
-                        <div
-                          className={`mt-1 text-xs ${
-                            isDark ? "text-gray-400" : "text-gray-500"
-                          }`}
-                        >
-                          Generative AI policy violations more than doubled.
-                        </div>
-                      </div>
-                      <div
-                        className={`text-2xl font-extrabold ${
-                          isDark ? "text-orange-300" : "text-orange-600"
+                    <div className="flex items-center justify-between mb-3">
+                      <span
+                        className={`text-xs font-medium ${
+                          isDark ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        <AnimatedNumber value={2} suffix="×" />
-                      </div>
+                        Breach risk timeline
+                      </span>
+                      <span
+                        className={`text-xs font-semibold ${
+                          isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
+                      >
+                        2026 → 2030
+                      </span>
                     </div>
-                    <div className="mt-4">
-                      <AnimatedProgressBar
-                        value={100}
-                        heightClassName="h-2.5"
-                        durationMs={1000}
-                        trackClassName={isDark ? "bg-gray-800" : "bg-gray-200"}
-                        fillClassName={
-                          isDark ? "bg-orange-300" : "bg-orange-600"
-                        }
-                      />
-                    </div>
+                    <AnimatedProgressBar
+                      value={40}
+                      heightClassName="h-2"
+                      trackClassName={isDark ? "bg-gray-800" : "bg-gray-200"}
+                      fillClassName={isDark ? "bg-purple-400" : "bg-purple-600"}
+                    />
                   </div>
 
-                  <div
-                    className={`rounded-xl border p-4 ${
-                      isDark
-                        ? "bg-gray-950 border-gray-800"
-                        : "bg-gray-50 border-gray-200"
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-4">
-                      <div
-                        className={`text-sm font-semibold ${
-                          isDark ? "text-gray-200" : "text-gray-800"
-                        }`}
-                      >
-                        Sensitive-data violations / month
-                      </div>
-                      <div
-                        className={`text-xs ${
-                          isDark ? "text-gray-400" : "text-gray-500"
-                        }`}
-                      >
-                        avg vs top quartile
-                      </div>
-                    </div>
-
-                    <div className="mt-4 space-y-4">
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <span
-                            className={`text-xs font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-600"
-                            }`}
-                          >
-                            Average
-                          </span>
-                          <span
-                            className={`text-sm font-bold ${
-                              isDark ? "text-orange-200" : "text-orange-700"
-                            }`}
-                          >
-                            <AnimatedNumber value={223} />
-                          </span>
-                        </div>
-                        <AnimatedProgressBar
-                          value={11}
-                          heightClassName="h-2.5"
-                          durationMs={1100}
-                          trackClassName={
-                            isDark ? "bg-gray-800" : "bg-gray-200"
-                          }
-                          fillClassName={
-                            isDark ? "bg-orange-300" : "bg-orange-600"
-                          }
-                        />
-                      </div>
-
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <span
-                            className={`text-xs font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-600"
-                            }`}
-                          >
-                            Top quartile
-                          </span>
-                          <span
-                            className={`text-sm font-bold ${
-                              isDark ? "text-orange-200" : "text-orange-700"
-                            }`}
-                          >
-                            <AnimatedNumber value={2100} />
-                          </span>
-                        </div>
-                        <AnimatedProgressBar
-                          value={100}
-                          heightClassName="h-2.5"
-                          durationMs={1100}
-                          trackClassName={
-                            isDark ? "bg-gray-800" : "bg-gray-200"
-                          }
-                          fillClassName={
-                            isDark ? "bg-orange-300" : "bg-orange-600"
-                          }
-                        />
-                      </div>
-                    </div>
-                  </div>
+                    These breaches arise from unmanaged or unauthorized AI use.
+                    Without blocking mechanisms, risk surface expands
+                    exponentially.
+                  </p>
                 </div>
               </div>
 
-              {/* 3) Regulatory penalties */}
+              {/* 6) High-level trend */}
               <div
-                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-amber-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
+                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-emerald-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
                   isDark
                     ? "bg-gray-900 border-gray-800"
                     : "bg-white border-gray-200"
@@ -723,9 +613,9 @@ export default function Home() {
                           : "bg-gray-50 border-gray-200"
                       }`}
                     >
-                      <Shield
+                      <ArrowRight
                         className={`w-5 h-5 ${
-                          isDark ? "text-amber-300" : "text-amber-700"
+                          isDark ? "text-emerald-300" : "text-emerald-600"
                         }`}
                       />
                     </div>
@@ -735,14 +625,14 @@ export default function Home() {
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        Regulatory Penalties Are Real
+                        High-Level Trend
                       </h3>
                       <p
                         className={`text-sm ${
                           isDark ? "text-gray-400" : "text-gray-500"
                         }`}
                       >
-                        EU AI Act introduces severe enforcement tools
+                        Adoption + weak controls + strict regulation
                       </p>
                     </div>
                   </div>
@@ -753,132 +643,79 @@ export default function Home() {
                         : "bg-gray-100 text-gray-600 border border-gray-200"
                     }`}
                   >
-                    03
+                    06
                   </span>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-5">
+                  <p
+                    className={`text-base leading-relaxed font-semibold ${
+                      isDark ? "text-emerald-200" : "text-emerald-800"
+                    }`}
+                  >
+                    AI adoption ↑ + weak controls + stricter regulation =
+                    compounding risk curve.
+                  </p>
+
                   <div
-                    className={`rounded-xl border p-4 ${
+                    className={`p-4 rounded-xl border ${
                       isDark
                         ? "bg-gray-950 border-gray-800"
                         : "bg-gray-50 border-gray-200"
                     }`}
                   >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <div
-                          className={`text-xs font-semibold ${
-                            isDark ? "text-gray-200" : "text-gray-800"
-                          }`}
-                        >
-                          Maximum penalty (EU AI Act)
-                        </div>
-                        <div
-                          className={`mt-1 text-xs ${
-                            isDark ? "text-gray-400" : "text-gray-500"
-                          }`}
-                        >
-                          Prohibited practices
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div
-                          className={`text-2xl font-extrabold ${
-                            isDark ? "text-amber-300" : "text-amber-700"
-                          }`}
-                        >
-                          €<AnimatedNumber value={35} />M
-                        </div>
-                        <div
-                          className={`text-xs font-semibold ${
-                            isDark ? "text-amber-200" : "text-amber-700"
-                          }`}
-                        >
-                          or <AnimatedNumber value={7} suffix="%" /> turnover
-                        </div>
-                      </div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span
+                        className={`text-xs font-medium ${
+                          isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        Risk trajectory
+                      </span>
+                      <span
+                        className={`text-xs font-semibold ${
+                          isDark ? "text-emerald-200" : "text-emerald-800"
+                        }`}
+                      >
+                        accelerating
+                      </span>
                     </div>
-                    <div className="mt-4">
-                      <AnimatedProgressBar
-                        value={70}
-                        heightClassName="h-2.5"
-                        durationMs={1000}
-                        trackClassName={isDark ? "bg-gray-800" : "bg-gray-200"}
-                        fillClassName={isDark ? "bg-amber-300" : "bg-amber-600"}
+                    <svg
+                      viewBox="0 0 220 70"
+                      className="w-full h-[70px]"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 60 C 60 55, 85 52, 115 45 C 145 38, 165 30, 210 10"
+                        stroke={isDark ? "#34d399" : "#10b981"}
+                        strokeWidth="4"
+                        strokeLinecap="round"
                       />
-                    </div>
+                      <path
+                        d="M10 60 C 60 55, 85 52, 115 45 C 145 38, 165 30, 210 10"
+                        stroke={isDark ? "#22c55e33" : "#10b98133"}
+                        strokeWidth="10"
+                        strokeLinecap="round"
+                      />
+                      <circle
+                        cx="210"
+                        cy="10"
+                        r="5"
+                        fill={isDark ? "#34d399" : "#10b981"}
+                      />
+                    </svg>
                   </div>
 
-                  <div
-                    className={`rounded-xl border p-4 ${
-                      isDark
-                        ? "bg-gray-950 border-gray-800"
-                        : "bg-gray-50 border-gray-200"
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    <div
-                      className={`text-sm font-semibold ${
-                        isDark ? "text-gray-200" : "text-gray-800"
-                      }`}
-                    >
-                      Other violations (severity-based)
-                    </div>
-
-                    <div className="mt-4 space-y-4">
-                      <div className="grid grid-cols-[auto,1fr] gap-4 items-center">
-                        <div
-                          className={`text-sm ${
-                            isDark ? "text-gray-300" : "text-gray-700"
-                          }`}
-                        >
-                          €<AnimatedNumber value={15} />M (
-                          <AnimatedNumber value={3} suffix="%" />)
-                        </div>
-                        <AnimatedProgressBar
-                          value={45}
-                          heightClassName="h-2.5"
-                          durationMs={1100}
-                          trackClassName={
-                            isDark ? "bg-gray-800" : "bg-gray-200"
-                          }
-                          fillClassName={
-                            isDark ? "bg-amber-300" : "bg-amber-600"
-                          }
-                        />
-                      </div>
-                      <div className="grid grid-cols-[auto,1fr] gap-4 items-center">
-                        <div
-                          className={`text-sm ${
-                            isDark ? "text-gray-300" : "text-gray-700"
-                          }`}
-                        >
-                          €<AnimatedNumber value={7.5} decimals={1} />M (
-                          <AnimatedNumber value={1} suffix="%" />)
-                        </div>
-                        <AnimatedProgressBar
-                          value={22}
-                          heightClassName="h-2.5"
-                          durationMs={1100}
-                          trackClassName={
-                            isDark ? "bg-gray-800" : "bg-gray-200"
-                          }
-                          fillClassName={
-                            isDark ? "bg-amber-300" : "bg-amber-600"
-                          }
-                        />
-                      </div>
-                    </div>
-
-                    <p
-                      className={`mt-4 text-xs leading-relaxed ${
-                        isDark ? "text-gray-400" : "text-gray-600"
-                      }`}
-                    >
-                      These are active enforcement tools, not future
-                      hypotheticals.
-                    </p>
-                  </div>
+                    The convergence of rapid adoption, insufficient controls,
+                    and increasing enforcement creates an exponential risk
+                    trajectory that must be addressed proactively.
+                  </p>
                 </div>
               </div>
             </div>

@@ -210,7 +210,7 @@ export default function Regulatory() {
               </div>
             </div>
 
-            {/* <div>
+            <div>
               <h2
                 className={`text-4xl lg:text-5xl font-bold mb-16 leading-tight ${
                   isDark ? "text-white" : "text-gray-900"
@@ -281,7 +281,7 @@ export default function Regulatory() {
                   </div>
                 ))}
               </div>
-            </div> */}
+            </div>
           </div>
         </section>
 

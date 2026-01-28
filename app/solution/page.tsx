@@ -62,17 +62,18 @@ export default function Solution() {
                   label:
                     "ERP Team lacks Accountability for E2E AI Product Lifecycle",
                 },
-                {
-                  value: 56,
-                  suffix: "%",
-                  label:
-                    "of organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
-                },
+
                 {
                   value: 65,
                   suffix: "%",
                   label:
                     "of consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences.",
+                },
+                {
+                  value: 56,
+                  suffix: "%",
+                  label:
+                    "of organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
                 },
               ].map((stat, index) => (
                 <div
