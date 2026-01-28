@@ -30,10 +30,10 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 border-b backdrop-blur-xl ${
+      className={`fixed top-0 w-full z-50 border-b ${
         isDark
-          ? "bg-gray-950/80 border-white/10"
-          : "bg-white/80 border-gray-200/70 shadow-soft-sm"
+          ? "bg-gray-950 border-white/10"
+          : "bg-white border-gray-200/70 shadow-soft-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
