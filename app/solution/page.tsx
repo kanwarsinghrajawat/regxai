@@ -67,7 +67,7 @@ export default function Solution() {
                   value: 65,
                   suffix: "%",
                   label:
-                    "of consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences.",
+                    "Consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences.",
                 },
                 {
                   value: 56,
