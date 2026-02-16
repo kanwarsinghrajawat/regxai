@@ -54,7 +54,7 @@ export default function Solution() {
                 {
                   value: 95,
                   suffix: "%",
-                  label: "AI initiatives didn&apos;t deliver economic value",
+                  label: "AI initiatives didn't deliver economic value",
                 },
                 {
                   value: 82,
@@ -73,7 +73,7 @@ export default function Solution() {
                   value: 56,
                   suffix: "%",
                   label:
-                    "of organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
+                    "Organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
                 },
               ].map((stat, index) => (
                 <div
