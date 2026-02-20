@@ -12,13 +12,52 @@ import {
   ArrowRight,
   Check,
   TrendingUp,
-  Clock,
-  DollarSign,
 } from "lucide-react";
 import { AppShell } from "./components/AppShell";
 import { useTheme } from "./components/ThemeProvider";
 import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AnimatedProgressBar } from "./components/AnimatedProgressBar";
+import {
+  heroBadge,
+  heroTitleLine1,
+  heroTitleHighlight,
+  heroTitleLine2,
+  heroDescription,
+  heroCtaPrimary,
+  heroCtaSecondary,
+  keyFeaturesBadge,
+  keyFeaturesTitle,
+  keyFeaturesDescription,
+  keyFeaturesList,
+  riskSectionTitle,
+  riskSectionDescription,
+  riskSectionDescriptionMid,
+  riskSectionDescriptionEnd,
+  riskCards,
+  howWeHelpTitle,
+  howWeHelpDescription,
+  howWeHelpList,
+  impactMetricsTitle,
+  impactMetricsSubtitle,
+  impactMetricsItems,
+  whereThisFitsBadge,
+  whereThisFitsTitle,
+  whereThisFitsDescription,
+  whereThisFitsList,
+  ctaTitle,
+  ctaDescription,
+  ctaButton,
+} from "../content/home";
+
+const HOME_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  shield: Shield,
+  fileCheck: FileCheck,
+  target: Target,
+  bot: Bot,
+  messageSquare: MessageSquare,
+  gitBranch: GitBranch,
+  fileText: FileText,
+};
 
 export default function Home() {
   const { isDark } = useTheme();
@@ -51,33 +90,32 @@ export default function Home() {
                 }`}
               >
                 <Target className="w-4 h-4" />
-                Acceptability before capability in AI world
+                {heroBadge}
               </div>
               <h1
                 className={`text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Infrastructure for enforcing{" "}
+                {heroTitleLine1}
                 <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  AI trust
-                </span>{" "}
-                and deterministic decisioning
+                  {heroTitleHighlight}
+                </span>
+                {heroTitleLine2}
               </h1>
               <p
                 className={`text-xl lg:text-2xl mb-10 leading-relaxed max-w-3xl mx-auto font-light ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Determines whether AI actions are responsible and compliant —
-                before agents and models deploy, act, respond, or predict.
+                {heroDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 shadow-lg hover:shadow-xl group"
                 >
-                  Get in Touch
+                  {heroCtaPrimary}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
@@ -88,7 +126,7 @@ export default function Home() {
                       : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                   }`}
                 >
-                  Learn More
+                  {heroCtaSecondary}
                 </Link>
               </div>
             </div>
@@ -108,56 +146,39 @@ export default function Home() {
                 }`}
               >
                 <Shield className="w-4 h-4" />
-                Core capabilities
+                {keyFeaturesBadge}
               </div>
               <h2
                 className={`text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Key Features
+                {keyFeaturesTitle}
               </h2>
               <p
                 className={`text-lg max-w-2xl mx-auto ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Ship agentic AI safely with execution-time controls, auditable
-                decisions, and deterministic enforcement.
+                {keyFeaturesDescription}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {[
-                {
-                  icon: Shield,
-                  title: "Real-time Enforcement",
-                  description:
-                    "Evaluate AI actions before execution to prevent violations and ensure compliance at every step.",
-                  topBar: "from-emerald-500 to-teal-500",
-                  iconBg: isDark ? "bg-emerald-500/15" : "bg-emerald-50",
-                  iconFg: isDark ? "text-emerald-300" : "text-emerald-700",
-                },
-                {
-                  icon: FileCheck,
-                  title: "Immutable Records",
-                  description:
-                    "Every decision is recorded as tamper-evident evidence for audits, reviews, and regulatory inquiries.",
-                  topBar: "from-blue-500 to-cyan-500",
-                  iconBg: isDark ? "bg-blue-500/15" : "bg-blue-50",
-                  iconFg: isDark ? "text-blue-300" : "text-blue-700",
-                },
-                {
-                  icon: Target,
-                  title: "Deterministic Decisions",
-                  description:
-                    "Make risk decidable before it becomes costly, enabling confident production deployment.",
-                  topBar: "from-orange-500 to-amber-500",
-                  iconBg: isDark ? "bg-orange-500/15" : "bg-orange-50",
-                  iconFg: isDark ? "text-orange-300" : "text-orange-700",
-                },
-              ].map((feature, index) => {
-                const Icon = feature.icon;
+              {keyFeaturesList.map((feature, index) => {
+                const Icon = HOME_ICONS[feature.iconKey] ?? Shield;
+                const iconBg =
+                  feature.iconKey === "shield"
+                    ? isDark ? "bg-emerald-500/15" : "bg-emerald-50"
+                    : feature.iconKey === "fileCheck"
+                    ? isDark ? "bg-blue-500/15" : "bg-blue-50"
+                    : isDark ? "bg-orange-500/15" : "bg-orange-50";
+                const iconFg =
+                  feature.iconKey === "shield"
+                    ? isDark ? "text-emerald-300" : "text-emerald-700"
+                    : feature.iconKey === "fileCheck"
+                    ? isDark ? "text-blue-300" : "text-blue-700"
+                    : isDark ? "text-orange-300" : "text-orange-700";
                 return (
                   <div
                     key={index}
@@ -180,9 +201,9 @@ export default function Home() {
                       <div
                         className={`w-12 h-12 rounded-xl flex items-center justify-center border ${
                           isDark ? "border-white/10" : "border-gray-200"
-                        } ${feature.iconBg}`}
+                        } ${iconBg}`}
                       >
-                        <Icon className={`w-6 h-6 ${feature.iconFg}`} />
+                        <Icon className={`w-6 h-6 ${iconFg}`} />
                       </div>
                       <span
                         className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
@@ -303,20 +324,16 @@ export default function Home() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Why AI & Agentic Systems Increase Risk Without Execution Control
+                {riskSectionTitle}
               </h2>
               <p
                 className={`text-lg lg:text-xl max-w-3xl mx-auto mt-6 leading-relaxed ${
                   isDark ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                AI adoption is surging, but responsible-AI maturity lags. Policy
-                violations are doubling and regulators can impose fines up to €
-                <AnimatedNumber value={35} />M or{" "}
-                <AnimatedNumber value={7} suffix="%" /> of turnover. Without the
-                ability to control AI responses at execution time, organizations
-                face rising legal penalties, data exposure, and operational
-                loss.
+                {riskSectionDescription}
+                <AnimatedNumber value={35} />{riskSectionDescriptionMid}
+                <AnimatedNumber value={7} suffix="%" />{riskSectionDescriptionEnd}
               </p>
             </div>
 
@@ -349,14 +366,14 @@ export default function Home() {
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        AI Risk Is Board-Level
+                        {riskCards[0].title}
                       </h3>
                       <p
                         className={`text-sm ${
                           isDark ? "text-gray-400" : "text-gray-500"
                         }`}
                       >
-                        Disclosures make AI risk legally material
+                        {riskCards[0].subtitle}
                       </p>
                     </div>
                   </div>
@@ -367,7 +384,7 @@ export default function Home() {
                         : "bg-gray-100 text-gray-600 border border-gray-200"
                     }`}
                   >
-                    04
+                    {riskCards[0].badge}
                   </span>
                 </div>
 
@@ -386,7 +403,7 @@ export default function Home() {
                           isDark ? "text-gray-400" : "text-gray-500"
                         }`}
                       >
-                        public companies disclosed AI risk (2025)
+                        {riskCards[0].statLabel}
                       </div>
                     </div>
                     <span
@@ -396,7 +413,7 @@ export default function Home() {
                           : "bg-blue-50 text-blue-700 border border-blue-200"
                       }`}
                     >
-                      2025 disclosures
+                      {riskCards[0].statBadge}
                     </span>
                   </div>
 
@@ -405,15 +422,7 @@ export default function Home() {
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    Disclosures increased{" "}
-                    <span className="font-semibold">
-                      <AnimatedNumber value={46} suffix="%" />
-                    </span>{" "}
-                    from 2024 and grew nearly{" "}
-                    <span className="font-semibold">
-                      <AnimatedNumber value={9} suffix="×" />
-                    </span>{" "}
-                    since 2023 — making AI risk legally material.
+                    {riskCards[0].body}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -430,7 +439,7 @@ export default function Home() {
                             isDark ? "text-gray-300" : "text-gray-700"
                           }`}
                         >
-                          YoY growth (2024 → 2025)
+                          {riskCards[0].metric1Label}
                         </span>
                         <span
                           className={`text-sm font-bold ${
@@ -461,7 +470,7 @@ export default function Home() {
                           isDark ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        Growth since 2023
+                        {riskCards[0].metric2Label}
                       </div>
                       <div
                         className={`mt-2 text-3xl font-extrabold ${
@@ -475,7 +484,7 @@ export default function Home() {
                           isDark ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        AI risk is now a board-level and legally material issue.
+                        {riskCards[0].metric2Subtext}
                       </p>
                     </div>
                   </div>
@@ -511,14 +520,14 @@ export default function Home() {
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        Shadow AI Accelerates Failures
+                        {riskCards[1].title}
                       </h3>
                       <p
                         className={`text-sm ${
                           isDark ? "text-gray-400" : "text-gray-500"
                         }`}
                       >
-                        Unmanaged AI expands risk surface exponentially
+                        {riskCards[1].subtitle}
                       </p>
                     </div>
                   </div>
@@ -529,7 +538,7 @@ export default function Home() {
                         : "bg-gray-100 text-gray-600 border border-gray-200"
                     }`}
                   >
-                    05
+                    {riskCards[1].badge}
                   </span>
                 </div>
 
@@ -549,7 +558,7 @@ export default function Home() {
                           : "bg-purple-50 text-purple-700 border border-purple-200"
                       }`}
                     >
-                      by 2030 (Gartner)
+                      {riskCards[1].statBadge}
                     </span>
                   </div>
 
@@ -566,14 +575,14 @@ export default function Home() {
                           isDark ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        Breach risk timeline
+                        {riskCards[1].breachLabel}
                       </span>
                       <span
                         className={`text-xs font-semibold ${
                           isDark ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        2026 → 2030
+                        {riskCards[1].breachRange}
                       </span>
                     </div>
                     <AnimatedProgressBar
@@ -589,9 +598,7 @@ export default function Home() {
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    These breaches arise from unmanaged or unauthorized AI use.
-                    Without blocking mechanisms, risk surface expands
-                    exponentially.
+                    {riskCards[1].body}
                   </p>
                 </div>
               </div>
@@ -625,14 +632,14 @@ export default function Home() {
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        High-Level Trend
+                        {riskCards[2].title}
                       </h3>
                       <p
                         className={`text-sm ${
                           isDark ? "text-gray-400" : "text-gray-500"
                         }`}
                       >
-                        Adoption + weak controls + strict regulation
+                        {riskCards[2].subtitle}
                       </p>
                     </div>
                   </div>
@@ -643,7 +650,7 @@ export default function Home() {
                         : "bg-gray-100 text-gray-600 border border-gray-200"
                     }`}
                   >
-                    06
+                    {riskCards[2].badge}
                   </span>
                 </div>
 
@@ -653,8 +660,7 @@ export default function Home() {
                       isDark ? "text-emerald-200" : "text-emerald-800"
                     }`}
                   >
-                    AI adoption ↑ + weak controls + stricter regulation =
-                    compounding risk curve.
+                    {riskCards[2].trendTitle}
                   </p>
 
                   <div
@@ -670,14 +676,14 @@ export default function Home() {
                           isDark ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        Risk trajectory
+                        {riskCards[2].riskLabel}
                       </span>
                       <span
                         className={`text-xs font-semibold ${
                           isDark ? "text-emerald-200" : "text-emerald-800"
                         }`}
                       >
-                        accelerating
+                        {riskCards[2].riskValue}
                       </span>
                     </div>
                     <svg
@@ -712,9 +718,7 @@ export default function Home() {
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    The convergence of rapid adoption, insufficient controls,
-                    and increasing enforcement creates an exponential risk
-                    trajectory that must be addressed proactively.
+                    {riskCards[2].body}
                   </p>
                 </div>
               </div>
@@ -733,23 +737,17 @@ export default function Home() {
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  How We Help Enterprises
+                  {howWeHelpTitle}
                 </h2>
                 <p
                   className={`text-xl leading-relaxed mb-8 ${
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  We help organizations move AI into production by making risk
-                  decidable before it becomes costly.
+                  {howWeHelpDescription}
                 </p>
                 <ul className="space-y-4">
-                  {[
-                    "Reduce regulatory exposure by evaluating AI actions before they execute",
-                    "Prevent fines and enforcement events through real-time blocking and escalation",
-                    "Unlock ROI from stalled AI initiatives by enabling compliant production deployment",
-                    "Lower governance overhead by replacing manual reviews with deterministic controls",
-                  ].map((item, index) => (
+                  {howWeHelpList.map((item, index) => (
                     <li
                       key={index}
                       className={`flex items-center gap-3 text-lg ${
@@ -794,14 +792,14 @@ export default function Home() {
                             isDark ? "text-white" : "text-gray-900"
                           }`}
                         >
-                          Impact Metrics
+                          {impactMetricsTitle}
                         </h3>
                         <p
                           className={`text-sm mt-1 ${
                             isDark ? "text-gray-400" : "text-gray-600"
                           }`}
                         >
-                          Real-time governance outcomes
+                          {impactMetricsSubtitle}
                         </p>
                       </div>
                       <div
@@ -819,61 +817,26 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="space-y-6">
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <span
-                            className={`text-sm font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-700"
+                      {impactMetricsItems.map((metric, idx) => (
+                        <div key={idx}>
+                          <div className="flex items-center justify-between">
+                            <span
+                              className={`text-sm font-medium ${
+                                isDark ? "text-gray-300" : "text-gray-700"
+                              }`}
+                            >
+                              {metric.label}
+                            </span>
+                          </div>
+                          <p
+                            className={`mt-2 text-sm leading-relaxed ${
+                              isDark ? "text-gray-400" : "text-gray-600"
                             }`}
                           >
-                            Faster Deployment
-                          </span>
+                            {metric.description}
+                          </p>
                         </div>
-                        <p
-                          className={`mt-2 text-sm leading-relaxed ${
-                            isDark ? "text-gray-400" : "text-gray-600"
-                          }`}
-                        >
-                          Move from pilot to production without slowing
-                          delivery.
-                        </p>
-                      </div>
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <span
-                            className={`text-sm font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-700"
-                            }`}
-                          >
-                            Risk Reduction
-                          </span>
-                        </div>
-                        <p
-                          className={`mt-2 text-sm leading-relaxed ${
-                            isDark ? "text-gray-400" : "text-gray-600"
-                          }`}
-                        >
-                          Block unsafe actions before they execute.
-                        </p>
-                      </div>
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <span
-                            className={`text-sm font-medium ${
-                              isDark ? "text-gray-300" : "text-gray-700"
-                            }`}
-                          >
-                            Compliance Rate
-                          </span>
-                        </div>
-                        <p
-                          className={`mt-2 text-sm leading-relaxed ${
-                            isDark ? "text-gray-400" : "text-gray-600"
-                          }`}
-                        >
-                          Stay audit-ready with deterministic enforcement.
-                        </p>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -895,61 +858,43 @@ export default function Home() {
                 }`}
               >
                 <GitBranch className="w-4 h-4" />
-                Deployment coverage
+                {whereThisFitsBadge}
               </div>
               <h2
                 className={`text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Where This Fits
+                {whereThisFitsTitle}
               </h2>
               <p
                 className={`text-lg max-w-2xl mx-auto ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Deploy compliant AI across your entire technology stack.
+                {whereThisFitsDescription}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {[
-                {
-                  icon: Bot,
-                  title: "Autonomous AI Systems",
-                  description: "Agentic AI executing multi-step actions",
-                  topBar: "from-emerald-500 to-teal-500",
-                  iconBg: isDark ? "bg-emerald-500/15" : "bg-emerald-50",
-                  iconFg: isDark ? "text-emerald-300" : "text-emerald-700",
-                },
-                {
-                  icon: MessageSquare,
-                  title: "Enterprise Chatbots",
-                  description: "AI assistants handling customer interactions",
-                  topBar: "from-blue-500 to-cyan-500",
-                  iconBg: isDark ? "bg-blue-500/15" : "bg-blue-50",
-                  iconFg: isDark ? "text-blue-300" : "text-blue-700",
-                },
-                {
-                  icon: GitBranch,
-                  title: "CI/CD Pipelines",
-                  description: "Model deployment and continuous integration",
-                  topBar: "from-orange-500 to-amber-500",
-                  iconBg: isDark ? "bg-orange-500/15" : "bg-orange-50",
-                  iconFg: isDark ? "text-orange-300" : "text-orange-700",
-                },
-                {
-                  icon: FileText,
-                  title: "Regulated Environments",
-                  description:
-                    "AI systems operating under compliance requirements",
-                  topBar: "from-teal-500 to-emerald-500",
-                  iconBg: isDark ? "bg-teal-500/15" : "bg-teal-50",
-                  iconFg: isDark ? "text-teal-300" : "text-teal-700",
-                },
-              ].map((item, index) => {
-                const Icon = item.icon;
+              {whereThisFitsList.map((item, index) => {
+                const Icon = HOME_ICONS[item.iconKey] ?? Shield;
+                const iconBg =
+                  item.iconKey === "bot"
+                    ? isDark ? "bg-emerald-500/15" : "bg-emerald-50"
+                    : item.iconKey === "messageSquare"
+                    ? isDark ? "bg-blue-500/15" : "bg-blue-50"
+                    : item.iconKey === "gitBranch"
+                    ? isDark ? "bg-orange-500/15" : "bg-orange-50"
+                    : isDark ? "bg-teal-500/15" : "bg-teal-50";
+                const iconFg =
+                  item.iconKey === "bot"
+                    ? isDark ? "text-emerald-300" : "text-emerald-700"
+                    : item.iconKey === "messageSquare"
+                    ? isDark ? "text-blue-300" : "text-blue-700"
+                    : item.iconKey === "gitBranch"
+                    ? isDark ? "text-orange-300" : "text-orange-700"
+                    : isDark ? "text-teal-300" : "text-teal-700";
                 return (
                   <div
                     key={index}
@@ -972,9 +917,9 @@ export default function Home() {
                       <div
                         className={`w-12 h-12 rounded-xl flex items-center justify-center border ${
                           isDark ? "border-white/10" : "border-gray-200"
-                        } ${item.iconBg}`}
+                        } ${iconBg}`}
                       >
-                        <Icon className={`w-6 h-6 ${item.iconFg}`} />
+                        <Icon className={`w-6 h-6 ${iconFg}`} />
                       </div>
                       <span
                         className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
@@ -1017,17 +962,16 @@ export default function Home() {
           ></div>
           <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Ready to deploy AI with confidence?
+              {ctaTitle}
             </h2>
             <p className="text-xl text-emerald-50 mb-10 leading-relaxed">
-              Let&apos;s discuss how we can help your organization move from AI
-              experimentation to compliant production.
+              {ctaDescription}
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-600 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
             >
-              Get in Touch
+              {ctaButton}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

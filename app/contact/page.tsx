@@ -6,6 +6,7 @@ import { useTheme } from "../components/ThemeProvider";
 import { useFormReducer } from "../components/hooks/useFormReducer";
 import { validate, validateForm } from "../components/hooks/useFormValidation";
 import { sendEmail } from "../components/hooks/useSendEmail";
+import { twitterUrl, contactEmail } from "../../content/footer";
 
 function XLogo({ className }: { className?: string }) {
   // X (Twitter) brand mark as inline SVG (not the "close" X icon).
@@ -312,14 +313,14 @@ export default function Contact() {
                               Email
                             </div>
                             <a
-                              href="mailto:business@regxai.com"
+                              href={`mailto:${contactEmail}`}
                               className={`mt-1 block text-lg font-extrabold tracking-tight break-all transition-colors ${
                                 isDark
                                   ? "text-white hover:text-emerald-200"
                                   : "text-gray-900 hover:text-emerald-700"
                               }`}
                             >
-                              business@regxai.com
+                              {contactEmail}
                             </a>
                             <div
                               className={`mt-1 text-sm ${
@@ -332,7 +333,7 @@ export default function Contact() {
                         </div>
 
                         <a
-                          href="mailto:business@regxai.com"
+                          href={`mailto:${contactEmail}`}
                           className={`inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-all shadow-soft-sm hover:shadow-soft w-full sm:w-auto ${
                             isDark
                               ? "bg-white/5 hover:bg-white/10 text-gray-100 border border-white/10"
@@ -411,7 +412,7 @@ export default function Contact() {
                       Follow Us
                     </h3>
                     <div className="flex gap-3">
-                      {[{ url: "https://x.com/regX_AI" }].map(
+                      {[{ url: twitterUrl }].map(
                         (social, index) => {
                           return (
                             <a

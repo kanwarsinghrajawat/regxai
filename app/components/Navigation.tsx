@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Shield, Moon, Sun, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { navItems } from "../../content/navigation";
+import { siteName } from "../../content/footer";
 
 interface NavigationProps {
   isDark: boolean;
@@ -13,14 +15,6 @@ interface NavigationProps {
 export function Navigation({ isDark, setIsDark }: NavigationProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { id: "about", label: "About", path: "/" },
-    { id: "solution", label: "Solution", path: "/solution" },
-    { id: "services", label: "Services", path: "/services" },
-    { id: "regulatory", label: "Regulatory", path: "/regulatory" },
-    { id: "contact", label: "Contact", path: "/contact" },
-  ];
 
   const isActive = (path: string) => pathname === path;
 
@@ -48,7 +42,7 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              regX AI
+              {siteName}
             </span>
           </Link>
 

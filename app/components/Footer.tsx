@@ -1,5 +1,14 @@
 import Link from "next/link";
 import { Shield } from "lucide-react";
+import {
+  siteName,
+  footerTagline,
+  footerPages,
+  contactEmail,
+  twitterUrl,
+  copyright,
+  builtForTagline,
+} from "../../content/footer";
 
 interface FooterProps {
   isDark: boolean;
@@ -33,15 +42,14 @@ export function Footer({ isDark }: FooterProps) {
             <Shield className="w-9 h-9 text-emerald-500 mt-0.5" />
             <div className="min-w-0">
               <div className="text-2xl font-extrabold tracking-tight font-display">
-                regX AI
+                {siteName}
               </div>
               <p
                 className={`mt-2 text-sm leading-relaxed max-w-md ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Infrastructure for enforcing AI trust and deterministic
-                decisioning.
+                {footerTagline}
               </p>
             </div>
           </div>
@@ -55,12 +63,7 @@ export function Footer({ isDark }: FooterProps) {
               Pages
             </div>
             <div className="mt-4 grid gap-3 text-sm">
-              {[
-                { href: "/solution", label: "Solution" },
-                { href: "/services", label: "Services" },
-                { href: "/regulatory", label: "Regulatory" },
-                { href: "/contact", label: "Contact" },
-              ].map((item) => (
+              {footerPages.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -86,17 +89,17 @@ export function Footer({ isDark }: FooterProps) {
             </div>
             <div className="mt-4 grid gap-3 text-sm">
               <a
-                href="mailto:business@regxai.com"
+                href={`mailto:${contactEmail}`}
                 className={`transition-colors ${
                   isDark
                     ? "text-gray-400 hover:text-white"
                     : "text-gray-600 hover:text-gray-900"
                 }`}
               >
-                business@regxai.com
+                {contactEmail}
               </a>
               <a
-                href="https://x.com/regX_AI"
+                href={twitterUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`inline-flex items-center gap-2 transition-colors ${
@@ -118,10 +121,8 @@ export function Footer({ isDark }: FooterProps) {
               : "border-gray-200/70 text-gray-500"
           }`}
         >
-          <div>© 2026 regX AI. All rights reserved.</div>
-          <div className="text-xs">
-            Built for responsible deployment of agentic AI.
-          </div>
+          <div>{copyright}</div>
+          <div className="text-xs">{builtForTagline}</div>
         </div>
       </div>
     </footer>
