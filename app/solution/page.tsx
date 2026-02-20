@@ -777,7 +777,7 @@ export default function Solution() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-600 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-800 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
             >
               Get in Touch
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

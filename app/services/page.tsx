@@ -173,7 +173,7 @@ export default function Services() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl group bg-emerald-600 text-white hover:bg-emerald-700"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl group bg-emerald-700 text-white hover:bg-emerald-800"
               >
                 Get in Touch
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

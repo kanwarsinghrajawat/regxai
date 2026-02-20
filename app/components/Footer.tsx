@@ -102,6 +102,7 @@ export function Footer({ isDark }: FooterProps) {
                 href={twitterUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Follow regX AI on X (Twitter)"
                 className={`inline-flex items-center gap-2 transition-colors ${
                   isDark
                     ? "text-gray-400 hover:text-white"

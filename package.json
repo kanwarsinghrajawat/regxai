@@ -2,12 +2,19 @@
   "name": "regx-ai-nextjs",
   "version": "0.1.0",
   "private": true,
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "generate-favicon": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
@@ -16,9 +23,6 @@
     "nodemailer": "^7.0.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
-  },
-  "scripts": {
-    "generate-favicon": "node scripts/generate-favicon.mjs"
   },
   "devDependencies": {
     "@types/node": "^20.14.12",

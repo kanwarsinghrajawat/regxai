@@ -31,6 +31,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 const siteUrl = getSiteUrl();
+// Absolute URL required by Twitter/X crawler (relative URLs often show blank)
+const ogImageAbsoluteUrl = `${siteUrl}${OG_IMAGE_PATH}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -62,7 +64,7 @@ export const metadata: Metadata = {
     description: OG_DESCRIPTION,
     images: [
       {
-        url: OG_IMAGE_PATH,
+        url: ogImageAbsoluteUrl,
         width: 1200,
         height: 630,
         alt: 'regX AI - Infrastructure for enforcing AI trust',
@@ -73,7 +75,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: OG_TITLE,
     description: OG_DESCRIPTION,
-    images: [OG_IMAGE_PATH],
+    images: ogImageAbsoluteUrl,
     creator: '@regxai',
   },
   robots: {

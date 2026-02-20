@@ -3,7 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
-    // Remove console.log in production
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
   images: {
@@ -14,8 +13,25 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
-  // Target modern browsers to reduce legacy JavaScript
   transpilePackages: [],
+  // Tree-shake large packages to reduce JS bundle (fewer polyfills in critical path)
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+  // Long cache for hashed static assets (reduces repeat-visit critical path)
+  async headers() {
+    return [
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

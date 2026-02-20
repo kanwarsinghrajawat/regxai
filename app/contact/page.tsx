@@ -256,7 +256,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={state.isSubmitting}
-                    className={`w-full px-6 py-3.5 bg-emerald-600 text-white rounded-xl font-semibold transition-all duration-200 shadow-soft-sm hover:shadow-soft ${
+                    className={`w-full px-6 py-3.5 bg-emerald-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-soft-sm hover:shadow-soft ${
                       state.isSubmitting
                         ? "opacity-50 cursor-not-allowed"
                         : "hover:bg-emerald-700"
@@ -390,7 +390,7 @@ export default function Contact() {
                           className={`inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-all shadow-soft-sm hover:shadow-soft w-full sm:w-auto ${
                             isDark
                               ? "bg-emerald-500/15 hover:bg-emerald-500/20 text-emerald-100 border border-emerald-500/20"
-                              : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                              : "bg-emerald-700 hover:bg-emerald-800 text-white"
                           }`}
                         >
                           Schedule your call
@@ -420,6 +420,7 @@ export default function Contact() {
                               href={social.url}
                               target="_blank"
                               rel="noopener noreferrer"
+                              aria-label="Follow regX AI on X (Twitter)"
                               className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 duration-200 ${
                                 isDark
                                   ? "bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white"
