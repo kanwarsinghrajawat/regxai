@@ -7,12 +7,14 @@ import {
   titleTemplate,
   defaultDescription,
   keywords,
-  ogTitle,
-  ogDescription,
   siteName,
   getSiteUrl,
 } from '../content/metadata';
 import './globals.css';
+
+const OG_IMAGE_PATH = '/5.jpg';
+const OG_TITLE = 'regX AI | Infrastructure for enforcing AI trust';
+const OG_DESCRIPTION = 'Infrastructure for enforcing AI trust and compliance.';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -41,6 +43,11 @@ export const metadata: Metadata = {
   authors: [{ name: siteName }],
   creator: siteName,
   publisher: siteName,
+  icons: {
+    icon: [{ url: OG_IMAGE_PATH, type: 'image/jpeg' }],
+    shortcut: OG_IMAGE_PATH,
+    apple: OG_IMAGE_PATH,
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -51,16 +58,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName,
-    title: ogTitle,
-    description: ogDescription,
-    // opengraph-image.tsx is used automatically; no static image override
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: [
+      {
+        url: OG_IMAGE_PATH,
+        width: 1200,
+        height: 630,
+        alt: 'regX AI - Infrastructure for enforcing AI trust',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: ogTitle,
-    description: ogDescription,
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: [OG_IMAGE_PATH],
     creator: '@regxai',
-    // twitter-image from opengraph-image.tsx is used automatically
   },
   robots: {
     index: true,
@@ -86,11 +100,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <StructuredData />
       </head>
       <body
