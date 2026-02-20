@@ -5,7 +5,7 @@ export const heroTitleLine2 = " and deterministic decisioning";
 export const heroDescription =
   "Determines whether AI actions are responsible and compliant — before agents and models deploy, act, respond, or predict.";
 export const heroCtaPrimary = "Get in Touch";
-export const heroCtaSecondary = "Learn More";
+export const heroCtaSecondary = "Learn more about our solution";
 
 export const keyFeaturesBadge = "Core capabilities";
 export const keyFeaturesTitle = "Key Features";
