@@ -5,24 +5,25 @@ export const problemStats = [
     value: 84,
     suffix: "%",
     label:
-      "of surveyed organisations expect independent AI audits to become required in the near term. Implication: audits are seen as inevitable — but most orgs aren’t yet audit-ready (controls, logs, reproducible evals). Quick fix: start producing audit-ready artifacts now: versioned code/data, evaluation notebooks, decision logs and an evidence map.",
+      "of organizations expect mandatory AI audits soon—yet most lack audit-ready controls, logs, and reproducible evidence. Start now: versioned code and data, evaluation notebooks, decision logs, and an evidence map.",
   },
   {
     value: 82,
     suffix: "%",
-    label: "ERP Team lacks Accountability for E2E AI Product Lifecycle",
+    label:
+      "of teams lack clear accountability for the end-to-end AI product lifecycle, from design to deployment.",
   },
   {
     value: 65,
     suffix: "%",
     label:
-      "Consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences.",
+      "of consumers have already lost trust in a company due to AI misuse or poor automated customer experiences.",
   },
   {
     value: 56,
     suffix: "%",
     label:
-      "Organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
+      "of organizations have no formal governance framework for generative AI risks (bias, hallucinations, IP leakage).",
   },
 ];
 

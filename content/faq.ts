@@ -105,7 +105,7 @@ export const faqs: FaqItem[] = [
   {
     id: "certification-auditability",
     q: "Do you offer certification? Is the system auditable?",
-    a: "We do not create or certify against new standards. We help organizations comply with existing law. Because our gateway is designed to align directly with applicable legislation, no separate third-party certification is required—legal requirements take precedence over private certifications. For audits, we maintain secure, tamper-evident records tied to each relevant legal provision. These records can be shared with you or any authorized auditor when needed.",
+    a: "We do not create or certify against new standards. We help organizations comply with existing law.\n\nOur gateway is designed to align directly with applicable legislation, so no separate third-party certification is required—legal requirements take precedence over private certifications.\n\nFor audits, we maintain secure, tamper-evident records tied to each relevant legal provision. These records can be shared with you or any authorized auditor when needed.",
     category: "compliance",
     link: { href: "/regulatory", label: "Regulatory approach" },
   },
@@ -121,7 +121,7 @@ export const faqs: FaqItem[] = [
   {
     id: "conformity-assessment",
     q: "Can you generate regulator-ready documentation? If a regulator (e.g. BaFin) audits us, how does your system support us?",
-    a: "We provide artifacts generated from runtime execution—including decisions such as Allow, Block, and Human-in-the-loop—that support your existing evidence and conformity documentation. These outputs are designed to complement your conformity assessment process rather than replace it.",
+    a: "We provide artifacts generated from runtime execution-including decisions such as Allow, Block, and Human-in-the-loop-that support your existing evidence and conformity documentation. These outputs are designed to complement your conformity assessment process rather than replace it.",
     category: "compliance",
     link: { href: "/regulatory", label: "Compliance evidence" },
   },

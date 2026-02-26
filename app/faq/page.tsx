@@ -164,13 +164,15 @@ export default function FaqPage() {
                             >
                               {item.q}
                             </h3>
-                            <p
-                              className={`mt-3 text-base leading-relaxed ${
+                            <div
+                              className={`mt-3 text-base leading-relaxed space-y-3 ${
                                 isDark ? "text-gray-400" : "text-gray-600"
                               }`}
                             >
-                              {item.a}
-                            </p>
+                              {item.a.split(/\n\n+/).map((paragraph, i) => (
+                                <p key={i}>{paragraph}</p>
+                              ))}
+                            </div>
                             {item.link && (
                               <Link
                                 href={item.link.href}

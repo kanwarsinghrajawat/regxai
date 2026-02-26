@@ -89,13 +89,15 @@ export function FaqSection({ isDark }: { isDark: boolean }) {
               </summary>
 
               <div className="px-6 pb-6">
-                <p
-                  className={`text-base leading-relaxed ${
+                <div
+                  className={`text-base leading-relaxed space-y-3 ${
                     isDark ? "text-gray-300" : "text-gray-600"
                   }`}
                 >
-                  {item.a}
-                </p>
+                  {item.a.split(/\n\n+/).map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </details>
           ))}

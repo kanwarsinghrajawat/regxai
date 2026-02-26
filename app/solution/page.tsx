@@ -17,6 +17,7 @@ import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
 import { AnimatedNumber } from "../components/AnimatedNumber";
 import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
+import { problemStats } from "../../content/solution";
 
 export default function Solution() {
   const { isDark } = useTheme();
@@ -49,56 +50,30 @@ export default function Solution() {
                 The Problem
               </h1>
             </div>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  value: 84,
-                  suffix: "%",
-                  label:
-                    "of surveyed organisations expect independent AI audits to become required in the near term. Implication: audits are seen as inevitable — but most orgs aren’t yet audit-ready (controls, logs, reproducible evals). Quick fix: start producing audit-ready artifacts now: versioned code/data, evaluation notebooks, decision logs and an evidence map.",
-                },
-                {
-                  value: 82,
-                  suffix: "%",
-                  label:
-                    "ERP Team lacks Accountability for E2E AI Product Lifecycle",
-                },
-
-                {
-                  value: 65,
-                  suffix: "%",
-                  label:
-                    "Consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences.",
-                },
-                {
-                  value: 56,
-                  suffix: "%",
-                  label:
-                    "Organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
-                },
-              ].map((stat, index) => (
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {problemStats.map((stat, index) => (
                 <div
                   key={index}
-                  className={`p-8 rounded-xl transition-all duration-300 hover:scale-[1.02] flex flex-col ${
+                  className={`flex flex-col rounded-2xl border p-6 min-h-[240px] transition-all duration-200 ${
                     isDark
-                      ? "bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 hover:border-emerald-500/50 hover:bg-gray-800/80"
-                      : "bg-white/95 backdrop-blur-sm border border-gray-200/80 hover:border-emerald-400 shadow-md hover:shadow-lg"
+                      ? "border-gray-700/60 bg-gray-800/50 hover:border-gray-600 hover:bg-gray-800/70"
+                      : "border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md"
                   }`}
                 >
                   <div
-                    className={`text-6xl lg:text-7xl font-bold mb-5 leading-none ${
+                    className={`text-4xl lg:text-5xl font-bold leading-none tabular-nums mb-4 ${
                       isDark ? "text-emerald-400" : "text-emerald-600"
                     }`}
                   >
                     <AnimatedNumber value={stat.value} suffix={stat.suffix} />
                   </div>
-                  <div
-                    className={`text-[15px] leading-relaxed ${
-                      isDark ? "text-gray-300" : "text-gray-700"
+                  <p
+                    className={`text-sm leading-relaxed flex-1 min-h-0 ${
+                      isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
                     {stat.label}
-                  </div>
+                  </p>
                 </div>
               ))}
             </div>
