@@ -1,14 +1,23 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { ChevronDown, ArrowRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 import {
   faqs,
   faqSectionBadge,
   faqSectionTitle,
   faqSectionSubtitle,
+  faqTeaserCount,
+  faqPageCta,
 } from "../../content/faq";
 
+const teaserFaqs = faqs.slice(0, faqTeaserCount);
+
 export function FaqSection({ isDark }: { isDark: boolean }) {
+  const pathname = usePathname();
+  if (pathname === "/faq" || pathname === "/terms") return null;
+
   return (
     <section
       className={`py-20 lg:py-28 border-t ${
@@ -41,9 +50,9 @@ export function FaqSection({ isDark }: { isDark: boolean }) {
         </div>
 
         <div className="mt-10 grid gap-4">
-          {faqs.map((item, idx) => (
+          {teaserFaqs.map((item, idx) => (
             <details
-              key={item.q}
+              key={item.id}
               className={`group rounded-2xl border transition-all duration-300 ${
                 isDark
                   ? "bg-gray-900/50 border-white/10 hover:border-emerald-500/25"
@@ -90,6 +99,20 @@ export function FaqSection({ isDark }: { isDark: boolean }) {
               </div>
             </details>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-start">
+          <Link
+            href="/faq"
+            className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+              isDark
+                ? "text-emerald-300 hover:text-emerald-200 hover:bg-white/5"
+                : "text-emerald-700 hover:text-emerald-800 hover:bg-emerald-500/10"
+            }`}
+          >
+            {faqPageCta}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

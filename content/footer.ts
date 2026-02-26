@@ -3,12 +3,14 @@ export const siteName = "regX AI";
 export const footerTagline =
   "Infrastructure for enforcing AI trust and deterministic decisioning.";
 
-export const footerPages = [
+export const footerPages: { href: string; label: string }[] = [
   { href: "/solution", label: "Solution" },
   { href: "/services", label: "Services" },
   { href: "/regulatory", label: "Regulatory" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/terms", label: "Terms & Conditions" },
   { href: "/contact", label: "Contact" },
-] as const;
+];
 
 export const contactEmail = "business@regxai.com";
 

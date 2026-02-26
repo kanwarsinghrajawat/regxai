@@ -4,8 +4,17 @@ import { useState } from "react";
 import { Shield, Moon, Sun, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navItems } from "../../content/navigation";
 import { siteName } from "../../content/footer";
+
+// Inline list to avoid server/client hydration mismatch (same as content/navigation.ts)
+const NAV_ITEMS: { id: string; label: string; path: string }[] = [
+  { id: "about", label: "About", path: "/" },
+  { id: "solution", label: "Solution", path: "/solution" },
+  { id: "services", label: "Services", path: "/services" },
+  { id: "regulatory", label: "Regulatory", path: "/regulatory" },
+  { id: "faq", label: "FAQ", path: "/faq" },
+  { id: "contact", label: "Contact", path: "/contact" },
+];
 
 interface NavigationProps {
   isDark: boolean;
@@ -47,7 +56,7 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
           </Link>
 
           <div className="hidden lg:flex items-center gap-12">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.id}
                 href={item.path}
@@ -132,7 +141,7 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
       >
         <div className="flex flex-col h-[calc(100vh-80px)] overflow-y-auto">
           <div className="flex flex-col px-6 py-8 space-y-4">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.id}
                 href={item.path}

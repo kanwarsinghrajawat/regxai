@@ -52,9 +52,10 @@ export default function Solution() {
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  value: 95,
+                  value: 84,
                   suffix: "%",
-                  label: "AI initiatives didn't deliver economic value",
+                  label:
+                    "of surveyed organisations expect independent AI audits to become required in the near term. Implication: audits are seen as inevitable — but most orgs aren’t yet audit-ready (controls, logs, reproducible evals). Quick fix: start producing audit-ready artifacts now: versioned code/data, evaluation notebooks, decision logs and an evidence map.",
                 },
                 {
                   value: 82,

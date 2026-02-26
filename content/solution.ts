@@ -1,10 +1,29 @@
 export const problemTitle = "The Problem";
 
 export const problemStats = [
-  { value: 95, suffix: "%", label: "AI initiatives didn't deliver economic value" },
-  { value: 82, suffix: "%", label: "ERP Team lacks Accountability for E2E AI Product Lifecycle" },
-  { value: 65, suffix: "%", label: "Consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences." },
-  { value: 56, suffix: "%", label: "Organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage)." },
+  {
+    value: 84,
+    suffix: "%",
+    label:
+      "of surveyed organisations expect independent AI audits to become required in the near term. Implication: audits are seen as inevitable — but most orgs aren’t yet audit-ready (controls, logs, reproducible evals). Quick fix: start producing audit-ready artifacts now: versioned code/data, evaluation notebooks, decision logs and an evidence map.",
+  },
+  {
+    value: 82,
+    suffix: "%",
+    label: "ERP Team lacks Accountability for E2E AI Product Lifecycle",
+  },
+  {
+    value: 65,
+    suffix: "%",
+    label:
+      "Consumers say they have already lost trust in an organization due to its misuse of AI or poor automated customer service experiences.",
+  },
+  {
+    value: 56,
+    suffix: "%",
+    label:
+      "Organizations admit they do not have a formal governance framework in place to manage Generative AI risks (bias, hallucinations, IP leakage).",
+  },
 ];
 
 export const ourSolutionTitle = "Our Solution";
@@ -50,10 +69,26 @@ export const solutionHowWeHelpList = [
 
 export const enterpriseImpactTitle = "Enterprise Impact Metrics";
 export const enterpriseMetrics = [
-  { label: "Risk Reduction", description: "Reduce exposure with execution-time controls.", iconKey: "shield" as const },
-  { label: "Faster Deployment", description: "Ship to production with confidence.", iconKey: "clock" as const },
-  { label: "Cost Savings", description: "Replace manual review with deterministic enforcement.", iconKey: "trendingUp" as const },
-  { label: "Compliance Rate", description: "Stay audit-ready by default.", iconKey: "checkCircle" as const },
+  {
+    label: "Risk Reduction",
+    description: "Reduce exposure with execution-time controls.",
+    iconKey: "shield" as const,
+  },
+  {
+    label: "Faster Deployment",
+    description: "Ship to production with confidence.",
+    iconKey: "clock" as const,
+  },
+  {
+    label: "Cost Savings",
+    description: "Replace manual review with deterministic enforcement.",
+    iconKey: "trendingUp" as const,
+  },
+  {
+    label: "Compliance Rate",
+    description: "Stay audit-ready by default.",
+    iconKey: "checkCircle" as const,
+  },
 ];
 export const roiLabel = "ROI";
 export const roiDescription =
@@ -67,7 +102,8 @@ export const useCaseDistributionItems = [
   { label: "Regulated Environments", color: "orange" as const },
 ];
 export const useCaseCoveredLabel = "Covered";
-export const useCaseBroadCoverageTitle = "Broad coverage across enterprise AI workflows.";
+export const useCaseBroadCoverageTitle =
+  "Broad coverage across enterprise AI workflows.";
 export const useCaseBroadCoverageDescription =
   "Designed to apply across model deployment, inference, and production execution.";
 
