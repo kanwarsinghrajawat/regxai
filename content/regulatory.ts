@@ -16,8 +16,8 @@ export const frameworksList = [
     iconKey: "shield" as const,
   },
   {
-    name: "U.S. Federal & State Guidelines ",
-    description: "sector-specific and guidance-driven enforcement",
+    name: "U.S. Federal & State Guidelines",
+    description: "Sector-specific and guidance-driven enforcement.",
     iconKey: "checkCircle" as const,
   },
   {
@@ -34,13 +34,13 @@ export const frameworksList = [
   },
   {
     name: "India DPDP Act",
-    description: "data-protection law impacting AI data usage",
+    description: "Data-protection law impacting AI data usage.",
     iconKey: "checkCircle" as const,
   },
   {
     name: "Framework Convention on AI",
     description:
-      "international treaty aligning AI with human-rights principles",
+      "International treaty aligning AI with human-rights principles.",
     iconKey: "checkCircle" as const,
   },
 ];

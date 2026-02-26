@@ -93,7 +93,7 @@ export default function Home() {
                 {heroBadge}
               </div>
               <h1
-                className={`text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight ${
+                className={`text-4xl lg:text-5xl xl:text-6xl font-semibold mb-6 leading-tight tracking-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
@@ -104,7 +104,7 @@ export default function Home() {
                 {heroTitleLine2}
               </h1>
               <p
-                className={`text-xl lg:text-2xl mb-10 leading-relaxed max-w-3xl mx-auto font-light ${
+                className={`text-lg lg:text-xl mb-10 leading-relaxed max-w-3xl mx-auto font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
@@ -149,7 +149,7 @@ export default function Home() {
                 {keyFeaturesBadge}
               </div>
               <h2
-                className={`text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 ${
+                className={`text-3xl lg:text-4xl font-semibold tracking-tight mb-4 ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
@@ -167,49 +167,30 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {keyFeaturesList.map((feature, index) => {
                 const Icon = HOME_ICONS[feature.iconKey] ?? Shield;
-                const iconBg =
-                  feature.iconKey === "shield"
-                    ? isDark ? "bg-emerald-500/15" : "bg-emerald-50"
-                    : feature.iconKey === "fileCheck"
-                    ? isDark ? "bg-blue-500/15" : "bg-blue-50"
-                    : isDark ? "bg-orange-500/15" : "bg-orange-50";
-                const iconFg =
-                  feature.iconKey === "shield"
-                    ? isDark ? "text-emerald-300" : "text-emerald-700"
-                    : feature.iconKey === "fileCheck"
-                    ? isDark ? "text-blue-300" : "text-blue-700"
-                    : isDark ? "text-orange-300" : "text-orange-700";
                 return (
                   <div
                     key={index}
-                    className={`group relative overflow-hidden rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                    className={`group relative overflow-hidden rounded-2xl border border-l-4 p-8 transition-all duration-200 ${
                       isDark
-                        ? "bg-gray-900/60 border-white/10"
-                        : "bg-white border-gray-200 shadow-sm"
+                        ? "bg-gray-900/80 border-gray-700 border-l-emerald-500"
+                        : "bg-white/90 border-gray-200 border-l-emerald-500"
                     }`}
                   >
-                    <div
-                      className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${feature.topBar}`}
-                    ></div>
-                    <div
-                      className={`absolute -top-24 -right-24 h-56 w-56 rounded-full blur-3xl opacity-60 group-hover:opacity-90 transition-opacity ${
-                        isDark ? "bg-white/10" : "bg-gray-200/60"
-                      }`}
-                    ></div>
-
                     <div className="flex items-start justify-between gap-4">
                       <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center border ${
-                          isDark ? "border-white/10" : "border-gray-200"
-                        } ${iconBg}`}
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                          isDark ? "bg-emerald-500/20" : "bg-emerald-50"
+                        }`}
                       >
-                        <Icon className={`w-6 h-6 ${iconFg}`} />
+                        <Icon
+                          className={`w-6 h-6 ${
+                            isDark ? "text-emerald-400" : "text-emerald-600"
+                          }`}
+                        />
                       </div>
                       <span
-                        className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                          isDark
-                            ? "bg-white/5 text-gray-300 border border-white/10"
-                            : "bg-gray-50 text-gray-600 border border-gray-200"
+                        className={`text-[11px] uppercase tracking-widest font-medium ${
+                          isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
                       >
                         0{index + 1}
@@ -217,7 +198,7 @@ export default function Home() {
                     </div>
 
                     <h3
-                      className={`text-2xl font-bold mt-6 mb-3 ${
+                      className={`text-xl font-semibold mt-6 mb-3 ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -252,7 +233,7 @@ export default function Home() {
           ></div>
           <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
             <div className="mb-16">
-              <h2 className="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight tracking-tight">
+              <h2 className="text-3xl lg:text-4xl font-semibold mb-4 leading-tight tracking-tight">
                 The Challenge
               </h2>
             </div>
@@ -286,7 +267,7 @@ export default function Home() {
                   <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-emerald-500/10 blur-3xl transition-opacity duration-300 group-hover:opacity-100 opacity-70"></div>
 
                   <div className="flex items-start justify-between gap-3">
-                    <div className="text-5xl lg:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent leading-none">
+                    <div className="text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent leading-none">
                       <AnimatedNumber value={stat.value} suffix="%" />
                     </div>
                     <div className="mt-1 h-9 w-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xs font-semibold text-gray-200">
@@ -320,7 +301,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center mb-14">
               <h2
-                className={`text-4xl lg:text-5xl font-bold tracking-tight leading-tight ${
+                className={`text-3xl lg:text-4xl font-semibold tracking-tight leading-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
@@ -338,147 +319,131 @@ export default function Home() {
             </div>
 
             <div className="no-scrollbar flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0">
+              {/* Card 1: AI Risk Is Board-Level */}
               <div
-                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-blue-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
+                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border pl-8 pr-8 py-8 transition-all duration-200 ${
                   isDark
-                    ? "bg-gray-900 border-gray-800"
-                    : "bg-white border-gray-200"
+                    ? "bg-gray-900/80 border-gray-700 border-l-4 border-l-emerald-500"
+                    : "bg-white/90 border-gray-200 border-l-4 border-l-emerald-500"
                 }`}
               >
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center border ${
-                        isDark
-                          ? "bg-gray-800 border-gray-700"
-                          : "bg-gray-50 border-gray-200"
-                      }`}
-                    >
-                      <FileText
-                        className={`w-5 h-5 ${
-                          isDark ? "text-blue-300" : "text-blue-600"
-                        }`}
-                      />
-                    </div>
-                    <div>
-                      <h3
-                        className={`text-lg font-bold ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        {riskCards[0].title}
-                      </h3>
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-gray-400" : "text-gray-500"
-                        }`}
-                      >
-                        {riskCards[0].subtitle}
-                      </p>
-                    </div>
-                  </div>
-                  <span
-                    className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                      isDark
-                        ? "bg-gray-800 text-gray-300 border border-gray-700"
-                        : "bg-gray-100 text-gray-600 border border-gray-200"
+                <div className="flex items-start gap-4 mb-8">
+                  <div
+                    className={`flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center ${
+                      isDark ? "bg-emerald-500/20" : "bg-emerald-50"
                     }`}
                   >
-                    {riskCards[0].badge}
-                  </span>
+                    <FileText
+                      className={`w-4 h-4 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p
+                      className={`text-[11px] uppercase tracking-widest font-medium mb-0.5 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    >
+                      {riskCards[0].badge}
+                    </p>
+                    <h3
+                      className={`text-lg font-semibold tracking-tight ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {riskCards[0].title}
+                    </h3>
+                    <p
+                      className={`text-sm mt-0.5 ${
+                        isDark ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      {riskCards[0].subtitle}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="space-y-6">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <div
-                        className={`text-5xl font-extrabold tracking-tight ${
-                          isDark ? "text-blue-300" : "text-blue-600"
-                        }`}
-                      >
-                        <AnimatedNumber value={418} suffix="+" />
-                      </div>
-                      <div
-                        className={`text-xs mt-1 ${
-                          isDark ? "text-gray-400" : "text-gray-500"
-                        }`}
-                      >
-                        {riskCards[0].statLabel}
-                      </div>
-                    </div>
-                    <span
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                        isDark
-                          ? "bg-blue-500/15 text-blue-200 border border-blue-500/20"
-                          : "bg-blue-50 text-blue-700 border border-blue-200"
+                  <div>
+                    <p
+                      className={`text-4xl font-semibold tracking-tight tabular-nums ${
+                        isDark ? "text-emerald-300" : "text-emerald-700"
+                      }`}
+                    >
+                      <AnimatedNumber value={418} suffix="+" />
+                    </p>
+                    <p
+                      className={`text-xs mt-1.5 ${
+                        isDark ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      {riskCards[0].statLabel}
+                    </p>
+                    <p
+                      className={`text-xs mt-0.5 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
                       {riskCards[0].statBadge}
-                    </span>
+                    </p>
                   </div>
 
                   <p
                     className={`text-sm leading-relaxed ${
-                      isDark ? "text-gray-300" : "text-gray-700"
+                      isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
                     {riskCards[0].body}
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div
-                      className={`rounded-xl border p-4 ${
-                        isDark
-                          ? "bg-gray-950 border-gray-800"
-                          : "bg-gray-50 border-gray-200"
+                      className={`rounded-lg p-4 ${
+                        isDark ? "bg-emerald-500/10" : "bg-emerald-50/80"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <span
-                          className={`text-xs font-semibold ${
-                            isDark ? "text-gray-300" : "text-gray-700"
-                          }`}
-                        >
-                          {riskCards[0].metric1Label}
-                        </span>
-                        <span
-                          className={`text-sm font-bold ${
-                            isDark ? "text-blue-300" : "text-blue-600"
-                          }`}
-                        >
-                          <AnimatedNumber value={46} prefix="+" suffix="%" />
-                        </span>
-                      </div>
+                      <p
+                        className={`text-xs font-medium mb-2 ${
+                          isDark ? "text-gray-300" : "text-gray-600"
+                        }`}
+                      >
+                        {riskCards[0].metric1Label}
+                      </p>
+                      <p
+                        className={`text-xl font-semibold tabular-nums ${
+                          isDark ? "text-emerald-300" : "text-emerald-700"
+                        }`}
+                      >
+                        <AnimatedNumber value={46} prefix="+" suffix="%" />
+                      </p>
                       <AnimatedProgressBar
                         value={46}
-                        heightClassName="h-2.5"
+                        heightClassName="h-1.5"
                         durationMs={1100}
-                        trackClassName={isDark ? "bg-gray-800" : "bg-gray-200"}
-                        fillClassName={isDark ? "bg-blue-400" : "bg-blue-600"}
+                        trackClassName={isDark ? "bg-emerald-900/40" : "bg-emerald-200"}
+                        fillClassName={isDark ? "bg-emerald-400" : "bg-emerald-600"}
                       />
                     </div>
-
                     <div
-                      className={`rounded-xl border p-4 ${
-                        isDark
-                          ? "bg-gray-950 border-gray-800"
-                          : "bg-gray-50 border-gray-200"
+                      className={`rounded-lg p-4 ${
+                        isDark ? "bg-emerald-500/10" : "bg-emerald-50/80"
                       }`}
                     >
-                      <div
-                        className={`text-xs font-semibold ${
-                          isDark ? "text-gray-300" : "text-gray-700"
+                      <p
+                        className={`text-xs font-medium ${
+                          isDark ? "text-gray-300" : "text-gray-600"
                         }`}
                       >
                         {riskCards[0].metric2Label}
-                      </div>
-                      <div
-                        className={`mt-2 text-3xl font-extrabold ${
-                          isDark ? "text-blue-200" : "text-blue-700"
+                      </p>
+                      <p
+                        className={`text-xl font-semibold tabular-nums mt-1 ${
+                          isDark ? "text-emerald-300" : "text-emerald-700"
                         }`}
                       >
                         <AnimatedNumber value={9} suffix="×" />
-                      </div>
+                      </p>
                       <p
                         className={`mt-2 text-xs leading-relaxed ${
                           isDark ? "text-gray-400" : "text-gray-600"
@@ -491,111 +456,99 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* 5) Shadow AI */}
+              {/* Card 2: Shadow AI */}
               <div
-                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-purple-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
+                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border pl-8 pr-8 py-8 transition-all duration-200 ${
                   isDark
-                    ? "bg-gray-900 border-gray-800"
-                    : "bg-white border-gray-200"
+                    ? "bg-gray-900/80 border-gray-700 border-l-4 border-l-emerald-500"
+                    : "bg-white/90 border-gray-200 border-l-4 border-l-emerald-500"
                 }`}
               >
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center border ${
-                        isDark
-                          ? "bg-gray-800 border-gray-700"
-                          : "bg-gray-50 border-gray-200"
-                      }`}
-                    >
-                      <Bot
-                        className={`w-5 h-5 ${
-                          isDark ? "text-purple-300" : "text-purple-600"
-                        }`}
-                      />
-                    </div>
-                    <div>
-                      <h3
-                        className={`text-lg font-bold ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        {riskCards[1].title}
-                      </h3>
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-gray-400" : "text-gray-500"
-                        }`}
-                      >
-                        {riskCards[1].subtitle}
-                      </p>
-                    </div>
-                  </div>
-                  <span
-                    className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                      isDark
-                        ? "bg-gray-800 text-gray-300 border border-gray-700"
-                        : "bg-gray-100 text-gray-600 border border-gray-200"
+                <div className="flex items-start gap-4 mb-8">
+                  <div
+                    className={`flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center ${
+                      isDark ? "bg-emerald-500/20" : "bg-emerald-50"
                     }`}
                   >
-                    {riskCards[1].badge}
-                  </span>
+                    <Bot
+                      className={`w-4 h-4 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p
+                      className={`text-[11px] uppercase tracking-widest font-medium mb-0.5 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    >
+                      {riskCards[1].badge}
+                    </p>
+                    <h3
+                      className={`text-lg font-semibold tracking-tight ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {riskCards[1].title}
+                    </h3>
+                    <p
+                      className={`text-sm mt-0.5 ${
+                        isDark ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      {riskCards[1].subtitle}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="space-y-5">
-                  <div className="flex items-end justify-between">
-                    <div
-                      className={`text-5xl font-extrabold tracking-tight ${
-                        isDark ? "text-purple-300" : "text-purple-600"
+                <div className="space-y-6">
+                  <div>
+                    <p
+                      className={`text-4xl font-semibold tracking-tight tabular-nums ${
+                        isDark ? "text-emerald-300" : "text-emerald-700"
                       }`}
                     >
                       <AnimatedNumber value={40} suffix="%" />
-                    </div>
-                    <span
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                        isDark
-                          ? "bg-purple-500/15 text-purple-200 border border-purple-500/20"
-                          : "bg-purple-50 text-purple-700 border border-purple-200"
+                    </p>
+                    <p
+                      className={`text-xs mt-1.5 ${
+                        isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
                       {riskCards[1].statBadge}
-                    </span>
+                    </p>
                   </div>
 
                   <div
-                    className={`p-4 rounded-xl border ${
-                      isDark
-                        ? "bg-gray-950 border-gray-800"
-                        : "bg-gray-50 border-gray-200"
+                    className={`rounded-lg p-4 ${
+                      isDark ? "bg-emerald-500/10" : "bg-emerald-50/80"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-3">
-                      <span
-                        className={`text-xs font-medium ${
-                          isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
-                        {riskCards[1].breachLabel}
-                      </span>
-                      <span
-                        className={`text-xs font-semibold ${
-                          isDark ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {riskCards[1].breachRange}
-                      </span>
-                    </div>
+                    <p
+                      className={`text-xs font-medium mb-3 ${
+                        isDark ? "text-gray-300" : "text-gray-600"
+                      }`}
+                    >
+                      {riskCards[1].breachLabel}
+                    </p>
+                    <p
+                      className={`text-xs tabular-nums mb-2 ${
+                        isDark ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      {riskCards[1].breachRange}
+                    </p>
                     <AnimatedProgressBar
                       value={40}
-                      heightClassName="h-2"
-                      trackClassName={isDark ? "bg-gray-800" : "bg-gray-200"}
-                      fillClassName={isDark ? "bg-purple-400" : "bg-purple-600"}
+                      heightClassName="h-1.5"
+                      trackClassName={isDark ? "bg-emerald-900/40" : "bg-emerald-200"}
+                      fillClassName={isDark ? "bg-emerald-400" : "bg-emerald-600"}
                     />
                   </div>
 
                   <p
                     className={`text-sm leading-relaxed ${
-                      isDark ? "text-gray-300" : "text-gray-700"
+                      isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
                     {riskCards[1].body}
@@ -603,60 +556,54 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* 6) High-level trend */}
+              {/* Card 3: High-level trend */}
               <div
-                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border border-t-4 border-t-emerald-500 p-8 shadow-sm transition-all duration-200 hover:shadow-md ${
+                className={`snap-start shrink-0 w-[88%] sm:w-[70%] md:w-auto rounded-2xl border pl-8 pr-8 py-8 transition-all duration-200 ${
                   isDark
-                    ? "bg-gray-900 border-gray-800"
-                    : "bg-white border-gray-200"
+                    ? "bg-gray-900/80 border-gray-700 border-l-4 border-l-emerald-500"
+                    : "bg-white/90 border-gray-200 border-l-4 border-l-emerald-500"
                 }`}
               >
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center border ${
-                        isDark
-                          ? "bg-gray-800 border-gray-700"
-                          : "bg-gray-50 border-gray-200"
-                      }`}
-                    >
-                      <ArrowRight
-                        className={`w-5 h-5 ${
-                          isDark ? "text-emerald-300" : "text-emerald-600"
-                        }`}
-                      />
-                    </div>
-                    <div>
-                      <h3
-                        className={`text-lg font-bold ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        {riskCards[2].title}
-                      </h3>
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-gray-400" : "text-gray-500"
-                        }`}
-                      >
-                        {riskCards[2].subtitle}
-                      </p>
-                    </div>
-                  </div>
-                  <span
-                    className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                      isDark
-                        ? "bg-gray-800 text-gray-300 border border-gray-700"
-                        : "bg-gray-100 text-gray-600 border border-gray-200"
+                <div className="flex items-start gap-4 mb-8">
+                  <div
+                    className={`flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center ${
+                      isDark ? "bg-emerald-500/20" : "bg-emerald-50"
                     }`}
                   >
-                    {riskCards[2].badge}
-                  </span>
+                    <ArrowRight
+                      className={`w-4 h-4 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p
+                      className={`text-[11px] uppercase tracking-widest font-medium mb-0.5 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    >
+                      {riskCards[2].badge}
+                    </p>
+                    <h3
+                      className={`text-lg font-semibold tracking-tight ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {riskCards[2].title}
+                    </h3>
+                    <p
+                      className={`text-sm mt-0.5 ${
+                        isDark ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      {riskCards[2].subtitle}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="space-y-5">
+                <div className="space-y-6">
                   <p
-                    className={`text-base leading-relaxed font-semibold ${
+                    className={`text-sm leading-relaxed font-medium ${
                       isDark ? "text-emerald-200" : "text-emerald-800"
                     }`}
                   >
@@ -664,58 +611,54 @@ export default function Home() {
                   </p>
 
                   <div
-                    className={`p-4 rounded-xl border ${
-                      isDark
-                        ? "bg-gray-950 border-gray-800"
-                        : "bg-gray-50 border-gray-200"
+                    className={`rounded-lg p-4 ${
+                      isDark ? "bg-emerald-500/10" : "bg-emerald-50/80"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-3">
-                      <span
-                        className={`text-xs font-medium ${
-                          isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
-                        {riskCards[2].riskLabel}
-                      </span>
-                      <span
-                        className={`text-xs font-semibold ${
-                          isDark ? "text-emerald-200" : "text-emerald-800"
-                        }`}
-                      >
-                        {riskCards[2].riskValue}
-                      </span>
-                    </div>
+                    <p
+                      className={`text-xs font-medium mb-3 ${
+                        isDark ? "text-gray-300" : "text-gray-600"
+                      }`}
+                    >
+                      {riskCards[2].riskLabel}
+                    </p>
+                    <p
+                      className={`text-xs mb-3 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
+                      }`}
+                    >
+                      {riskCards[2].riskValue}
+                    </p>
                     <svg
                       viewBox="0 0 220 70"
-                      className="w-full h-[70px]"
+                      className="w-full h-14"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M10 60 C 60 55, 85 52, 115 45 C 145 38, 165 30, 210 10"
-                        stroke={isDark ? "#34d399" : "#10b981"}
-                        strokeWidth="4"
+                        stroke={isDark ? "#34d399" : "#059669"}
+                        strokeWidth="2.5"
                         strokeLinecap="round"
                       />
                       <path
                         d="M10 60 C 60 55, 85 52, 115 45 C 145 38, 165 30, 210 10"
-                        stroke={isDark ? "#22c55e33" : "#10b98133"}
-                        strokeWidth="10"
+                        stroke={isDark ? "#05966933" : "#10b98133"}
+                        strokeWidth="8"
                         strokeLinecap="round"
                       />
                       <circle
                         cx="210"
                         cy="10"
-                        r="5"
-                        fill={isDark ? "#34d399" : "#10b981"}
+                        r="4"
+                        fill={isDark ? "#34d399" : "#059669"}
                       />
                     </svg>
                   </div>
 
                   <p
                     className={`text-sm leading-relaxed ${
-                      isDark ? "text-gray-300" : "text-gray-700"
+                      isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
                     {riskCards[2].body}
@@ -733,7 +676,7 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2
-                  className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
+                  className={`text-3xl lg:text-4xl font-semibold mb-6 leading-tight ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -788,7 +731,7 @@ export default function Home() {
                     <div className="flex items-center justify-between mb-6">
                       <div>
                         <h3
-                          className={`text-2xl font-bold ${
+                          className={`text-xl font-semibold ${
                             isDark ? "text-white" : "text-gray-900"
                           }`}
                         >
@@ -850,18 +793,15 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-12 lg:mb-16">
-              <div
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-5 ${
-                  isDark
-                    ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/20"
-                    : "bg-white text-emerald-700 border border-emerald-200"
+              <p
+                className={`text-xs uppercase tracking-widest font-medium mb-5 ${
+                  isDark ? "text-emerald-400" : "text-emerald-600"
                 }`}
               >
-                <GitBranch className="w-4 h-4" />
                 {whereThisFitsBadge}
-              </div>
+              </p>
               <h2
-                className={`text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 ${
+                className={`text-3xl lg:text-4xl font-semibold tracking-tight mb-4 ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
@@ -879,61 +819,35 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               {whereThisFitsList.map((item, index) => {
                 const Icon = HOME_ICONS[item.iconKey] ?? Shield;
-                const iconBg =
-                  item.iconKey === "bot"
-                    ? isDark ? "bg-emerald-500/15" : "bg-emerald-50"
-                    : item.iconKey === "messageSquare"
-                    ? isDark ? "bg-blue-500/15" : "bg-blue-50"
-                    : item.iconKey === "gitBranch"
-                    ? isDark ? "bg-orange-500/15" : "bg-orange-50"
-                    : isDark ? "bg-teal-500/15" : "bg-teal-50";
-                const iconFg =
-                  item.iconKey === "bot"
-                    ? isDark ? "text-emerald-300" : "text-emerald-700"
-                    : item.iconKey === "messageSquare"
-                    ? isDark ? "text-blue-300" : "text-blue-700"
-                    : item.iconKey === "gitBranch"
-                    ? isDark ? "text-orange-300" : "text-orange-700"
-                    : isDark ? "text-teal-300" : "text-teal-700";
                 return (
                   <div
                     key={index}
-                    className={`group relative overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                    className={`relative rounded-2xl border border-l-4 pl-6 pr-6 py-6 transition-all duration-200 ${
                       isDark
-                        ? "bg-gray-900/60 border-white/10"
-                        : "bg-white border-gray-200 shadow-sm"
+                        ? "bg-gray-900/80 border-gray-700 border-l-emerald-500"
+                        : "bg-white/90 border-gray-200 border-l-emerald-500"
                     }`}
                   >
-                    <div
-                      className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${item.topBar}`}
-                    ></div>
-                    <div
-                      className={`absolute -top-24 -right-24 h-56 w-56 rounded-full blur-3xl opacity-60 group-hover:opacity-90 transition-opacity ${
-                        isDark ? "bg-white/10" : "bg-gray-200/60"
+                    <p
+                      className={`text-[11px] uppercase tracking-widest font-medium mb-3 ${
+                        isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
-                    ></div>
-
-                    <div className="flex items-start justify-between gap-4">
-                      <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center border ${
-                          isDark ? "border-white/10" : "border-gray-200"
-                        } ${iconBg}`}
-                      >
-                        <Icon className={`w-6 h-6 ${iconFg}`} />
-                      </div>
-                      <span
-                        className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                          isDark
-                            ? "bg-white/5 text-gray-300 border border-white/10"
-                            : "bg-gray-50 text-gray-600 border border-gray-200"
+                    >
+                      0{index + 1}
+                    </p>
+                    <div
+                      className={`mb-4 w-10 h-10 rounded-lg flex items-center justify-center ${
+                        isDark ? "bg-emerald-500/20" : "bg-emerald-50"
+                      }`}
+                    >
+                      <Icon
+                        className={`w-5 h-5 ${
+                          isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
-                      >
-                        0{index + 1}
-                      </span>
+                      />
                     </div>
-
                     <h3
-                      className={`text-xl font-bold mt-5 mb-2 ${
+                      className={`text-lg font-semibold tracking-tight mb-2 ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -941,13 +855,11 @@ export default function Home() {
                     </h3>
                     <p
                       className={`text-sm leading-relaxed ${
-                        isDark ? "text-gray-300" : "text-gray-600"
+                        isDark ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
                       {item.description}
                     </p>
-
-                    {/* no sliders here */}
                   </div>
                 );
               })}
@@ -961,7 +873,7 @@ export default function Home() {
             style={{ backgroundSize: "32px 32px" }}
           ></div>
           <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-semibold mb-6 leading-tight">
               {ctaTitle}
             </h2>
             <p className="text-xl text-emerald-50 mb-10 leading-relaxed">

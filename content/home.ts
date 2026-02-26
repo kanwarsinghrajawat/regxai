@@ -25,14 +25,14 @@ export const keyFeaturesList = [
     title: "Immutable Records",
     description:
       "Every decision is recorded as tamper-evident evidence for audits, reviews, and regulatory inquiries.",
-    topBar: "from-blue-500 to-cyan-500",
+    topBar: "from-emerald-500 to-teal-500",
   },
   {
     iconKey: "target" as const,
     title: "Deterministic Decisions",
     description:
       "Make risk decidable before it becomes costly, enabling confident production deployment.",
-    topBar: "from-orange-500 to-amber-500",
+    topBar: "from-emerald-500 to-teal-500",
   },
 ];
 

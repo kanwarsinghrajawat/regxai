@@ -59,7 +59,7 @@ export default function FaqPage() {
               </span>
             </div>
             <h1
-              className={`mt-4 text-4xl lg:text-5xl font-extrabold tracking-tight ${
+              className={`mt-4 text-4xl lg:text-5xl font-semibold tracking-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
@@ -139,7 +139,7 @@ export default function FaqPage() {
                     className="scroll-mt-28"
                   >
                     <h2
-                      className={`text-xl font-bold tracking-tight ${
+                      className={`text-xl font-semibold tracking-tight ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -158,7 +158,7 @@ export default function FaqPage() {
                         >
                           <div className="px-6 py-5">
                             <h3
-                              className={`text-lg font-bold tracking-tight ${
+                              className={`text-lg font-semibold tracking-tight ${
                                 isDark ? "text-white" : "text-gray-900"
                               }`}
                             >

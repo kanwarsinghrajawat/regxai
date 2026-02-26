@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# dev-only SEO / Lighthouse reports
+.lighthouse/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

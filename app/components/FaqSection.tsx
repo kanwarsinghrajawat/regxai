@@ -34,7 +34,7 @@ export function FaqSection({ isDark }: { isDark: boolean }) {
             {faqSectionBadge}
           </div>
           <h2
-            className={`mt-3 text-3xl lg:text-4xl font-extrabold tracking-tight ${
+            className={`mt-3 text-3xl lg:text-4xl font-semibold tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
@@ -75,7 +75,7 @@ export function FaqSection({ isDark }: { isDark: boolean }) {
                   >
                     {idx + 1}
                   </span>
-                  <span className="text-lg font-bold tracking-tight leading-snug">
+                  <span className="text-lg font-semibold tracking-tight leading-snug">
                     {item.q}
                   </span>
                 </div>

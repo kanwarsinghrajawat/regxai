@@ -9,7 +9,6 @@ import {
   builtForTagline,
 } from "../../content/footer";
 
-// Inline list to avoid server/client hydration mismatch (same source as content/footer.ts)
 const FOOTER_PAGES: { href: string; label: string }[] = [
   { href: "/solution", label: "Solution" },
   { href: "/services", label: "Services" },
@@ -23,15 +22,16 @@ interface FooterProps {
   isDark: boolean;
 }
 
-function XLogo({ className }: { className?: string }) {
+function XIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
       className={className}
       fill="currentColor"
-      width="18"
-      height="18"
+      width="16"
+      height="16"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
@@ -41,32 +41,41 @@ function XLogo({ className }: { className?: string }) {
 export function Footer({ isDark }: FooterProps) {
   return (
     <footer
-      className={`relative ${
-        isDark
-          ? "bg-gray-950 text-white"
-          : "bg-gray-50 text-gray-900"
-      }`}
+      role="contentinfo"
+      className={isDark ? "bg-gray-900" : "bg-white"}
     >
-      {/* Top accent */}
+      {/* Accent bar */}
       <div
-        className={`h-0.5 w-full ${
-          isDark ? "bg-gradient-to-r from-emerald-500/80 to-teal-400/60" : "bg-gradient-to-r from-emerald-500 to-teal-400"
+        className={`h-1 w-full ${
+          isDark
+            ? "bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500"
+            : "bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400"
         }`}
         aria-hidden
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-14 pb-0">
-        <div className="grid gap-12 md:grid-cols-12 lg:gap-16">
-          {/* Brand */}
-          <div className="md:col-span-5 lg:col-span-6">
-            <Link href="/" className="inline-flex items-center gap-3 group">
-              <Shield className="w-10 h-10 shrink-0 text-emerald-500 transition-transform group-hover:scale-105" />
-              <span className="text-2xl font-extrabold tracking-tight font-display">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+          {/* Brand — spans 5 cols on large */}
+          <div className="lg:col-span-5">
+            <Link
+              href="/"
+              className={`inline-flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 rounded-md ${isDark ? "focus-visible:ring-offset-gray-900" : "focus-visible:ring-offset-white"}`}
+            >
+              <Shield
+                className={`w-8 h-8 shrink-0 ${isDark ? "text-emerald-400" : "text-emerald-600"}`}
+                aria-hidden="true"
+              />
+              <span
+                className={`text-lg font-semibold tracking-tight ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
                 {siteName}
               </span>
             </Link>
             <p
-              className={`mt-4 text-sm leading-relaxed max-w-md ${
+              className={`mt-3 text-sm leading-relaxed max-w-xs ${
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
@@ -74,80 +83,97 @@ export function Footer({ isDark }: FooterProps) {
             </p>
           </div>
 
-          {/* Links */}
-          <div className="md:col-span-4 lg:col-span-3">
+          {/* Vertical divider — only on large screens */}
+          <div
+            className={`hidden lg:block lg:col-span-1 w-px self-stretch min-h-[120px] ${
+              isDark ? "bg-gray-700" : "bg-gray-200"
+            }`}
+            aria-hidden
+          />
+
+          {/* Links — 3 cols */}
+          <div className="lg:col-span-3">
             <h3
-              className={`text-xs font-semibold uppercase tracking-widest ${
-                isDark ? "text-gray-500" : "text-gray-400"
+              className={`text-xs font-semibold uppercase tracking-widest mb-4 ${
+                isDark ? "text-emerald-400/90" : "text-emerald-700"
               }`}
             >
               Navigate
             </h3>
-            <nav
-              className="mt-4 flex flex-wrap gap-x-8 gap-y-1 text-sm"
-              aria-label="Footer navigation"
-            >
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 sm:flex-col sm:flex-nowrap sm:gap-y-2.5">
               {FOOTER_PAGES.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`py-1.5 transition-colors hover:opacity-100 ${
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`text-sm font-medium transition-colors ${
+                      isDark
+                        ? "text-gray-400 hover:text-white"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact — 3 cols */}
+          <div className="lg:col-span-3">
+            <h3
+              className={`text-xs font-semibold uppercase tracking-widest mb-4 ${
+                isDark ? "text-emerald-400/90" : "text-emerald-700"
+              }`}
+            >
+              Contact
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className={`text-sm font-medium transition-colors ${
                     isDark
                       ? "text-gray-400 hover:text-white"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Contact */}
-          <div className="md:col-span-3">
-            <h3
-              className={`text-xs font-semibold uppercase tracking-widest ${
-                isDark ? "text-gray-500" : "text-gray-400"
-              }`}
-            >
-              Get in touch
-            </h3>
-            <div className="mt-4 space-y-3 text-sm">
-              <a
-                href={`mailto:${contactEmail}`}
-                className={`block transition-colors hover:opacity-100 ${
-                  isDark
-                    ? "text-gray-400 hover:text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {contactEmail}
-              </a>
-              <a
-                href={twitterUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow regX AI on X"
-                className={`inline-flex items-center justify-center w-9 h-9 rounded-full transition-all ${
-                  isDark
-                    ? "bg-white/10 text-gray-400 hover:bg-emerald-500/20 hover:text-emerald-400"
-                    : "bg-white text-gray-600 shadow-sm hover:bg-emerald-500/10 hover:text-emerald-600 border border-gray-200/80"
-                }`}
-              >
-                <XLogo className="w-[18px] h-[18px]" />
-              </a>
-            </div>
+                  {contactEmail}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={twitterUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow regX AI on X"
+                  className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                    isDark
+                      ? "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+                  }`}
+                >
+                  <XIcon className="w-4 h-4 shrink-0" />
+                  Follow on X
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        {/* Bottom bar */}
-        <div
-          className={`mt-14 py-6 flex flex-col sm:flex-row gap-3 items-center justify-between text-sm ${
-            isDark ? "text-gray-500 border-t border-white/10" : "text-gray-500 border-t border-gray-200/80"
-          }`}
-        >
-          <span>{copyright}</span>
-          <span className="text-xs text-center sm:text-right text-gray-400">
+      {/* Bottom bar */}
+      <div
+        className={`border-t py-4 ${
+          isDark ? "border-gray-800 bg-gray-950" : "border-gray-100 bg-gray-50"
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-center sm:text-left">
+          <span className={isDark ? "text-gray-500 text-xs" : "text-gray-500 text-xs"}>
+            {copyright}
+          </span>
+          <span
+            className={`text-xs ${isDark ? "text-gray-600" : "text-gray-500"}`}
+          >
             {builtForTagline}
           </span>
         </div>

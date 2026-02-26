@@ -94,13 +94,13 @@ export const faqs: FaqItem[] = [
     a: "Fail-safe configurations ensure stability while preserving compliance posture.",
     category: "technical",
   },
-  {
-    id: "who-uses-this",
-    q: "Who uses this product?",
-    a: "CTOs, Legal & Compliance teams, and Product leaders jointly.",
-    category: "getting-started",
-    link: { href: "/contact", label: "Talk to us" },
-  },
+  // {
+  //   id: "who-uses-this",
+  //   q: "Who uses this product?",
+  //   a: "CTOs, Legal & Compliance teams, and Product leaders jointly.",
+  //   category: "getting-started",
+  //   link: { href: "/contact", label: "Talk to us" },
+  // },
   // Certification & auditability
   {
     id: "certification-auditability",

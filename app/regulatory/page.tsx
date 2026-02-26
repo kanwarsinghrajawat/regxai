@@ -9,6 +9,23 @@ import {
 } from "lucide-react";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import {
+  regulatoryHeroTitle,
+  regulatoryHeroDescription,
+  frameworksList,
+  globalCoverageTitle,
+  globalCoverageDescription,
+  complianceUpdatesTitle,
+  complianceUpdatesDescription,
+  keyComplianceFeaturesTitle,
+  keyComplianceFeaturesList,
+} from "../../content/regulatory";
+
+const FRAMEWORK_ICONS = {
+  lock: Lock,
+  shield: Shield,
+  checkCircle: CheckCircle,
+} as const;
 
 export default function Regulatory() {
   const { isDark } = useTheme();
@@ -17,128 +34,96 @@ export default function Regulatory() {
     <AppShell>
       <main className="pt-20">
         <section
-          className={`pt-24 lg:pt-32 ${
-            isDark
-              ? "bg-gradient-to-br from-gray-900 via-gray-950 to-emerald-950/30"
-              : "bg-gradient-to-br from-gray-50 via-white to-emerald-50/30"
+          className={`relative pt-20 pb-16 lg:pt-28 lg:pb-24 overflow-hidden ${
+            isDark ? "bg-gray-950" : "bg-gradient-to-b from-gray-50 to-white"
           }`}
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="max-w-full">
-              <h1
-                className={`text-5xl lg:text-6xl font-bold mb-8 leading-tight ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Regulatory Scope
-              </h1>
-              <p
-                className={`text-xl lg:text-2xl mb-12 leading-relaxed ${
-                  isDark ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                AI regulation is evolving globally, with enforcement already
-                underway across major markets. Our system is designed to support
-                organizations operating across jurisdictions, with an initial
-                focus on the most impactful and actively enforced frameworks
-                today:{" "}
-              </p>
-            </div>
+          <div
+            className={`absolute inset-0 ${
+              isDark
+                ? "bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)]"
+                : "bg-[linear-gradient(to_right,#0f172a08_1px,transparent_1px),linear-gradient(to_bottom,#0f172a08_1px,transparent_1px)]"
+            }`}
+            style={{ backgroundSize: "24px 24px" }}
+            aria-hidden
+          />
+          <div className="relative max-w-4xl mx-auto px-6 lg:px-8">
+            <p
+              className={`text-sm font-semibold uppercase tracking-wider mb-4 ${
+                isDark ? "text-emerald-400" : "text-emerald-600"
+              }`}
+            >
+              Compliance
+            </p>
+            <h1
+              className={`text-4xl lg:text-5xl font-semibold tracking-tight mb-6 leading-tight ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+            >
+              {regulatoryHeroTitle}
+            </h1>
+            <p
+              className={`text-lg lg:text-xl leading-relaxed ${
+                isDark ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              {regulatoryHeroDescription}
+            </p>
           </div>
         </section>
 
         <section
-          className={`py-24 lg:py-32 ${isDark ? "bg-gray-950" : "bg-white"}`}
+          className={`py-16 lg:py-24 ${isDark ? "bg-gray-900" : "bg-white"}`}
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="mb-24">
-              <div className="grid md:grid-cols-2 gap-10">
-                {[
-                  {
-                    name: "EU AI Act",
-                    description:
-                      "Full compliance with EU AI Act requirements including risk classification, documentation, and transparency obligations.",
-                    icon: Lock,
-                  },
-                  {
-                    name: "GDPR",
-                    description:
-                      "Privacy by design with comprehensive data handling, user consent, and data subject rights management.",
-                    icon: Shield,
-                  },
-                  {
-                    name: "U.S. Federal & State Guidelines ",
-                    description:
-                      "sector-specific and guidance-driven enforcement",
-                    icon: CheckCircle,
-                  },
-                  {
-                    name: "UAE AI & Data Regulations",
-                    description:
-                      "National AI governance, data-protection laws (e.g., PDPL), and sectoral oversight shaping compliant AI deployment in the Middle East.",
-                    icon: CheckCircle,
-                  },
-                  {
-                    name: "South Korean AI Act (SKAIA)",
-                    description:
-                      "South Korea’s AI governance framework shaping responsible deployment and sector expectations.",
-                    icon: CheckCircle,
-                  },
-                  {
-                    name: "India DPDP Act",
-                    description: "data-protection law impacting AI data usage",
-                    icon: CheckCircle,
-                  },
-                  {
-                    name: "Framework Convention on AI",
-                    description:
-                      "international treaty aligning AI with human-rights principles",
-                    icon: CheckCircle,
-                  },
-                ].map((framework, index) => {
-                  const Icon = framework.icon;
-                  return (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {frameworksList.map((framework, index) => {
+                const Icon = FRAMEWORK_ICONS[framework.iconKey];
+                return (
+                  <div
+                    key={index}
+                    className={`rounded-xl border p-6 transition-all duration-200 ${
+                      isDark
+                        ? "bg-gray-800/50 border-gray-700/60 hover:border-emerald-500/30"
+                        : "bg-gray-50/80 border-gray-200 hover:border-emerald-400/50"
+                    }`}
+                  >
                     <div
-                      key={index}
-                      className={`rounded-2xl p-10 border transition-all duration-300 hover:-translate-y-1 shadow-soft-sm hover:shadow-soft group ${
-                        isDark
-                          ? "bg-gray-900/50 border-white/10 hover:border-emerald-500/30"
-                          : "bg-white border-gray-200/70 hover:border-emerald-400/60"
+                      className={`inline-flex h-11 w-11 items-center justify-center rounded-lg mb-4 ${
+                        isDark ? "bg-emerald-500/15" : "bg-emerald-500/10"
                       }`}
                     >
-                      <div className="transition-all duration-300 group-hover:scale-110 mb-6">
-                        <Icon
-                          className={`w-14 h-14 ${
-                            isDark ? "text-emerald-400" : "text-emerald-600"
-                          }`}
-                        />
-                      </div>
-                      <h3
-                        className={`text-2xl font-bold mb-4 ${
-                          isDark ? "text-white" : "text-gray-900"
+                      <Icon
+                        className={`w-5 h-5 ${
+                          isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
-                      >
-                        {framework.name}
-                      </h3>
-                      <p
-                        className={`text-base leading-relaxed ${
-                          isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
-                        {framework.description}
-                      </p>
+                      />
                     </div>
-                  );
-                })}
-              </div>
+                    <h3
+                      className={`text-lg font-semibold tracking-tight mb-2 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {framework.name}
+                    </h3>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-400" : "text-gray-600"
+                      }`}
+                    >
+                      {framework.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
-            
-            <div className={`mt-16 rounded-2xl p-10 border transition-all duration-300 hover:shadow-soft shadow-soft-sm ${
+
+            <div className={`mt-12 rounded-2xl p-8 border transition-all duration-200 ${
               isDark
                 ? "bg-gradient-to-br from-gray-900/60 to-gray-950/60 border-white/10 hover:border-emerald-500/30"
                 : "bg-gradient-to-br from-white to-gray-50 border-gray-200/70 hover:border-emerald-400/60"
             }`}>
-              <div className="flex items-start gap-4 mb-6">
+              <div className="flex items-start gap-4">
                 <div className={`p-3 rounded-xl ${
                   isDark ? "bg-emerald-500/20" : "bg-emerald-100"
                 }`}>
@@ -147,134 +132,82 @@ export default function Regulatory() {
                   }`} />
                 </div>
                 <div className="flex-1">
-                  <h3 className={`text-2xl font-bold mb-4 ${
+                  <h3 className={`text-xl font-semibold mb-3 ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}>
-                    Global Regulatory Coverage
+                    {globalCoverageTitle}
                   </h3>
                   <p
-                    className={`text-lg lg:text-xl leading-relaxed ${
+                    className={`text-base lg:text-lg leading-relaxed ${
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    The system is built to evolve as regulations mature and new
-                    frameworks come into force across key jurisdictions including
-                    Europe, the United States, India, Singapore, Japan, and other
-                    global markets, and is designed to apply across all categories of
-                    AI products and use cases. In addition, the system aligns with
-                    widely adopted international frameworks and emerging national
-                    policies, including voluntary governance models and global
-                    standards that influence regulatory expectations.
+                    {globalCoverageDescription}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-14">
-              <div
-                className={`rounded-2xl border p-10 transition-all duration-300 hover:shadow-xl ${
-                  isDark
-                    ? "bg-blue-950/25 border-blue-500/20 hover:border-blue-400/30"
-                    : "bg-blue-50 border-blue-200 hover:border-blue-300"
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center border ${
-                      isDark ? "bg-blue-500/10 border-blue-500/20" : "bg-white border-blue-200"
+            <div className={`mt-10 rounded-2xl border p-8 ${
+              isDark
+                ? "bg-blue-950/25 border-blue-500/20"
+                : "bg-blue-50 border-blue-200"
+            }`}>
+              <div className="flex items-start gap-4">
+                <div className={`w-11 h-11 rounded-lg flex items-center justify-center ${
+                  isDark ? "bg-blue-500/20" : "bg-blue-100"
+                }`}>
+                  <AlertCircle
+                    className={`w-5 h-5 ${
+                      isDark ? "text-blue-300" : "text-blue-700"
                     }`}
-                  >
-                    <AlertCircle
-                      className={`w-6 h-6 ${
-                        isDark ? "text-blue-300" : "text-blue-700"
-                      }`}
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h3
-                      className={`text-2xl font-bold mb-3 ${
+                  />
+                </div>
+                <div className="flex-1">
+                    <h3 className={`text-lg font-semibold mb-2 ${
                         isDark ? "text-blue-100" : "text-blue-900"
-                      }`}
-                    >
-                      Regular Compliance Updates
-                    </h3>
-                    <p
-                      className={`text-lg leading-relaxed ${
-                        isDark ? "text-blue-200/90" : "text-blue-800"
-                      }`}
-                    >
-                      We continuously monitor regulatory developments and automatically enhance our services and offerings.
-                    </p>
-                  </div>
+                      }`}>
+                    {complianceUpdatesTitle}
+                  </h3>
+                  <p className={`text-base leading-relaxed ${
+                    isDark ? "text-blue-200/90" : "text-blue-800"
+                  }`}>
+                    {complianceUpdatesDescription}
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div>
-              <h2
-                className={`text-4xl lg:text-5xl font-bold mb-16 leading-tight ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Key Compliance Features
+            <div className="mt-16">
+              <h2 className={`text-3xl font-semibold mb-10 ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}>
+                {keyComplianceFeaturesTitle}
               </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  {
-                    title: "Immutable Audit Trails",
-                    description:
-                      "Every decision recorded with full traceability for regulatory inquiries",
-                  },
-                  {
-                    title: "Data Governance",
-                    description:
-                      "Automated data lineage tracking and documentation",
-                  },
-                  {
-                    title: "Algorithmic Transparency",
-                    description: "Explainability features for all AI decisions",
-                  },
-                  {
-                    title: "Bias Monitoring",
-                    description:
-                      "Continuous monitoring for fairness and discrimination",
-                  },
-                  {
-                    title: "Consent Management",
-                    description:
-                      "Comprehensive consent tracking and management",
-                  },
-                  {
-                    title: "Incident Response",
-                    description: "Automated incident logging and escalation",
-                  },
-                ].map((feature, index) => (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {keyComplianceFeaturesList.map((feature, index) => (
                   <div
                     key={index}
-                    className={`rounded-xl p-8 flex gap-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer ${
+                    className={`rounded-xl border p-6 flex gap-4 transition-all duration-200 ${
                       isDark
-                        ? "bg-gray-800 border border-gray-700 hover:border-emerald-500/50"
-                        : "bg-white border border-gray-200 hover:border-emerald-400"
+                        ? "bg-gray-800/50 border-gray-700/60"
+                        : "bg-gray-50/80 border-gray-200"
                     }`}
                   >
                     <CheckCircle
-                      className={`w-6 h-6 flex-shrink-0 mt-1 ${
+                      className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     />
                     <div>
-                      <h3
-                        className={`font-bold mb-2 ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
+                      <h3 className={`font-semibold mb-1.5 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}>
                         {feature.title}
                       </h3>
-                      <p
-                        className={`text-base leading-relaxed ${
-                          isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
+                      <p className={`text-sm leading-relaxed ${
+                        isDark ? "text-gray-400" : "text-gray-600"
+                      }`}>
                         {feature.description}
                       </p>
                     </div>
@@ -284,7 +217,6 @@ export default function Regulatory() {
             </div>
           </div>
         </section>
-
       </main>
     </AppShell>
   );

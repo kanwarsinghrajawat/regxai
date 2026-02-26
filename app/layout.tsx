@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { DM_Sans, Outfit } from 'next/font/google';
 import { ThemeProvider } from './components/ThemeProvider';
 import { StructuredData } from './components/StructuredData';
 import {
@@ -16,17 +16,19 @@ const OG_IMAGE_PATH = '/5.jpg';
 const OG_TITLE = 'regX AI | Infrastructure for enforcing AI trust';
 const OG_DESCRIPTION = 'Infrastructure for enforcing AI trust and compliance.';
 
-const inter = Inter({ 
+const dmSans = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
   preload: true,
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-display",
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['500', '600', '700', '800'],
   preload: true,
 });
 
@@ -105,7 +107,7 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body
-        className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased`}
+        className={`${dmSans.variable} ${outfit.variable} font-sans antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

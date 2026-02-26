@@ -28,14 +28,14 @@ export default function Services() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-3xl">
               <h1
-                className={`text-5xl lg:text-6xl font-bold mb-4 leading-tight ${
+                className={`text-4xl lg:text-5xl font-semibold mb-4 leading-tight tracking-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
                 Our Services
               </h1>
               <p
-                className={`text-xl lg:text-2xl mb-6 leading-relaxed ${
+                className={`text-lg lg:text-xl mb-6 leading-relaxed font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
@@ -96,7 +96,7 @@ export default function Services() {
                       />
                     </div>
                     <h3
-                      className={`text-2xl font-bold mb-3 ${
+                      className={`text-xl font-semibold mb-3 ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -145,7 +145,7 @@ export default function Services() {
               </div>
 
               <h2
-                className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
+                className={`text-3xl lg:text-4xl font-semibold mb-6 leading-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >

@@ -83,14 +83,14 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-3xl">
               <h1
-                className={`text-5xl lg:text-6xl font-bold mb-4 leading-tight ${
+                className={`text-4xl lg:text-5xl font-semibold mb-4 leading-tight tracking-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
                 Get in Touch
               </h1>
               <p
-                className={`text-xl lg:text-2xl mb-6 leading-relaxed ${
+                className={`text-lg lg:text-xl mb-6 leading-relaxed font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
@@ -129,8 +129,8 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
-                      className={`block text-sm font-medium mb-2 ${
-                        isDark ? "text-gray-300" : "text-gray-700"
+                      className={`block text-sm font-semibold mb-2 ${
+                        isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
                       Name
@@ -164,8 +164,8 @@ export default function Contact() {
 
                   <div>
                     <label
-                      className={`block text-sm font-medium mb-2 ${
-                        isDark ? "text-gray-300" : "text-gray-700"
+                      className={`block text-sm font-semibold mb-2 ${
+                        isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
                       Email
@@ -199,8 +199,8 @@ export default function Contact() {
 
                   <div>
                     <label
-                      className={`block text-sm font-medium mb-2 ${
-                        isDark ? "text-gray-300" : "text-gray-700"
+                      className={`block text-sm font-semibold mb-2 ${
+                        isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
                       Company
@@ -220,8 +220,8 @@ export default function Contact() {
 
                   <div>
                     <label
-                      className={`block text-sm font-medium mb-2 ${
-                        isDark ? "text-gray-300" : "text-gray-700"
+                      className={`block text-sm font-semibold mb-2 ${
+                        isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
                       Message
@@ -276,7 +276,7 @@ export default function Contact() {
                   }`}
                 >
                   <h2
-                    className={`text-2xl font-bold mb-8 ${
+                    className={`text-xl font-semibold mb-8 ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
@@ -314,7 +314,7 @@ export default function Contact() {
                             </div>
                             <a
                               href={`mailto:${contactEmail}`}
-                              className={`mt-1 block text-lg font-extrabold tracking-tight break-all transition-colors ${
+                              className={`mt-1 block text-lg font-semibold tracking-tight break-all transition-colors ${
                                 isDark
                                   ? "text-white hover:text-emerald-200"
                                   : "text-gray-900 hover:text-emerald-700"
@@ -445,7 +445,7 @@ export default function Contact() {
         >
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2
-              className={`text-4xl lg:text-5xl font-bold mb-8 ${
+              className={`text-3xl lg:text-4xl font-semibold mb-8 ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
@@ -469,7 +469,7 @@ export default function Contact() {
                   }`}
                 >
                   <h3
-                    className={`font-bold mb-3 text-lg ${
+                    className={`font-semibold mb-3 text-lg ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >

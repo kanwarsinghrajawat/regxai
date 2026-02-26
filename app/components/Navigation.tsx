@@ -47,7 +47,7 @@ export function Navigation({ isDark, setIsDark }: NavigationProps) {
           >
             <Shield className="w-8 h-8 text-emerald-500" aria-hidden="true" />
             <span
-              className={`text-2xl font-extrabold tracking-tight font-display ${
+              className={`text-2xl font-bold tracking-tight font-display ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >

@@ -44,7 +44,7 @@ export default function TermsPage() {
               </span>
             </div>
             <h1
-              className={`mt-4 text-4xl lg:text-5xl font-extrabold tracking-tight ${
+              className={`mt-4 text-4xl lg:text-5xl font-semibold tracking-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
@@ -82,7 +82,7 @@ export default function TermsPage() {
                   className="scroll-mt-28"
                 >
                   <h2
-                    className={`text-xl font-bold tracking-tight mb-4 ${
+                    className={`text-xl font-semibold tracking-tight mb-4 ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >

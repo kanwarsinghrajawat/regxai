@@ -17,7 +17,14 @@ import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
 import { AnimatedNumber } from "../components/AnimatedNumber";
 import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
-import { problemStats } from "../../content/solution";
+import {
+  problemStats,
+  useCaseDistributionTitle,
+  useCaseDistributionItems,
+  useCaseCoveredLabel,
+  useCaseBroadCoverageTitle,
+  useCaseBroadCoverageDescription,
+} from "../../content/solution";
 
 export default function Solution() {
   const { isDark } = useTheme();
@@ -43,7 +50,7 @@ export default function Solution() {
           <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-3xl">
               <h1
-                className={`text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
+                className={`text-4xl lg:text-5xl font-semibold mb-6 leading-tight tracking-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
@@ -61,7 +68,7 @@ export default function Solution() {
                   }`}
                 >
                   <div
-                    className={`text-4xl lg:text-5xl font-bold leading-none tabular-nums mb-4 ${
+                    className={`text-4xl lg:text-5xl font-semibold leading-none tabular-nums mb-4 ${
                       isDark ? "text-emerald-400" : "text-emerald-600"
                     }`}
                   >
@@ -90,14 +97,14 @@ export default function Solution() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-full">
               <h1
-                className={`text-5xl lg:text-6xl font-bold mb-8 leading-tight ${
+                className={`text-4xl lg:text-5xl font-semibold mb-8 leading-tight tracking-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
                 Our Solution
               </h1>
               <p
-                className={`text-xl lg:text-2xl mb-12 leading-relaxed ${
+                className={`text-lg lg:text-xl mb-12 leading-relaxed font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
@@ -118,7 +125,7 @@ export default function Solution() {
             <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
               <div>
                 <h2
-                  className={`text-4xl lg:text-5xl font-bold mb-12 leading-tight ${
+                  className={`text-3xl lg:text-4xl font-semibold mb-12 leading-tight ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -189,7 +196,7 @@ export default function Solution() {
                   }`}
                 >
                   <h3
-                    className={`text-xl font-bold mb-6 ${
+                    className={`text-xl font-semibold mb-6 ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
@@ -252,7 +259,7 @@ export default function Solution() {
                               Step {item.step}
                             </div>
                             <div
-                              className={`text-base font-bold ${
+                              className={`text-base font-semibold ${
                                 isDark ? "text-white" : "text-gray-900"
                               }`}
                             >
@@ -308,7 +315,7 @@ export default function Solution() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2
-                  className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
+                  className={`text-3xl lg:text-4xl font-semibold mb-6 leading-tight ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -368,7 +375,7 @@ export default function Solution() {
                   }`}
                 >
                   <h3
-                    className={`text-xl font-bold mb-6 ${
+                    className={`text-xl font-semibold mb-6 ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
@@ -416,7 +423,7 @@ export default function Solution() {
                               }`}
                             />
                             <span
-                              className={`text-sm font-bold tracking-tight ${
+                              className={`text-sm font-semibold tracking-tight ${
                                 isDark ? "text-gray-100" : "text-gray-900"
                               }`}
                             >
@@ -470,55 +477,42 @@ export default function Solution() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="relative order-2 lg:order-1">
                 <div
-                  className={`absolute -inset-4 rounded-2xl ${
+                  className={`relative rounded-2xl border border-l-4 p-8 ${
                     isDark
-                      ? "bg-emerald-500/20 blur-2xl"
-                      : "bg-emerald-200/50 blur-2xl"
-                  }`}
-                ></div>
-                <div
-                  className={`relative rounded-2xl p-8 shadow-2xl ${
-                    isDark
-                      ? "bg-gray-800 border border-gray-700"
-                      : "bg-white border border-gray-200"
+                      ? "bg-gray-900/80 border-gray-700 border-l-slate-500"
+                      : "bg-white/90 border-gray-200 border-l-slate-400"
                   }`}
                 >
+                  <p
+                    className={`text-xs uppercase tracking-widest font-medium mb-2 ${
+                      isDark ? "text-slate-500" : "text-slate-400"
+                    }`}
+                  >
+                    Coverage
+                  </p>
                   <h3
-                    className={`text-xl font-bold mb-6 ${
+                    className={`text-xl font-semibold tracking-tight mb-6 ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Use Case Distribution
+                    {useCaseDistributionTitle}
                   </h3>
                   <div className="space-y-3">
-                    {[
-                      { label: "Autonomous AI Systems", color: "emerald" },
-                      { label: "Enterprise Chatbots", color: "blue" },
-                      { label: "CI/CD Pipelines", color: "teal" },
-                      { label: "Regulated Environments", color: "orange" },
-                    ].map((item, index) => (
+                    {useCaseDistributionItems.map((item, index) => (
                       <div
                         key={index}
-                        className={`flex items-center justify-between gap-4 rounded-xl border px-5 py-4 ${
-                          isDark
-                            ? "bg-gray-700/30 border-gray-600"
-                            : "bg-gray-50 border-gray-200"
+                        className={`flex items-center justify-between gap-4 rounded-lg px-4 py-3.5 ${
+                          isDark ? "bg-slate-800/50" : "bg-slate-50/80"
                         }`}
                       >
                         <div className="flex items-center gap-3 min-w-0">
                           <span
-                            className={`h-2.5 w-2.5 rounded-full ${
-                              item.color === "emerald"
-                                ? "bg-emerald-500"
-                                : item.color === "blue"
-                                ? "bg-blue-500"
-                                : item.color === "teal"
-                                ? "bg-teal-500"
-                                : "bg-orange-500"
+                            className={`h-2 w-2 rounded-full flex-shrink-0 ${
+                              isDark ? "bg-slate-400" : "bg-slate-500"
                             }`}
                           />
                           <span
-                            className={`text-sm font-semibold tracking-tight truncate ${
+                            className={`text-sm font-medium tracking-tight truncate ${
                               isDark ? "text-gray-100" : "text-gray-800"
                             }`}
                           >
@@ -526,43 +520,40 @@ export default function Solution() {
                           </span>
                         </div>
                         <span
-                          className={`text-xs font-semibold ${
-                            isDark ? "text-gray-400" : "text-gray-500"
+                          className={`text-xs font-medium ${
+                            isDark ? "text-slate-400" : "text-slate-500"
                           }`}
                         >
-                          Covered
+                          {useCaseCoveredLabel}
                         </span>
                       </div>
                     ))}
                   </div>
                   <div
-                    className={`mt-6 p-4 rounded-xl ${
-                      isDark
-                        ? "bg-blue-500/10 border border-blue-500/20"
-                        : "bg-blue-50 border border-blue-200"
+                    className={`mt-6 p-4 rounded-lg ${
+                      isDark ? "bg-slate-800/50" : "bg-slate-50/80"
                     }`}
                   >
-                    <div
-                      className={`text-sm font-semibold ${
-                        isDark ? "text-blue-200" : "text-blue-800"
+                    <p
+                      className={`text-sm font-medium ${
+                        isDark ? "text-slate-200" : "text-gray-800"
                       }`}
                     >
-                      Broad coverage across enterprise AI workflows.
-                    </div>
-                    <div
+                      {useCaseBroadCoverageTitle}
+                    </p>
+                    <p
                       className={`mt-1 text-sm ${
-                        isDark ? "text-blue-200/80" : "text-blue-700"
+                        isDark ? "text-slate-400" : "text-gray-600"
                       }`}
                     >
-                      Designed to apply across model deployment, inference, and
-                      production execution.
-                    </div>
+                      {useCaseBroadCoverageDescription}
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="order-1 lg:order-2">
                 <h2
-                  className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
+                  className={`text-3xl lg:text-4xl font-semibold mb-6 leading-tight ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -618,7 +609,7 @@ export default function Solution() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2
-                  className={`text-4xl lg:text-5xl font-bold mb-6 leading-tight ${
+                  className={`text-3xl lg:text-4xl font-semibold mb-6 leading-tight ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -675,7 +666,7 @@ export default function Solution() {
                   }`}
                 >
                   <h3
-                    className={`text-xl font-bold mb-6 ${
+                    className={`text-xl font-semibold mb-6 ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
@@ -725,7 +716,7 @@ export default function Solution() {
                               />
                             </div>
                             <div
-                              className={`text-base font-bold tracking-tight ${
+                              className={`text-base font-semibold tracking-tight ${
                                 isDark ? "text-white" : "text-gray-900"
                               }`}
                             >
@@ -744,7 +735,7 @@ export default function Solution() {
 
         <section className="py-20 lg:py-28 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-semibold mb-6 leading-tight">
               Ready to transform your AI deployment?
             </h2>
             <p className="text-xl text-emerald-50 mb-10 leading-relaxed">
@@ -753,7 +744,7 @@ export default function Solution() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-800 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-800 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
             >
               Get in Touch
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
