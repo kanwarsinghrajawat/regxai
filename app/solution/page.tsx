@@ -479,13 +479,13 @@ export default function Solution() {
                 <div
                   className={`relative rounded-2xl border border-l-4 p-8 ${
                     isDark
-                      ? "bg-gray-900/80 border-gray-700 border-l-slate-500"
-                      : "bg-white/90 border-gray-200 border-l-slate-400"
+                      ? "bg-gray-900/80 border-gray-700 border-l-emerald-500"
+                      : "bg-white/90 border-gray-200 border-l-emerald-500"
                   }`}
                 >
                   <p
                     className={`text-xs uppercase tracking-widest font-medium mb-2 ${
-                      isDark ? "text-slate-500" : "text-slate-400"
+                      isDark ? "text-emerald-400" : "text-emerald-600"
                     }`}
                   >
                     Coverage
@@ -502,13 +502,13 @@ export default function Solution() {
                       <div
                         key={index}
                         className={`flex items-center justify-between gap-4 rounded-lg px-4 py-3.5 ${
-                          isDark ? "bg-slate-800/50" : "bg-slate-50/80"
+                          isDark ? "bg-emerald-500/10" : "bg-emerald-50/80"
                         }`}
                       >
                         <div className="flex items-center gap-3 min-w-0">
                           <span
                             className={`h-2 w-2 rounded-full flex-shrink-0 ${
-                              isDark ? "bg-slate-400" : "bg-slate-500"
+                              isDark ? "bg-emerald-400" : "bg-emerald-500"
                             }`}
                           />
                           <span
@@ -521,7 +521,7 @@ export default function Solution() {
                         </div>
                         <span
                           className={`text-xs font-medium ${
-                            isDark ? "text-slate-400" : "text-slate-500"
+                            isDark ? "text-emerald-400" : "text-emerald-600"
                           }`}
                         >
                           {useCaseCoveredLabel}
@@ -531,19 +531,19 @@ export default function Solution() {
                   </div>
                   <div
                     className={`mt-6 p-4 rounded-lg ${
-                      isDark ? "bg-slate-800/50" : "bg-slate-50/80"
+                      isDark ? "bg-emerald-500/10" : "bg-emerald-50/80"
                     }`}
                   >
                     <p
                       className={`text-sm font-medium ${
-                        isDark ? "text-slate-200" : "text-gray-800"
+                        isDark ? "text-emerald-200" : "text-gray-800"
                       }`}
                     >
                       {useCaseBroadCoverageTitle}
                     </p>
                     <p
                       className={`mt-1 text-sm ${
-                        isDark ? "text-slate-400" : "text-gray-600"
+                        isDark ? "text-emerald-400" : "text-gray-600"
                       }`}
                     >
                       {useCaseBroadCoverageDescription}

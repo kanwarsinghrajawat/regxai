@@ -145,15 +145,15 @@ export function Footer({ isDark }: FooterProps) {
                   href={twitterUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Follow regX AI on X"
+                  aria-label="Follow us on X (formerly Twitter)"
                   className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
                     isDark
                       ? "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900"
                   }`}
                 >
-                  <XIcon className="w-4 h-4 shrink-0" />
-                  Follow on X
+                  Follow us
+                  <XIcon className="w-4 h-4 shrink-0" aria-hidden />
                 </a>
               </li>
             </ul>
