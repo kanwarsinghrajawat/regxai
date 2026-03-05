@@ -49,7 +49,10 @@ import {
   ctaButton,
 } from "../content/home";
 
-const HOME_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+const HOME_ICONS: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   shield: Shield,
   fileCheck: FileCheck,
   target: Target,
@@ -192,9 +195,7 @@ export default function Home() {
                         className={`text-[11px] uppercase tracking-widest font-medium ${
                           isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
-                      >
-                        0{index + 1}
-                      </span>
+                      ></span>
                     </div>
 
                     <h3
@@ -313,8 +314,10 @@ export default function Home() {
                 }`}
               >
                 {riskSectionDescription}
-                <AnimatedNumber value={35} />{riskSectionDescriptionMid}
-                <AnimatedNumber value={7} suffix="%" />{riskSectionDescriptionEnd}
+                <AnimatedNumber value={35} />
+                {riskSectionDescriptionMid}
+                <AnimatedNumber value={7} suffix="%" />
+                {riskSectionDescriptionEnd}
               </p>
             </div>
 
@@ -345,7 +348,7 @@ export default function Home() {
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {riskCards[0].badge}
+                      {/* {riskCards[0].badge} */}
                     </p>
                     <h3
                       className={`text-lg font-semibold tracking-tight ${
@@ -421,8 +424,12 @@ export default function Home() {
                         value={46}
                         heightClassName="h-1.5"
                         durationMs={1100}
-                        trackClassName={isDark ? "bg-emerald-900/40" : "bg-emerald-200"}
-                        fillClassName={isDark ? "bg-emerald-400" : "bg-emerald-600"}
+                        trackClassName={
+                          isDark ? "bg-emerald-900/40" : "bg-emerald-200"
+                        }
+                        fillClassName={
+                          isDark ? "bg-emerald-400" : "bg-emerald-600"
+                        }
                       />
                     </div>
                     <div
@@ -482,7 +489,7 @@ export default function Home() {
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {riskCards[1].badge}
+                      {/* {riskCards[1].badge} */}
                     </p>
                     <h3
                       className={`text-lg font-semibold tracking-tight ${
@@ -541,8 +548,12 @@ export default function Home() {
                     <AnimatedProgressBar
                       value={40}
                       heightClassName="h-1.5"
-                      trackClassName={isDark ? "bg-emerald-900/40" : "bg-emerald-200"}
-                      fillClassName={isDark ? "bg-emerald-400" : "bg-emerald-600"}
+                      trackClassName={
+                        isDark ? "bg-emerald-900/40" : "bg-emerald-200"
+                      }
+                      fillClassName={
+                        isDark ? "bg-emerald-400" : "bg-emerald-600"
+                      }
                     />
                   </div>
 
@@ -582,7 +593,7 @@ export default function Home() {
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {riskCards[2].badge}
+                      {/* {riskCards[2].badge} */}
                     </p>
                     <h3
                       className={`text-lg font-semibold tracking-tight ${
@@ -832,9 +843,7 @@ export default function Home() {
                       className={`text-[11px] uppercase tracking-widest font-medium mb-3 ${
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
-                    >
-                      0{index + 1}
-                    </p>
+                    ></p>
                     <div
                       className={`mb-4 w-10 h-10 rounded-lg flex items-center justify-center ${
                         isDark ? "bg-emerald-500/20" : "bg-emerald-50"
