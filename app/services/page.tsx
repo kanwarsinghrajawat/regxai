@@ -11,6 +11,23 @@ import {
 import Link from "next/link";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import {
+  servicesHeroTitle,
+  servicesHeroDescription,
+  servicesList,
+  gettingStartedBadge,
+  gettingStartedTitle,
+  gettingStartedDescription,
+  gettingStartedSubtext,
+  getInTouchLabel,
+} from "../../content/services";
+
+const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  users: Users,
+  bookOpen: BookOpen,
+  barChart3: BarChart3,
+  headphones: Headphones,
+};
 
 export default function Services() {
   const { isDark } = useTheme();
@@ -32,16 +49,14 @@ export default function Services() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Our Services
+                {servicesHeroTitle}
               </h1>
               <p
                 className={`text-lg lg:text-xl mb-6 leading-relaxed font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                We work with organizations at different stages of their AI
-                journey to enable responsible development and deployment at
-                scale.{" "}
+                {servicesHeroDescription}
               </p>
             </div>
           </div>
@@ -52,33 +67,8 @@ export default function Services() {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Users,
-                  title: "Governance system implementation",
-                  description:
-                    "Integrate deterministic decisioning into existing AI workflows and production systems.",
-                },
-                {
-                  icon: BookOpen,
-                  title: "AI lifecycle mapping & readiness",
-                  description:
-                    "Identify where critical AI decisions occur across development, deployment, inference, and production.",
-                },
-                {
-                  icon: BarChart3,
-                  title: "Regulatory alignment & control design",
-                  description:
-                    "Translate regulatory expectations into enforceable, system-level ERP controls.",
-                },
-                {
-                  icon: Headphones,
-                  title: "Pilot-to-production enablement",
-                  description:
-                    "Help teams move high-value AI use cases from experimentation into compliant production.",
-                },
-              ].map((service, index) => {
-                const Icon = service.icon;
+              {servicesList.map((service, index) => {
+                const Icon = SERVICE_ICONS[service.iconKey] ?? Users;
                 return (
                   <div
                     key={index}
@@ -141,7 +131,7 @@ export default function Services() {
                 }`}
               >
                 <Rocket className="w-4 h-4" />
-                Getting Started
+                {gettingStartedBadge}
               </div>
 
               <h2
@@ -149,7 +139,7 @@ export default function Services() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                How to Get Started
+                {gettingStartedTitle}
               </h2>
 
               <p
@@ -157,9 +147,7 @@ export default function Services() {
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Getting started is intentionally simple. We work with teams to
-                understand where AI decisions occur in their lifecycle and
-                integrate enforcement at the right points.
+                {gettingStartedDescription}
               </p>
 
               <p
@@ -167,15 +155,14 @@ export default function Services() {
                   isDark ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                For teams building the next wave of responsible AI in
-                production.
+                {gettingStartedSubtext}
               </p>
 
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl group bg-emerald-700 text-white hover:bg-emerald-800"
               >
-                Get in Touch
+                {getInTouchLabel}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

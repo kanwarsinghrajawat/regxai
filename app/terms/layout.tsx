@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getSiteUrl } from "../../content/metadata";
+import { BreadcrumbJsonLd } from "../components/BreadcrumbJsonLd";
 
 const siteUrl = getSiteUrl();
 
@@ -12,6 +13,13 @@ export const metadata: Metadata = {
     title: "Terms and Conditions | regX AI",
     description:
       "Legal terms governing the use of regX AI services and the AI governance gateway.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms and Conditions | regX AI",
+    description:
+      "Legal terms governing the use of regX AI services and the AI governance gateway.",
   },
   alternates: { canonical: `${siteUrl}/terms` },
 };
@@ -21,5 +29,15 @@ export default function TermsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Terms and Conditions" },
+        ]}
+      />
+      {children}
+    </>
+  );
 }

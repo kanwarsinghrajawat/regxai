@@ -7,20 +7,7 @@ import { useFormReducer } from "../components/hooks/useFormReducer";
 import { validate, validateForm } from "../components/hooks/useFormValidation";
 import { sendEmail } from "../components/hooks/useSendEmail";
 import { twitterUrl, contactEmail } from "../../content/footer";
-
-function XLogo({ className }: { className?: string }) {
-  // X (Twitter) brand mark as inline SVG (not the "close" X icon).
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className={className}
-      fill="currentColor"
-    >
-      <path d="M18.9 2H21l-6.8 7.78L22 22h-6.6l-5.15-6.64L4.4 22H2.3l7.3-8.35L2 2h6.75l4.65 6.06L18.9 2Zm-2.3 18h1.83L7.74 3.9H5.77L16.6 20Z" />
-    </svg>
-  );
-}
+import { XIcon } from "../components/icons/XIcon";
 
 export default function Contact() {
   const { isDark } = useTheme();
@@ -126,9 +113,10 @@ export default function Contact() {
                     </p>
                   </div>
                 )}
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                   <div>
                     <label
+                      htmlFor="contact-name"
                       className={`block text-sm font-semibold mb-2 ${
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
@@ -136,10 +124,14 @@ export default function Contact() {
                       Name
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       required
+                      autoComplete="name"
                       value={state.formData.name}
                       onChange={(e) => handleChange("name", e.target.value)}
+                      aria-describedby={state.errors.name ? "name-error" : undefined}
+                      aria-invalid={!!state.errors.name}
                       className={`w-full px-4 py-3.5 rounded-xl border transition-all focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
                         isDark
                           ? `bg-gray-800/50 ${
@@ -156,7 +148,7 @@ export default function Contact() {
                       placeholder="Your name"
                     />
                     {state.errors.name && (
-                      <p className="mt-1 text-sm text-red-500">
+                      <p id="name-error" role="alert" className="mt-1 text-sm text-red-500">
                         {state.errors.name}
                       </p>
                     )}
@@ -164,6 +156,7 @@ export default function Contact() {
 
                   <div>
                     <label
+                      htmlFor="contact-email"
                       className={`block text-sm font-semibold mb-2 ${
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
@@ -171,10 +164,14 @@ export default function Contact() {
                       Email
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       required
+                      autoComplete="email"
                       value={state.formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
+                      aria-describedby={state.errors.email ? "email-error" : undefined}
+                      aria-invalid={!!state.errors.email}
                       className={`w-full px-4 py-3.5 rounded-xl border transition-all focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
                         isDark
                           ? `bg-gray-800/50 ${
@@ -191,7 +188,7 @@ export default function Contact() {
                       placeholder="your@email.com"
                     />
                     {state.errors.email && (
-                      <p className="mt-1 text-sm text-red-500">
+                      <p id="email-error" role="alert" className="mt-1 text-sm text-red-500">
                         {state.errors.email}
                       </p>
                     )}
@@ -199,6 +196,7 @@ export default function Contact() {
 
                   <div>
                     <label
+                      htmlFor="contact-company"
                       className={`block text-sm font-semibold mb-2 ${
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
@@ -206,7 +204,9 @@ export default function Contact() {
                       Company
                     </label>
                     <input
+                      id="contact-company"
                       type="text"
+                      autoComplete="organization"
                       value={state.formData.company}
                       onChange={(e) => handleChange("company", e.target.value)}
                       className={`w-full px-4 py-3.5 rounded-xl border transition-all focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
@@ -220,6 +220,7 @@ export default function Contact() {
 
                   <div>
                     <label
+                      htmlFor="contact-message"
                       className={`block text-sm font-semibold mb-2 ${
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
@@ -227,10 +228,13 @@ export default function Contact() {
                       Message
                     </label>
                     <textarea
+                      id="contact-message"
                       required
                       rows={5}
                       value={state.formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
+                      aria-describedby={state.errors.message ? "message-error" : undefined}
+                      aria-invalid={!!state.errors.message}
                       className={`w-full px-4 py-3.5 rounded-xl border transition-all resize-none focus:outline-none focus:ring-4 focus:ring-emerald-500/15 ${
                         isDark
                           ? `bg-gray-800/50 ${
@@ -247,7 +251,7 @@ export default function Contact() {
                       placeholder="How can we help you?"
                     />
                     {state.errors.message && (
-                      <p className="mt-1 text-sm text-red-500">
+                      <p id="message-error" role="alert" className="mt-1 text-sm text-red-500">
                         {state.errors.message}
                       </p>
                     )}
@@ -427,7 +431,7 @@ export default function Contact() {
                                   : "bg-white border border-gray-200 hover:border-emerald-400 text-gray-600 hover:text-emerald-600"
                               }`}
                             >
-                              <XLogo className="w-5 h-5" />
+                              <XIcon className="w-5 h-5" />
                             </a>
                           );
                         }
@@ -440,53 +444,6 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* <section
-          className={`py-12 lg:py-16 ${isDark ? "bg-gray-900" : "bg-gray-50"}`}
-        >
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2
-              className={`text-3xl lg:text-4xl font-semibold mb-8 ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-4">
-              {[
-                {
-                  q: "What is your typical response time?",
-                  a: "We aim to respond to all inquiries within 24 business hours.",
-                },
-
-                { q: "How long does implementation take?", a: "1-2 weeks" },
-              ].map((faq, index) => (
-                <div
-                  key={index}
-                  className={`rounded-lg p-8 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer border ${
-                    isDark
-                      ? "bg-gray-800 border-gray-700 hover:border-emerald-500/50"
-                      : "bg-white border-gray-200 hover:border-emerald-400"
-                  }`}
-                >
-                  <h3
-                    className={`font-semibold mb-3 text-lg ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    {faq.q}
-                  </h3>
-                  <p
-                    className={`text-base leading-relaxed ${
-                      isDark ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    {faq.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
       </main>
     </AppShell>
   );

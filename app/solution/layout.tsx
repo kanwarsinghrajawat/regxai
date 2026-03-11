@@ -1,17 +1,33 @@
 import type { Metadata } from "next";
 import { getSiteUrl } from "../../content/metadata";
+import { BreadcrumbJsonLd } from "../components/BreadcrumbJsonLd";
 
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Solution",
+  title: "Solution — AI Governance Gateway",
   description:
-    "We provide a system that makes AI deployment responsible and decidable. Real-time evaluation, deterministic decisions, and immutable records for enterprise AI governance.",
+    "A deterministic AI governance gateway for real-time evaluation, deterministic decisions, and immutable records. Make AI deployment responsible and decidable.",
+  keywords: [
+    "AI governance gateway",
+    "deterministic AI decisioning",
+    "real-time AI evaluation",
+    "AI compliance enforcement",
+    "immutable audit trails",
+    "AI trust infrastructure",
+  ],
   openGraph: {
     url: `${siteUrl}/solution`,
-    title: "Solution | regX AI",
+    title: "Solution — AI Governance Gateway | regX AI",
     description:
-      "We provide a system that makes AI deployment responsible and decidable. Real-time evaluation, deterministic decisions, and immutable records.",
+      "Real-time evaluation, deterministic decisions, and immutable records for enterprise AI governance.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Solution — AI Governance Gateway | regX AI",
+    description:
+      "Real-time evaluation, deterministic decisions, and immutable records for enterprise AI governance.",
   },
   alternates: { canonical: `${siteUrl}/solution` },
 };
@@ -21,5 +37,15 @@ export default function SolutionLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Solution" },
+        ]}
+      />
+      {children}
+    </>
+  );
 }

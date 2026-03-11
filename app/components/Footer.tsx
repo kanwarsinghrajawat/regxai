@@ -1,47 +1,24 @@
 import Link from "next/link";
-import { Shield } from "lucide-react";
+import { Shield, MapPin } from "lucide-react";
 import {
   siteName,
   footerTagline,
+  footerPages,
   contactEmail,
   twitterUrl,
+  offices,
   copyright,
   builtForTagline,
 } from "../../content/footer";
-
-const FOOTER_PAGES: { href: string; label: string }[] = [
-  { href: "/solution", label: "Solution" },
-  { href: "/services", label: "Services" },
-  { href: "/regulatory", label: "Regulatory" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/terms", label: "Terms & Conditions" },
-  { href: "/contact", label: "Contact" },
-];
+import { XIcon } from "./icons/XIcon";
 
 interface FooterProps {
   isDark: boolean;
 }
 
-function XIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className={className}
-      fill="currentColor"
-      width="16"
-      height="16"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  );
-}
-
 export function Footer({ isDark }: FooterProps) {
   return (
     <footer
-      role="contentinfo"
       className={isDark ? "bg-gray-900" : "bg-white"}
     >
       {/* Accent bar */}
@@ -56,7 +33,7 @@ export function Footer({ isDark }: FooterProps) {
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-          {/* Brand — spans 5 cols on large */}
+          {/* Brand + Offices — spans 5 cols on large */}
           <div className="lg:col-span-5">
             <Link
               href="/"
@@ -81,6 +58,49 @@ export function Footer({ isDark }: FooterProps) {
             >
               {footerTagline}
             </p>
+
+            {/* Offices */}
+            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+              {offices.map((office) => (
+                <div key={office.city} className="flex items-start gap-2">
+                  <MapPin
+                    className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${
+                      isDark ? "text-emerald-400/60" : "text-emerald-600/50"
+                    }`}
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <span
+                      className={`text-sm font-medium ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      {office.city}
+                    </span>
+                    {office.comingSoon && (
+                      <span
+                        className={`ml-1.5 inline-flex items-center rounded-full px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider ${
+                          isDark
+                            ? "bg-emerald-500/15 text-emerald-400"
+                            : "bg-emerald-50 text-emerald-600"
+                        }`}
+                      >
+                        Soon
+                      </span>
+                    )}
+                    {office.address && (
+                      <span
+                        className={`text-xs leading-relaxed block mt-0.5 ${
+                          isDark ? "text-gray-500" : "text-gray-500"
+                        }`}
+                      >
+                        {office.address}{office.region && `, ${office.region}`}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Vertical divider — only on large screens */}
@@ -100,8 +120,9 @@ export function Footer({ isDark }: FooterProps) {
             >
               Navigate
             </h3>
+            <nav aria-label="Footer navigation">
             <ul className="flex flex-wrap gap-x-6 gap-y-2 sm:flex-col sm:flex-nowrap sm:gap-y-2.5">
-              {FOOTER_PAGES.map((item) => (
+              {footerPages.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -116,6 +137,7 @@ export function Footer({ isDark }: FooterProps) {
                 </li>
               ))}
             </ul>
+            </nav>
           </div>
 
           {/* Contact — 3 cols */}
