@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Outfit } from 'next/font/google';
 import { ThemeProvider } from './components/ThemeProvider';
+import { LanguageProvider } from './components/LanguageProvider';
 import { StructuredData } from './components/StructuredData';
 import {
   defaultTitle,
@@ -109,7 +110,9 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${outfit.variable} font-sans antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

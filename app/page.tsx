@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { AppShell } from "./components/AppShell";
 import { useTheme } from "./components/ThemeProvider";
+import { useLanguage } from "./components/LanguageProvider";
 import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AnimatedProgressBar } from "./components/AnimatedProgressBar";
 import {
@@ -28,6 +29,7 @@ import {
   keyFeaturesBadge,
   keyFeaturesTitle,
   keyFeaturesDescription,
+  keyFeaturesConfig,
   keyFeaturesList,
   riskSectionTitle,
   riskSectionDescription,
@@ -43,6 +45,7 @@ import {
   whereThisFitsBadge,
   whereThisFitsTitle,
   whereThisFitsDescription,
+  whereThisFitsConfig,
   whereThisFitsList,
   ctaTitle,
   ctaDescription,
@@ -64,6 +67,7 @@ const HOME_ICONS: Record<
 
 export default function Home() {
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
 
   return (
     <AppShell>
@@ -93,32 +97,32 @@ export default function Home() {
                 }`}
               >
                 <Target className="w-4 h-4" />
-                {heroBadge}
+                {heroBadge[locale]}
               </div>
               <h1
                 className={`text-4xl lg:text-5xl xl:text-6xl font-semibold mb-6 leading-tight tracking-tight ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {heroTitleLine1}
+                {heroTitleLine1[locale]}
                 <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  {heroTitleHighlight}
+                  {heroTitleHighlight[locale]}
                 </span>
-                {heroTitleLine2}
+                {heroTitleLine2[locale]}
               </h1>
               <p
                 className={`text-lg lg:text-xl mb-10 leading-relaxed max-w-3xl mx-auto font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                {heroDescription}
+                {heroDescription[locale]}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-700 text-white rounded-xl font-semibold hover:bg-emerald-800 transition-all duration-200 shadow-lg hover:shadow-xl group"
                 >
-                  {heroCtaPrimary}
+                  {heroCtaPrimary[locale]}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
@@ -129,7 +133,7 @@ export default function Home() {
                       : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                   }`}
                 >
-                  {heroCtaSecondary}
+                  {heroCtaSecondary[locale]}
                 </Link>
               </div>
             </div>
@@ -149,27 +153,27 @@ export default function Home() {
                 }`}
               >
                 <Shield className="w-4 h-4" />
-                {keyFeaturesBadge}
+                {keyFeaturesBadge[locale]}
               </div>
               <h2
                 className={`text-3xl lg:text-4xl font-semibold tracking-tight mb-4 ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {keyFeaturesTitle}
+                {keyFeaturesTitle[locale]}
               </h2>
               <p
                 className={`text-lg max-w-2xl mx-auto ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                {keyFeaturesDescription}
+                {keyFeaturesDescription[locale]}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {keyFeaturesList.map((feature, index) => {
-                const Icon = HOME_ICONS[feature.iconKey] ?? Shield;
+              {keyFeaturesList[locale].map((feature, index) => {
+                const Icon = HOME_ICONS[keyFeaturesConfig[index].iconKey] ?? Shield;
                 return (
                   <div
                     key={index}
@@ -231,18 +235,18 @@ export default function Home() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {riskSectionTitle}
+                {riskSectionTitle[locale]}
               </h2>
               <p
                 className={`text-lg lg:text-xl max-w-3xl mx-auto mt-6 leading-relaxed ${
                   isDark ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                {riskSectionDescription}
+                {riskSectionDescription[locale]}
                 <AnimatedNumber value={35} />
-                {riskSectionDescriptionMid}
+                {riskSectionDescriptionMid[locale]}
                 <AnimatedNumber value={7} suffix="%" />
-                {riskSectionDescriptionEnd}
+                {riskSectionDescriptionEnd[locale]}
               </p>
             </div>
 
@@ -273,21 +277,21 @@ export default function Home() {
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {/* {riskCards[0].badge} */}
+                      {/* {riskCards[locale][0].badge} */}
                     </p>
                     <h3
                       className={`text-lg font-semibold tracking-tight ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {riskCards[0].title}
+                      {riskCards[locale][0].title}
                     </h3>
                     <p
                       className={`text-sm mt-0.5 ${
                         isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      {riskCards[0].subtitle}
+                      {riskCards[locale][0].subtitle}
                     </p>
                   </div>
                 </div>
@@ -306,14 +310,14 @@ export default function Home() {
                         isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      {riskCards[0].statLabel}
+                      {riskCards[locale][0].statLabel}
                     </p>
                     <p
                       className={`text-xs mt-0.5 ${
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {riskCards[0].statBadge}
+                      {riskCards[locale][0].statBadge}
                     </p>
                   </div>
 
@@ -322,7 +326,7 @@ export default function Home() {
                       isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    {riskCards[0].body}
+                    {riskCards[locale][0].body}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -336,7 +340,7 @@ export default function Home() {
                           isDark ? "text-gray-300" : "text-gray-600"
                         }`}
                       >
-                        {riskCards[0].metric1Label}
+                        {riskCards[locale][0].metric1Label}
                       </p>
                       <p
                         className={`text-xl font-semibold tabular-nums ${
@@ -367,7 +371,7 @@ export default function Home() {
                           isDark ? "text-gray-300" : "text-gray-600"
                         }`}
                       >
-                        {riskCards[0].metric2Label}
+                        {riskCards[locale][0].metric2Label}
                       </p>
                       <p
                         className={`text-xl font-semibold tabular-nums mt-1 ${
@@ -381,7 +385,7 @@ export default function Home() {
                           isDark ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        {riskCards[0].metric2Subtext}
+                        {riskCards[locale][0].metric2Subtext}
                       </p>
                     </div>
                   </div>
@@ -414,21 +418,21 @@ export default function Home() {
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {/* {riskCards[1].badge} */}
+                      {/* {riskCards[locale][1].badge} */}
                     </p>
                     <h3
                       className={`text-lg font-semibold tracking-tight ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {riskCards[1].title}
+                      {riskCards[locale][1].title}
                     </h3>
                     <p
                       className={`text-sm mt-0.5 ${
                         isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      {riskCards[1].subtitle}
+                      {riskCards[locale][1].subtitle}
                     </p>
                   </div>
                 </div>
@@ -447,7 +451,7 @@ export default function Home() {
                         isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      {riskCards[1].statBadge}
+                      {riskCards[locale][1].statBadge}
                     </p>
                   </div>
 
@@ -461,14 +465,14 @@ export default function Home() {
                         isDark ? "text-gray-300" : "text-gray-600"
                       }`}
                     >
-                      {riskCards[1].breachLabel}
+                      {riskCards[locale][1].breachLabel}
                     </p>
                     <p
                       className={`text-xs tabular-nums mb-2 ${
                         isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      {riskCards[1].breachRange}
+                      {riskCards[locale][1].breachRange}
                     </p>
                     <AnimatedProgressBar
                       value={40}
@@ -487,7 +491,7 @@ export default function Home() {
                       isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    {riskCards[1].body}
+                    {riskCards[locale][1].body}
                   </p>
                 </div>
               </div>
@@ -518,21 +522,21 @@ export default function Home() {
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {/* {riskCards[2].badge} */}
+                      {/* {riskCards[locale][2].badge} */}
                     </p>
                     <h3
                       className={`text-lg font-semibold tracking-tight ${
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {riskCards[2].title}
+                      {riskCards[locale][2].title}
                     </h3>
                     <p
                       className={`text-sm mt-0.5 ${
                         isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      {riskCards[2].subtitle}
+                      {riskCards[locale][2].subtitle}
                     </p>
                   </div>
                 </div>
@@ -543,7 +547,7 @@ export default function Home() {
                       isDark ? "text-emerald-200" : "text-emerald-800"
                     }`}
                   >
-                    {riskCards[2].trendTitle}
+                    {riskCards[locale][2].trendTitle}
                   </p>
 
                   <div
@@ -556,14 +560,14 @@ export default function Home() {
                         isDark ? "text-gray-300" : "text-gray-600"
                       }`}
                     >
-                      {riskCards[2].riskLabel}
+                      {riskCards[locale][2].riskLabel}
                     </p>
                     <p
                       className={`text-xs mb-3 ${
                         isDark ? "text-emerald-400" : "text-emerald-600"
                       }`}
                     >
-                      {riskCards[2].riskValue}
+                      {riskCards[locale][2].riskValue}
                     </p>
                     <svg
                       viewBox="0 0 220 70"
@@ -597,7 +601,7 @@ export default function Home() {
                       isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    {riskCards[2].body}
+                    {riskCards[locale][2].body}
                   </p>
                 </div>
               </div>
@@ -616,17 +620,17 @@ export default function Home() {
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  {howWeHelpTitle}
+                  {howWeHelpTitle[locale]}
                 </h2>
                 <p
                   className={`text-xl leading-relaxed mb-8 ${
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  {howWeHelpDescription}
+                  {howWeHelpDescription[locale]}
                 </p>
                 <ul className="space-y-4">
-                  {howWeHelpList.map((item, index) => (
+                  {howWeHelpList[locale].map((item, index) => (
                     <li
                       key={index}
                       className={`flex items-center gap-3 text-lg ${
@@ -671,14 +675,14 @@ export default function Home() {
                             isDark ? "text-white" : "text-gray-900"
                           }`}
                         >
-                          {impactMetricsTitle}
+                          {impactMetricsTitle[locale]}
                         </h3>
                         <p
                           className={`text-sm mt-1 ${
                             isDark ? "text-gray-400" : "text-gray-600"
                           }`}
                         >
-                          {impactMetricsSubtitle}
+                          {impactMetricsSubtitle[locale]}
                         </p>
                       </div>
                       <div
@@ -696,7 +700,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="space-y-6">
-                      {impactMetricsItems.map((metric, idx) => (
+                      {impactMetricsItems[locale].map((metric, idx) => (
                         <div key={idx}>
                           <div className="flex items-center justify-between">
                             <span
@@ -734,27 +738,27 @@ export default function Home() {
                   isDark ? "text-emerald-400" : "text-emerald-600"
                 }`}
               >
-                {whereThisFitsBadge}
+                {whereThisFitsBadge[locale]}
               </p>
               <h2
                 className={`text-3xl lg:text-4xl font-semibold tracking-tight mb-4 ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {whereThisFitsTitle}
+                {whereThisFitsTitle[locale]}
               </h2>
               <p
                 className={`text-lg max-w-2xl mx-auto ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                {whereThisFitsDescription}
+                {whereThisFitsDescription[locale]}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {whereThisFitsList.map((item, index) => {
-                const Icon = HOME_ICONS[item.iconKey] ?? Shield;
+              {whereThisFitsList[locale].map((item, index) => {
+                const Icon = HOME_ICONS[whereThisFitsConfig[index].iconKey] ?? Shield;
                 return (
                   <div
                     key={index}
@@ -808,16 +812,16 @@ export default function Home() {
           ></div>
           <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-3xl lg:text-4xl font-semibold mb-6 leading-tight">
-              {ctaTitle}
+              {ctaTitle[locale]}
             </h2>
             <p className="text-xl text-emerald-50 mb-10 leading-relaxed">
-              {ctaDescription}
+              {ctaDescription[locale]}
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-800 rounded-xl font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
             >
-              {ctaButton}
+              {ctaButton[locale]}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

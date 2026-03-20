@@ -41,7 +41,7 @@ export default function FaqLayout({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((item) => ({
+    mainEntity: faqs.en.map((item) => ({
       "@type": "Question",
       name: item.q,
       acceptedAnswer: {

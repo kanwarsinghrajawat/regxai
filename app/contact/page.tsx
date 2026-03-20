@@ -3,15 +3,30 @@
 import { Calendar, Mail } from "lucide-react";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 import { useFormReducer } from "../components/hooks/useFormReducer";
 import { validate, validateForm } from "../components/hooks/useFormValidation";
 import { sendEmail } from "../components/hooks/useSendEmail";
 import { twitterUrl, contactEmail } from "../../content/footer";
 import { XIcon } from "../components/icons/XIcon";
+import {
+  contactHeroTitle,
+  contactHeroDescription,
+  contactFormLabels,
+  contactInfoTitle,
+  contactEmailLabel,
+  contactResponseTime,
+  contactEmailUs,
+  contactScheduleTitle,
+  contactScheduleButton,
+  contactFollowUs,
+} from "../../content/contact";
 
 export default function Contact() {
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
   const [state, dispatch] = useFormReducer();
+  const form = contactFormLabels[locale];
 
   const handleChange = (field: keyof typeof state.formData, value: string) => {
     dispatch({ type: "SET_FORM_DATA", payload: { [field]: value } });
@@ -74,15 +89,14 @@ export default function Contact() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Get in Touch
+                {contactHeroTitle[locale]}
               </h1>
               <p
                 className={`text-lg lg:text-xl mb-6 leading-relaxed font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                We are here to help. Reach out to learn more about how regX AI
-                can transform your organization.
+                {contactHeroDescription[locale]}
               </p>
             </div>
           </div>
@@ -121,7 +135,7 @@ export default function Contact() {
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
-                      Name
+                      {form.name}
                     </label>
                     <input
                       id="contact-name"
@@ -145,7 +159,7 @@ export default function Contact() {
                                 : "border-gray-200/70"
                             } text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
-                      placeholder="Your name"
+                      placeholder={form.namePlaceholder}
                     />
                     {state.errors.name && (
                       <p id="name-error" role="alert" className="mt-1 text-sm text-red-500">
@@ -161,7 +175,7 @@ export default function Contact() {
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
-                      Email
+                      {form.email}
                     </label>
                     <input
                       id="contact-email"
@@ -185,7 +199,7 @@ export default function Contact() {
                                 : "border-gray-200/70"
                             } text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
-                      placeholder="your@email.com"
+                      placeholder={form.emailPlaceholder}
                     />
                     {state.errors.email && (
                       <p id="email-error" role="alert" className="mt-1 text-sm text-red-500">
@@ -201,7 +215,7 @@ export default function Contact() {
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
-                      Company
+                      {form.company}
                     </label>
                     <input
                       id="contact-company"
@@ -214,7 +228,7 @@ export default function Contact() {
                           ? "bg-gray-800/50 border-white/10 text-white placeholder-gray-500 focus:border-emerald-400"
                           : "bg-white border-gray-200/70 text-gray-900 placeholder-gray-400 focus:border-emerald-500"
                       }`}
-                      placeholder="Your company"
+                      placeholder={form.companyPlaceholder}
                     />
                   </div>
 
@@ -225,7 +239,7 @@ export default function Contact() {
                         isDark ? "text-gray-200" : "text-gray-800"
                       }`}
                     >
-                      Message
+                      {form.message}
                     </label>
                     <textarea
                       id="contact-message"
@@ -248,7 +262,7 @@ export default function Contact() {
                                 : "border-gray-200/70"
                             } text-gray-900 placeholder-gray-400 focus:border-emerald-500`
                       }`}
-                      placeholder="How can we help you?"
+                      placeholder={form.messagePlaceholder}
                     />
                     {state.errors.message && (
                       <p id="message-error" role="alert" className="mt-1 text-sm text-red-500">
@@ -266,7 +280,7 @@ export default function Contact() {
                         : "hover:bg-emerald-700"
                     }`}
                   >
-                    {state.isSubmitting ? "Sending..." : "Send Message"}
+                    {state.isSubmitting ? form.sending : form.sendMessage}
                   </button>
                 </form>
               </div>
@@ -284,7 +298,7 @@ export default function Contact() {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Contact Information
+                    {contactInfoTitle[locale]}
                   </h2>
                   <div className="space-y-4">
                     {/* Email */}
@@ -314,7 +328,7 @@ export default function Contact() {
                                 isDark ? "text-gray-300" : "text-gray-700"
                               }`}
                             >
-                              Email
+                              {contactEmailLabel[locale]}
                             </div>
                             <a
                               href={`mailto:${contactEmail}`}
@@ -331,7 +345,7 @@ export default function Contact() {
                                 isDark ? "text-gray-400" : "text-gray-600"
                               }`}
                             >
-                              We typically respond within 24 hours.
+                              {contactResponseTime[locale]}
                             </div>
                           </div>
                         </div>
@@ -344,7 +358,7 @@ export default function Contact() {
                               : "bg-white hover:bg-gray-50 text-gray-900 border border-gray-200/70"
                           }`}
                         >
-                          Email us
+                          {contactEmailUs[locale]}
                         </a>
                       </div>
                     </div>
@@ -376,8 +390,7 @@ export default function Contact() {
                                 isDark ? "text-gray-300" : "text-gray-700"
                               }`}
                             >
-                              Want to enforce deterministic decisioning?
-                              Schedule a call with us
+                              {contactScheduleTitle[locale]}
                             </div>
                             <div
                               className={`mt-1 text-sm leading-relaxed ${
@@ -397,7 +410,7 @@ export default function Contact() {
                               : "bg-emerald-700 hover:bg-emerald-800 text-white"
                           }`}
                         >
-                          Schedule your call
+                          {contactScheduleButton[locale]}
                         </a>
                       </div>
                     </div>
@@ -413,7 +426,7 @@ export default function Contact() {
                         isDark ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      Follow Us
+                      {contactFollowUs[locale]}
                     </h3>
                     <div className="flex gap-3">
                       {[{ url: twitterUrl }].map(

@@ -11,10 +11,12 @@ import {
 import Link from "next/link";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 import {
   servicesHeroTitle,
   servicesHeroDescription,
-  servicesList,
+  servicesListConfig,
+  servicesListContent,
   gettingStartedBadge,
   gettingStartedTitle,
   gettingStartedDescription,
@@ -31,6 +33,7 @@ const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string }>>
 
 export default function Services() {
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
 
   return (
     <AppShell>
@@ -49,14 +52,14 @@ export default function Services() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {servicesHeroTitle}
+                {servicesHeroTitle[locale]}
               </h1>
               <p
                 className={`text-lg lg:text-xl mb-6 leading-relaxed font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                {servicesHeroDescription}
+                {servicesHeroDescription[locale]}
               </p>
             </div>
           </div>
@@ -67,7 +70,7 @@ export default function Services() {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-6">
-              {servicesList.map((service, index) => {
+              {servicesListConfig.map((service, index) => {
                 const Icon = SERVICE_ICONS[service.iconKey] ?? Users;
                 return (
                   <div
@@ -90,14 +93,14 @@ export default function Services() {
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {service.title}
+                      {servicesListContent[locale][index].title}
                     </h3>
                     <p
                       className={`text-base leading-relaxed ${
                         isDark ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
-                      {service.description}
+                      {servicesListContent[locale][index].description}
                     </p>
                   </div>
                 );
@@ -131,7 +134,7 @@ export default function Services() {
                 }`}
               >
                 <Rocket className="w-4 h-4" />
-                {gettingStartedBadge}
+                {gettingStartedBadge[locale]}
               </div>
 
               <h2
@@ -139,7 +142,7 @@ export default function Services() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {gettingStartedTitle}
+                {gettingStartedTitle[locale]}
               </h2>
 
               <p
@@ -147,7 +150,7 @@ export default function Services() {
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                {gettingStartedDescription}
+                {gettingStartedDescription[locale]}
               </p>
 
               <p
@@ -155,14 +158,14 @@ export default function Services() {
                   isDark ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                {gettingStartedSubtext}
+                {gettingStartedSubtext[locale]}
               </p>
 
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl group bg-emerald-700 text-white hover:bg-emerald-800"
               >
-                {getInTouchLabel}
+                {getInTouchLabel[locale]}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

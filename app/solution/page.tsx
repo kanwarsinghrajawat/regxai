@@ -15,19 +15,67 @@ import {
 } from "lucide-react";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 import { AnimatedNumber } from "../components/AnimatedNumber";
 import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
 import {
-  problemStats,
+  problemTitle,
+  problemStatsConfig,
+  problemStatsLabels,
+  ourSolutionTitle,
+  ourSolutionDescription,
+  howItWorksTitle,
+  howItWorksSteps,
+  systemArchitectureTitle,
+  flowStepsConfig,
+  flowStepsTitles,
+  averageResponseTimeLabel,
+  averageResponseTimeValue,
+  solutionHowWeHelpTitle,
+  solutionHowWeHelpDescription,
+  solutionHowWeHelpList,
+  enterpriseImpactTitle,
+  enterpriseMetricsConfig,
+  enterpriseMetricsLabels,
+  roiLabel,
+  roiDescription,
   useCaseDistributionTitle,
-  useCaseDistributionItems,
+  useCaseDistributionConfig,
+  useCaseDistributionLabels,
   useCaseCoveredLabel,
   useCaseBroadCoverageTitle,
   useCaseBroadCoverageDescription,
+  solutionWhereThisFitsTitle,
+  solutionWhereThisFitsDescription,
+  solutionWhereThisFitsList,
+  whoThisIsForTitle,
+  whoThisIsForDescription,
+  whoThisIsForList,
+  targetAudienceTitle,
+  targetAudienceConfig,
+  targetAudienceLabels,
+  solutionCtaTitle,
+  solutionCtaDescription,
+  solutionCtaButton,
+  solutionStepLabel,
+  coverageLabel,
 } from "../../content/solution";
+
+const iconMap = {
+  zap: Zap,
+  shield: Shield,
+  target: Target,
+  checkCircle: CheckCircle,
+  clock: Clock,
+  trendingUp: TrendingUp,
+  code: Code,
+  users: Users,
+  building2: Building2,
+} as const;
 
 export default function Solution() {
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
 
   return (
     <AppShell>
@@ -54,11 +102,11 @@ export default function Solution() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                The Problem
+                {problemTitle[locale]}
               </h1>
             </div>
             <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {problemStats.map((stat, index) => (
+              {problemStatsConfig.map((stat, index) => (
                 <div
                   key={index}
                   className={`flex flex-col rounded-2xl border p-6 min-h-[240px] transition-all duration-200 ${
@@ -79,7 +127,7 @@ export default function Solution() {
                       isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    {stat.label}
+                    {problemStatsLabels[locale][index]}
                   </p>
                 </div>
               ))}
@@ -101,18 +149,14 @@ export default function Solution() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Our Solution
+                {ourSolutionTitle[locale]}
               </h1>
               <p
                 className={`text-lg lg:text-xl mb-12 leading-relaxed font-normal ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                We provide a system that makes AI deployment responsible and
-                decidable. Instead of relying on post-hoc reviews or manual
-                checklists, our approach enables organizations to determine - at
-                the moment of execution - whether an AI action is permitted to
-                proceed.
+                {ourSolutionDescription[locale]}
               </p>
             </div>
           </div>
@@ -129,23 +173,10 @@ export default function Solution() {
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  How It Works
+                  {howItWorksTitle[locale]}
                 </h2>
                 <div className="space-y-6">
-                  {[
-                    {
-                      description:
-                        "Our system integrates into existing enterprise AI workflows and evaluates actions before they occur. At each critical stage of the AI lifecycle, it determines whether an action can proceed, should be blocked, or requires explicit ownership, human on the loop.",
-                    },
-                    {
-                      description:
-                        "All decisions are deterministic by design, require no access to customer data, and are enforced in real time - enabling governance without slowing development or production outcomes.",
-                    },
-                    {
-                      description:
-                        "Every decision is recorded as a tamper-evident reference, creating an immutable trail of evidence that can be relied upon for internal review, audit, and regulatory inquiries.",
-                    },
-                  ].map((item, index) => (
+                  {howItWorksSteps[locale].map((item, index) => (
                     <div
                       key={index}
                       className={`flex gap-4 p-6 rounded-xl transition-all duration-300 hover:shadow-lg ${
@@ -200,36 +231,11 @@ export default function Solution() {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    System Architecture Flow
+                    {systemArchitectureTitle[locale]}
                   </h3>
                   <div className="space-y-4">
-                    {[
-                      {
-                        step: "1",
-                        title: "AI Action Request",
-                        icon: Zap,
-                        color: "emerald",
-                      },
-                      {
-                        step: "2",
-                        title: "Real-time Evaluation",
-                        icon: Shield,
-                        color: "blue",
-                      },
-                      {
-                        step: "3",
-                        title: "Deterministic Decision",
-                        icon: Target,
-                        color: "teal",
-                      },
-                      {
-                        step: "4",
-                        title: "Immutable Record",
-                        icon: CheckCircle,
-                        color: "emerald",
-                      },
-                    ].map((item, index) => {
-                      const Icon = item.icon;
+                    {flowStepsConfig.map((item, index) => {
+                      const Icon = iconMap[item.iconKey];
                       return (
                         <div
                           key={index}
@@ -256,14 +262,14 @@ export default function Solution() {
                                 isDark ? "text-gray-300" : "text-gray-700"
                               }`}
                             >
-                              Step {item.step}
+                              {solutionStepLabel[locale]} {item.step}
                             </div>
                             <div
                               className={`text-base font-semibold ${
                                 isDark ? "text-white" : "text-gray-900"
                               }`}
                             >
-                              {item.title}
+                              {flowStepsTitles[locale][index]}
                             </div>
                           </div>
                           {index < 3 && (
@@ -290,14 +296,14 @@ export default function Solution() {
                           isDark ? "text-gray-300" : "text-gray-700"
                         }`}
                       >
-                        Average Response Time
+                        {averageResponseTimeLabel[locale]}
                       </span>
                       <span
                         className={`text-xl font-bold ${
                           isDark ? "text-emerald-400" : "text-emerald-600"
                         }`}
                       >
-                        &lt; <AnimatedNumber value={50} />
+                        &lt; <AnimatedNumber value={averageResponseTimeValue} />
                         ms
                       </span>
                     </div>
@@ -319,24 +325,17 @@ export default function Solution() {
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  How We Help Enterprises
+                  {solutionHowWeHelpTitle[locale]}
                 </h2>
                 <p
                   className={`text-xl leading-relaxed mb-8 ${
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  We help organizations move AI into production by making risk
-                  decidable before it becomes costly.
+                  {solutionHowWeHelpDescription[locale]}
                 </p>
                 <ul className="space-y-4">
-                  {[
-                    "Reduce regulatory exposure by evaluating AI actions before they execute",
-                    "Prevent fines and enforcement events through real-time blocking and escalation",
-                    "Unlock ROI from stalled AI initiatives by enabling compliant production deployment",
-                    "Lower governance overhead by replacing manual reviews with deterministic controls",
-                    "Stay audit-ready by default with immutable decision records",
-                  ].map((item, index) => (
+                  {solutionHowWeHelpList[locale].map((item, index) => (
                     <li
                       key={index}
                       className={`flex items-start gap-3 text-lg ${
@@ -379,34 +378,12 @@ export default function Solution() {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Enterprise Impact Metrics
+                    {enterpriseImpactTitle[locale]}
                   </h3>
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    {[
-                      {
-                        label: "Risk Reduction",
-                        description:
-                          "Reduce exposure with execution-time controls.",
-                        icon: Shield,
-                      },
-                      {
-                        label: "Faster Deployment",
-                        description: "Ship to production with confidence.",
-                        icon: Clock,
-                      },
-                      {
-                        label: "Cost Savings",
-                        description:
-                          "Replace manual review with deterministic enforcement.",
-                        icon: TrendingUp,
-                      },
-                      {
-                        label: "Compliance Rate",
-                        description: "Stay audit-ready by default.",
-                        icon: CheckCircle,
-                      },
-                    ].map((metric, index) => {
-                      const Icon = metric.icon;
+                    {enterpriseMetricsConfig.map((metric, index) => {
+                      const Icon = iconMap[metric.iconKey];
+                      const labels = enterpriseMetricsLabels[locale][index];
                       return (
                         <div
                           key={index}
@@ -427,7 +404,7 @@ export default function Solution() {
                                 isDark ? "text-gray-100" : "text-gray-900"
                               }`}
                             >
-                              {metric.label}
+                              {labels.label}
                             </span>
                           </div>
                           <div
@@ -435,7 +412,7 @@ export default function Solution() {
                               isDark ? "text-gray-400" : "text-gray-600"
                             }`}
                           >
-                            {metric.description}
+                            {labels.description}
                           </div>
                         </div>
                       );
@@ -453,15 +430,14 @@ export default function Solution() {
                         isDark ? "text-emerald-200" : "text-emerald-800"
                       }`}
                     >
-                      ROI
+                      {roiLabel[locale]}
                     </div>
                     <div
                       className={`mt-1 text-sm leading-relaxed ${
                         isDark ? "text-gray-300" : "text-gray-700"
                       }`}
                     >
-                      Reduce exposure to illegal or harmful AI actions,
-                      prosecution, fines and reputational damages{" "}
+                      {roiDescription[locale]}{" "}
                     </div>
                   </div>
                 </div>
@@ -488,17 +464,17 @@ export default function Solution() {
                       isDark ? "text-emerald-400" : "text-emerald-600"
                     }`}
                   >
-                    Coverage
+                    {coverageLabel[locale]}
                   </p>
                   <h3
                     className={`text-xl font-semibold tracking-tight mb-6 ${
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    {useCaseDistributionTitle}
+                    {useCaseDistributionTitle[locale]}
                   </h3>
                   <div className="space-y-3">
-                    {useCaseDistributionItems.map((item, index) => (
+                    {useCaseDistributionLabels[locale].map((label, index) => (
                       <div
                         key={index}
                         className={`flex items-center justify-between gap-4 rounded-lg px-4 py-3.5 ${
@@ -516,7 +492,7 @@ export default function Solution() {
                               isDark ? "text-gray-100" : "text-gray-800"
                             }`}
                           >
-                            {item.label}
+                            {label}
                           </span>
                         </div>
                         <span
@@ -524,7 +500,7 @@ export default function Solution() {
                             isDark ? "text-emerald-400" : "text-emerald-600"
                           }`}
                         >
-                          {useCaseCoveredLabel}
+                          {useCaseCoveredLabel[locale]}
                         </span>
                       </div>
                     ))}
@@ -539,14 +515,14 @@ export default function Solution() {
                         isDark ? "text-emerald-200" : "text-gray-800"
                       }`}
                     >
-                      {useCaseBroadCoverageTitle}
+                      {useCaseBroadCoverageTitle[locale]}
                     </p>
                     <p
                       className={`mt-1 text-sm ${
                         isDark ? "text-emerald-400" : "text-gray-600"
                       }`}
                     >
-                      {useCaseBroadCoverageDescription}
+                      {useCaseBroadCoverageDescription[locale]}
                     </p>
                   </div>
                 </div>
@@ -557,25 +533,17 @@ export default function Solution() {
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Where This Fits
+                  {solutionWhereThisFitsTitle[locale]}
                 </h2>
                 <p
                   className={`text-xl leading-relaxed mb-8 ${
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  This system applies wherever AI decisions carry risk,
-                  responsibility, or regulatory exposure:
+                  {solutionWhereThisFitsDescription[locale]}
                 </p>
                 <ul className="space-y-4">
-                  {[
-                    "Autonomous and agentic AI systems executing multi-step actions",
-                    "Enterprise chatbots and AI assistants",
-                    "Model deployment and CI/CD pipelines",
-                    "AI systems operating in regulated environments",
-                    "Decision-making and inference workflows",
-                    "Organizations scaling AI beyond pilots into production",
-                  ].map((item, index) => (
+                  {solutionWhereThisFitsList[locale].map((item, index) => (
                     <li
                       key={index}
                       className={`flex items-start gap-3 text-lg ${
@@ -613,23 +581,17 @@ export default function Solution() {
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Who This Is For
+                  {whoThisIsForTitle[locale]}
                 </h2>
                 <p
                   className={`text-xl leading-relaxed mb-8 ${
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  This system is built for teams responsible for putting AI into
-                  production:
+                  {whoThisIsForDescription[locale]}
                 </p>
                 <ul className="space-y-4">
-                  {[
-                    "Engineering and platform teams deploying AI systems",
-                    "AI and data leaders accountable for risk and compliance",
-                    "Product teams taking AI to Go-to-market",
-                    "Organizations operating in regulated or high-risk environments",
-                  ].map((item, index) => (
+                  {whoThisIsForList[locale].map((item, index) => (
                     <li
                       key={index}
                       className={`flex items-start gap-3 text-lg ${
@@ -670,28 +632,11 @@ export default function Solution() {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Target Audience Breakdown
+                    {targetAudienceTitle[locale]}
                   </h3>
                   <div className="space-y-4">
-                    {[
-                      {
-                        icon: Code,
-                        label: "Engineering Teams",
-                      },
-                      {
-                        icon: Users,
-                        label: "AI & Data Leaders",
-                      },
-                      {
-                        icon: Target,
-                        label: "Product Teams",
-                      },
-                      {
-                        icon: Building2,
-                        label: "Regulated Organizations",
-                      },
-                    ].map((item, index) => {
-                      const Icon = item.icon;
+                    {targetAudienceConfig.map((item, index) => {
+                      const Icon = iconMap[item.iconKey];
                       return (
                         <div
                           key={index}
@@ -720,7 +665,7 @@ export default function Solution() {
                                 isDark ? "text-white" : "text-gray-900"
                               }`}
                             >
-                              {item.label}
+                              {targetAudienceLabels[locale][index]}
                             </div>
                           </div>
                         </div>
@@ -736,17 +681,16 @@ export default function Solution() {
         <section className="py-20 lg:py-28 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-3xl lg:text-4xl font-semibold mb-6 leading-tight">
-              Ready to transform your AI deployment?
+              {solutionCtaTitle[locale]}
             </h2>
             <p className="text-xl text-emerald-50 mb-10 leading-relaxed">
-              Get started with our solution today and ensure compliance at every
-              step.
+              {solutionCtaDescription[locale]}
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-800 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl text-lg group"
             >
-              Get in Touch
+              {solutionCtaButton[locale]}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

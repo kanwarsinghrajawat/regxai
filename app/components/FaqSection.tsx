@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "./LanguageProvider";
 import {
   faqs,
   faqSectionBadge,
@@ -12,11 +13,13 @@ import {
   faqPageCta,
 } from "../../content/faq";
 
-const teaserFaqs = faqs.slice(0, faqTeaserCount);
-
 export function FaqSection({ isDark }: { isDark: boolean }) {
   const pathname = usePathname();
+  const { locale } = useLanguage();
+
   if (pathname === "/faq" || pathname === "/terms") return null;
+
+  const teaserFaqs = faqs[locale].slice(0, faqTeaserCount);
 
   return (
     <section
@@ -31,21 +34,21 @@ export function FaqSection({ isDark }: { isDark: boolean }) {
               isDark ? "text-emerald-300" : "text-emerald-700"
             }`}
           >
-            {faqSectionBadge}
+            {faqSectionBadge[locale]}
           </div>
           <h2
             className={`mt-3 text-3xl lg:text-4xl font-semibold tracking-tight ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            {faqSectionTitle}
+            {faqSectionTitle[locale]}
           </h2>
           <p
             className={`mt-4 text-lg leading-relaxed ${
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            {faqSectionSubtitle}
+            {faqSectionSubtitle[locale]}
           </p>
         </div>
 
@@ -112,7 +115,7 @@ export function FaqSection({ isDark }: { isDark: boolean }) {
                 : "text-emerald-700 hover:text-emerald-800 hover:bg-emerald-500/10"
             }`}
           >
-            {faqPageCta}
+            {faqPageCta[locale]}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

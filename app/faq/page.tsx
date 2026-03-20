@@ -4,29 +4,35 @@ import Link from "next/link";
 import { ArrowUpRight, HelpCircle } from "lucide-react";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 import {
   faqs,
   faqCategories,
   faqSectionTitle,
   faqSectionSubtitle,
   faqSectionBadge,
+  faqStillHaveQuestions,
+  faqTeamCanHelp,
+  faqContactUs,
+  faqJumpTo,
   type FaqCategoryId,
 } from "../../content/faq";
 
-function getFaqsByCategory() {
-  const map = new Map<FaqCategoryId, typeof faqs>();
-  for (const item of faqs) {
-    const list = map.get(item.category) ?? [];
-    list.push(item);
-    map.set(item.category, list);
-  }
-  return map;
-}
-
-const faqsByCategory = getFaqsByCategory();
-
 export default function FaqPage() {
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
+
+  function getFaqsByCategory() {
+    const map = new Map<FaqCategoryId, (typeof faqs)[typeof locale]>();
+    for (const item of faqs[locale]) {
+      const list = map.get(item.category) ?? [];
+      list.push(item);
+      map.set(item.category, list);
+    }
+    return map;
+  }
+
+  const faqsByCategory = getFaqsByCategory();
 
   return (
     <AppShell>
@@ -55,7 +61,7 @@ export default function FaqPage() {
                 }`}
               >
                 <HelpCircle className="w-4 h-4" />
-                {faqSectionBadge}
+                {faqSectionBadge[locale]}
               </span>
             </div>
             <h1
@@ -63,14 +69,14 @@ export default function FaqPage() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              {faqSectionTitle}
+              {faqSectionTitle[locale]}
             </h1>
             <p
               className={`mt-4 text-lg max-w-2xl leading-relaxed ${
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              {faqSectionSubtitle}
+              {faqSectionSubtitle[locale]}
             </p>
 
             {/* In-page nav: category anchors (visible on all viewports) */}
@@ -78,7 +84,7 @@ export default function FaqPage() {
               className="mt-10 flex flex-wrap gap-2"
               aria-label="FAQ categories"
             >
-              {faqCategories.map((cat) => (
+              {faqCategories[locale].map((cat) => (
                 <a
                   key={cat.id}
                   href={`#category-${cat.id}`}
@@ -106,9 +112,9 @@ export default function FaqPage() {
                     isDark ? "text-gray-500" : "text-gray-400"
                   }`}
                 >
-                  Jump to
+                  {faqJumpTo[locale]}
                 </span>
-                {faqCategories.map((cat) => (
+                {faqCategories[locale].map((cat) => (
                   <a
                     key={cat.id}
                     href={`#category-${cat.id}`}
@@ -125,11 +131,11 @@ export default function FaqPage() {
             </aside>
 
             <div className="space-y-14">
-              {faqCategories.map((category) => {
+              {faqCategories[locale].map((category) => {
                 const items = faqsByCategory.get(category.id);
                 if (!items?.length) return null;
                 const categoryLabel =
-                  faqCategories.find((c) => c.id === category.id)?.label ??
+                  faqCategories[locale].find((c) => c.id === category.id)?.label ??
                   category.id;
 
                 return (
@@ -216,14 +222,14 @@ export default function FaqPage() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Still have questions?
+                {faqStillHaveQuestions[locale]}
               </p>
               <p
                 className={`mt-2 text-sm ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Our team can walk you through the gateway and your use case.
+                {faqTeamCanHelp[locale]}
               </p>
               <Link
                 href="/contact"
@@ -233,7 +239,7 @@ export default function FaqPage() {
                     : "bg-emerald-600 text-white hover:bg-emerald-500"
                 }`}
               >
-                Contact us
+                {faqContactUs[locale]}
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>

@@ -9,10 +9,13 @@ import {
 } from "lucide-react";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 import {
+  regulatoryComplianceLabel,
   regulatoryHeroTitle,
   regulatoryHeroDescription,
-  frameworksList,
+  frameworksListConfig,
+  frameworksListContent,
   globalCoverageTitle,
   globalCoverageDescription,
   complianceUpdatesTitle,
@@ -29,6 +32,7 @@ const FRAMEWORK_ICONS = {
 
 export default function Regulatory() {
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
 
   return (
     <AppShell>
@@ -53,21 +57,21 @@ export default function Regulatory() {
                 isDark ? "text-emerald-400" : "text-emerald-600"
               }`}
             >
-              Compliance
+              {regulatoryComplianceLabel[locale]}
             </p>
             <h1
               className={`text-4xl lg:text-5xl font-semibold tracking-tight mb-6 leading-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              {regulatoryHeroTitle}
+              {regulatoryHeroTitle[locale]}
             </h1>
             <p
               className={`text-lg lg:text-xl leading-relaxed ${
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              {regulatoryHeroDescription}
+              {regulatoryHeroDescription[locale]}
             </p>
           </div>
         </section>
@@ -77,8 +81,9 @@ export default function Regulatory() {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {frameworksList.map((framework, index) => {
-                const Icon = FRAMEWORK_ICONS[framework.iconKey];
+              {frameworksListConfig.map((config, index) => {
+                const Icon = FRAMEWORK_ICONS[config.iconKey];
+                const content = frameworksListContent[locale][index];
                 return (
                   <div
                     key={index}
@@ -104,14 +109,14 @@ export default function Regulatory() {
                         isDark ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {framework.name}
+                      {content.name}
                     </h3>
                     <p
                       className={`text-sm leading-relaxed ${
                         isDark ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
-                      {framework.description}
+                      {content.description}
                     </p>
                   </div>
                 );
@@ -135,14 +140,14 @@ export default function Regulatory() {
                   <h3 className={`text-xl font-semibold mb-3 ${
                     isDark ? "text-white" : "text-gray-900"
                   }`}>
-                    {globalCoverageTitle}
+                    {globalCoverageTitle[locale]}
                   </h3>
                   <p
                     className={`text-base lg:text-lg leading-relaxed ${
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    {globalCoverageDescription}
+                    {globalCoverageDescription[locale]}
                   </p>
                 </div>
               </div>
@@ -167,12 +172,12 @@ export default function Regulatory() {
                     <h3 className={`text-lg font-semibold mb-2 ${
                         isDark ? "text-blue-100" : "text-blue-900"
                       }`}>
-                    {complianceUpdatesTitle}
+                    {complianceUpdatesTitle[locale]}
                   </h3>
                   <p className={`text-base leading-relaxed ${
                     isDark ? "text-blue-200/90" : "text-blue-800"
                   }`}>
-                    {complianceUpdatesDescription}
+                    {complianceUpdatesDescription[locale]}
                   </p>
                 </div>
               </div>
@@ -182,10 +187,10 @@ export default function Regulatory() {
               <h2 className={`text-3xl font-semibold mb-10 ${
                 isDark ? "text-white" : "text-gray-900"
               }`}>
-                {keyComplianceFeaturesTitle}
+                {keyComplianceFeaturesTitle[locale]}
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {keyComplianceFeaturesList.map((feature, index) => (
+                {keyComplianceFeaturesList[locale].map((feature, index) => (
                   <div
                     key={index}
                     className={`rounded-xl border p-6 flex gap-4 transition-all duration-200 ${

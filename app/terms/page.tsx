@@ -3,15 +3,19 @@
 import { FileText } from "lucide-react";
 import { AppShell } from "../components/AppShell";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 import {
   termsTitle,
   termsSubtitle,
   termsLastUpdated,
+  termsLastUpdatedLabel,
+  termsLegalLabel,
   termsSections,
 } from "../../content/terms";
 
 export default function TermsPage() {
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
 
   return (
     <AppShell>
@@ -40,7 +44,7 @@ export default function TermsPage() {
                 }`}
               >
                 <FileText className="w-4 h-4" />
-                Legal
+                {termsLegalLabel[locale]}
               </span>
             </div>
             <h1
@@ -48,21 +52,21 @@ export default function TermsPage() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              {termsTitle}
+              {termsTitle[locale]}
             </h1>
             <p
               className={`mt-4 text-lg max-w-2xl leading-relaxed ${
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              {termsSubtitle}
+              {termsSubtitle[locale]}
             </p>
             <p
               className={`mt-2 text-sm ${
                 isDark ? "text-gray-500" : "text-gray-500"
               }`}
             >
-              Last updated: {termsLastUpdated}
+              {termsLastUpdatedLabel[locale]}: {termsLastUpdated}
             </p>
           </div>
         </section>
@@ -75,7 +79,7 @@ export default function TermsPage() {
         >
           <div className="max-w-3xl mx-auto px-6 lg:px-8">
             <div className="space-y-12">
-              {termsSections.map((section) => (
+              {termsSections[locale].map((section) => (
                 <article
                   key={section.id}
                   id={section.id}

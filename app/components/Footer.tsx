@@ -9,14 +9,21 @@ import {
   offices,
   copyright,
   builtForTagline,
+  footerNavigateLabel,
+  footerContactLabel,
+  footerFollowUs,
+  footerSoon,
 } from "../../content/footer";
 import { XIcon } from "./icons/XIcon";
+import { useLanguage } from "./LanguageProvider";
 
 interface FooterProps {
   isDark: boolean;
 }
 
 export function Footer({ isDark }: FooterProps) {
+  const { locale } = useLanguage();
+
   return (
     <footer
       className={isDark ? "bg-gray-900" : "bg-white"}
@@ -56,7 +63,7 @@ export function Footer({ isDark }: FooterProps) {
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              {footerTagline}
+              {footerTagline[locale]}
             </p>
 
             {/* Offices */}
@@ -85,7 +92,7 @@ export function Footer({ isDark }: FooterProps) {
                             : "bg-emerald-50 text-emerald-600"
                         }`}
                       >
-                        Soon
+                        {footerSoon[locale]}
                       </span>
                     )}
                     {office.address && (
@@ -118,11 +125,11 @@ export function Footer({ isDark }: FooterProps) {
                 isDark ? "text-emerald-400/90" : "text-emerald-700"
               }`}
             >
-              Navigate
+              {footerNavigateLabel[locale]}
             </h3>
             <nav aria-label="Footer navigation">
             <ul className="flex flex-wrap gap-x-6 gap-y-2 sm:flex-col sm:flex-nowrap sm:gap-y-2.5">
-              {footerPages.map((item) => (
+              {footerPages[locale].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -147,7 +154,7 @@ export function Footer({ isDark }: FooterProps) {
                 isDark ? "text-emerald-400/90" : "text-emerald-700"
               }`}
             >
-              Contact
+              {footerContactLabel[locale]}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -174,7 +181,7 @@ export function Footer({ isDark }: FooterProps) {
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900"
                   }`}
                 >
-                  Follow us
+                  {footerFollowUs[locale]}
                   <XIcon className="w-4 h-4 shrink-0" aria-hidden />
                 </a>
               </li>
@@ -191,12 +198,12 @@ export function Footer({ isDark }: FooterProps) {
       >
         <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-center sm:text-left">
           <span className={isDark ? "text-gray-500 text-xs" : "text-gray-500 text-xs"}>
-            {copyright}
+            {copyright[locale]}
           </span>
           <span
             className={`text-xs ${isDark ? "text-gray-600" : "text-gray-500"}`}
           >
-            {builtForTagline}
+            {builtForTagline[locale]}
           </span>
         </div>
       </div>
