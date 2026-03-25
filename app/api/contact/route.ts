@@ -14,94 +14,51 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPassword = process.env.SMTP_PASSWORD;
+    const fromEmail = process.env.FROM_EMAIL || smtpUser;
+    const contactEmail = process.env.CONTACT_EMAIL || fromEmail;
+
     // Validate environment variables
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-      console.error("Missing Gmail SMTP credentials");
+    if (!smtpUser || !smtpPassword) {
+      console.error("Missing SMTP credentials");
       return NextResponse.json(
         { error: "Email service is not configured" },
         { status: 500 }
       );
     }
 
-    // Check if GMAIL_USER is still the placeholder
-    if (process.env.GMAIL_USER === "your-email@gmail.com") {
+    // Process the app password (remove spaces and trim)
+    const appPassword = smtpPassword.replace(/\s+/g, "").trim();
+
+    // Validate app password format (should be 16 characters)
+    if (appPassword.length !== 16) {
+      console.error(`Invalid app password length: ${appPassword.length} (expected 16)`);
       return NextResponse.json(
-        { error: "Please update GMAIL_USER in .env.local with your actual Gmail address" },
+        { error: "Email service is not configured correctly" },
         { status: 500 }
       );
     }
 
-    // Process the app password (remove spaces and trim)
-    const appPassword = process.env.GMAIL_APP_PASSWORD.replace(/\s+/g, "").trim();
-    
-    // Debug logging (only in development)
-    if (process.env.NODE_ENV === "development") {
-      console.log("Gmail User:", process.env.GMAIL_USER);
-      console.log("App Password Length:", appPassword.length);
-      console.log("App Password (first 4 chars):", appPassword.substring(0, 4) + "****");
-      console.log("Has GMAIL_USER:", !!process.env.GMAIL_USER);
-      console.log("Has GMAIL_APP_PASSWORD:", !!process.env.GMAIL_APP_PASSWORD);
-    }
-    
-    // Validate app password format (should be 16 characters)
-    if (appPassword.length !== 16) {
-      console.error(`Invalid app password length: ${appPassword.length} (expected 16)`);
-      throw new Error("Invalid app password format");
-    }
-    
-    // Create transporter with Gmail SMTP - try both ports
-    let transporter = nodemailer.createTransport({
+    // Create transporter with Gmail SMTP
+    const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
       port: 587,
       secure: false,
       auth: {
-        user: process.env.GMAIL_USER.trim(),
+        user: smtpUser.trim(),
         pass: appPassword,
-      },
-      tls: {
-        rejectUnauthorized: false, // Allow self-signed certificates
       },
     });
 
     // Verify connection before sending
-    try {
-      await transporter.verify();
-      console.log("SMTP connection verified successfully");
-    } catch (verifyError: any) {
-      console.error("SMTP Verification failed:", verifyError.message);
-      console.error("Error code:", verifyError.code);
-      
-      // Try port 465 with SSL as fallback
-      if (verifyError.code === "EAUTH" || verifyError.code === "ECONNECTION") {
-        console.log("Trying alternative SMTP configuration (port 465)...");
-        transporter = nodemailer.createTransport({
-          service: "gmail",
-          host: "smtp.gmail.com",
-          port: 465,
-          secure: true,
-          auth: {
-            user: process.env.GMAIL_USER.trim(),
-            pass: appPassword,
-          },
-        });
-        
-        try {
-          await transporter.verify();
-          console.log("SMTP connection verified with port 465");
-        } catch (fallbackError: any) {
-          console.error("Fallback SMTP verification also failed:", fallbackError.message);
-          throw verifyError; // Throw original error
-        }
-      } else {
-        throw verifyError;
-      }
-    }
+    await transporter.verify();
 
     // Email content
     const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: process.env.CONTACT_EMAIL || process.env.GMAIL_USER,
+      from: `"regX AI" <${fromEmail}>`,
+      to: contactEmail,
       replyTo: email,
       subject: `Contact Form Submission from ${name}${company ? ` - ${company}` : ""}`,
       html: `
@@ -116,16 +73,7 @@ export async function POST(request: NextRequest) {
           </div>
         </div>
       `,
-      text: `
-New Contact Form Submission
-
-Name: ${name}
-Email: ${email}
-${company ? `Company: ${company}` : ""}
-
-Message:
-${message}
-      `,
+      text: `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\n${company ? `Company: ${company}\n` : ""}\nMessage:\n${message}`,
     };
 
     // Send email
@@ -136,19 +84,10 @@ ${message}
       { status: 200 }
     );
   } catch (error: any) {
-    // Log detailed error for debugging (server-side only)
-    console.error("Error sending email:", error);
-    if (error.code === "EAUTH") {
-      console.error("Authentication failed - check Gmail credentials in .env.local");
-    } else if (error.code === "ECONNECTION") {
-      console.error("Connection failed - check network or SMTP settings");
-    }
-    
-    // Always return a user-friendly generic error message
+    console.error("Error sending email:", error.message);
     return NextResponse.json(
       { error: "We're sorry, but we couldn't send your message right now. Please try again later or contact us directly at business@regxai.com." },
       { status: 500 }
     );
   }
 }
-
